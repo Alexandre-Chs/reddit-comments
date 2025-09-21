@@ -1,4 +1,4 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, Session } from '@nestjs/common';
 import { AppService } from './app.service';
 import { User } from '@prisma/client';
 
@@ -14,5 +14,11 @@ export class AppController {
   @Post()
   createUser(): Promise<User> {
     return this.appService.createTestUser();
+  }
+
+  @Get('test-session')
+  testSession(@Session() session: Record<string, any>) {
+    session.views = (session.views || 0) + 1;
+    return { views: session.views };
   }
 }
