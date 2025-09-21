@@ -120,10 +120,59 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  name: 'name'
+  username: 'username',
+  password: 'password',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TeamsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.UsersTeamsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  teamId: 'teamId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.KeywordsScalarFieldEnum = {
+  id: 'id',
+  keyword: 'keyword',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TeamsKeywordsScalarFieldEnum = {
+  id: 'id',
+  teamId: 'teamId',
+  keywordId: 'keywordId',
+  statut: 'statut',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CommentsScalarFieldEnum = {
+  id: 'id',
+  url: 'url'
+};
+
+exports.Prisma.NotesScalarFieldEnum = {
+  id: 'id',
+  text: 'text',
+  userId: 'userId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TeamsCommentsScalarFieldEnum = {
+  id: 'id',
+  teamId: 'teamId',
+  commentId: 'commentId',
+  noteId: 'noteId',
+  statut: 'statut'
 };
 
 exports.Prisma.SortOrder = {
@@ -140,10 +189,25 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.StatusKeywords = exports.$Enums.StatusKeywords = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+};
 
+exports.StatusComments = exports.$Enums.StatusComments = {
+  PENDING: 'PENDING',
+  DONE: 'DONE'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  Users: 'Users',
+  Teams: 'Teams',
+  UsersTeams: 'UsersTeams',
+  Keywords: 'Keywords',
+  TeamsKeywords: 'TeamsKeywords',
+  Comments: 'Comments',
+  Notes: 'Notes',
+  TeamsComments: 'TeamsComments'
 };
 
 /**

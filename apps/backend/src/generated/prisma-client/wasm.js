@@ -92,10 +92,59 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.UserScalarFieldEnum = {
+exports.Prisma.UsersScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  name: 'name'
+  username: 'username',
+  password: 'password',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TeamsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.UsersTeamsScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  teamId: 'teamId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.KeywordsScalarFieldEnum = {
+  id: 'id',
+  keyword: 'keyword',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TeamsKeywordsScalarFieldEnum = {
+  id: 'id',
+  teamId: 'teamId',
+  keywordId: 'keywordId',
+  statut: 'statut',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CommentsScalarFieldEnum = {
+  id: 'id',
+  url: 'url'
+};
+
+exports.Prisma.NotesScalarFieldEnum = {
+  id: 'id',
+  text: 'text',
+  userId: 'userId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TeamsCommentsScalarFieldEnum = {
+  id: 'id',
+  teamId: 'teamId',
+  commentId: 'commentId',
+  noteId: 'noteId',
+  statut: 'statut'
 };
 
 exports.Prisma.SortOrder = {
@@ -112,10 +161,25 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.StatusComments = exports.$Enums.StatusComments = {
+  PENDING: 'PENDING',
+  DONE: 'DONE'
+};
 
+exports.StatusKeywords = exports.$Enums.StatusKeywords = {
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  Users: 'Users',
+  Teams: 'Teams',
+  UsersTeams: 'UsersTeams',
+  Keywords: 'Keywords',
+  TeamsKeywords: 'TeamsKeywords',
+  Comments: 'Comments',
+  Notes: 'Notes',
+  TeamsComments: 'TeamsComments'
 };
 /**
  * Create the Client
@@ -146,7 +210,7 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
@@ -156,7 +220,6 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -165,13 +228,13 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma-client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel User {\n  id    Int     @id @default(autoincrement())\n  email String  @unique\n  name  String?\n}\n",
-  "inlineSchemaHash": "09eb22f8c877b5f9f9bcc335c9e65965a565e4fa389c96fb44a6ce41e14647b4",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma-client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Users {\n  id        String       @id @default(uuid())\n  email     String       @unique\n  username  String       @unique\n  password  String\n  createdAt DateTime     @default(now())\n  teams     UsersTeams[]\n  notes     Notes[]\n}\n\nmodel Teams {\n  id        String          @id @default(uuid())\n  name      String\n  createdAt DateTime        @default(now())\n  users     UsersTeams[]\n  keywords  TeamsKeywords[]\n  comments  TeamsComments[]\n}\n\n// many to many relation between User and Team\nmodel UsersTeams {\n  id        String   @id @default(uuid())\n  user      Users    @relation(fields: [userId], references: [id])\n  userId    String\n  team      Teams    @relation(fields: [teamId], references: [id])\n  teamId    String\n  createdAt DateTime @default(now())\n}\n\nmodel Keywords {\n  id        String          @id @default(uuid())\n  keyword   String          @unique\n  createdAt DateTime        @default(now())\n  teams     TeamsKeywords[]\n}\n\n// many to many relation between Keyword and Team\nmodel TeamsKeywords {\n  id        String         @id @default(uuid())\n  team      Teams          @relation(fields: [teamId], references: [id])\n  teamId    String\n  keyword   Keywords       @relation(fields: [keywordId], references: [id])\n  keywordId String\n  statut    StatusKeywords @default(ACTIVE)\n  createdAt DateTime       @default(now())\n\n  @@unique([teamId, keywordId])\n}\n\nmodel Comments {\n  id    String          @id @default(uuid())\n  url   String\n  teams TeamsComments[]\n}\n\nmodel Notes {\n  id            String         @id @default(uuid())\n  text          String\n  user          Users          @relation(fields: [userId], references: [id])\n  userId        String\n  createdAt     DateTime       @default(now())\n  teamsComments TeamsComments?\n}\n\n// many to many relation between Comment and Teams\nmodel TeamsComments {\n  id        String         @id @default(uuid())\n  team      Teams          @relation(fields: [teamId], references: [id])\n  teamId    String\n  comment   Comments       @relation(fields: [commentId], references: [id])\n  commentId String\n  note      Notes?         @relation(fields: [noteId], references: [id])\n  noteId    String?        @unique\n  statut    StatusComments @default(PENDING)\n\n  @@unique([teamId, commentId])\n}\n\nenum StatusComments {\n  PENDING\n  DONE\n}\n\nenum StatusKeywords {\n  ACTIVE\n  INACTIVE\n}\n",
+  "inlineSchemaHash": "00c528fb4943e4a48eeee92675274d03c9a6048d13cc98b7022ea725db4543f9",
   "copyEngine": true
 }
 config.dirname = '/'
 
-config.runtimeDataModel = JSON.parse("{\"models\":{\"User\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
+config.runtimeDataModel = JSON.parse("{\"models\":{\"Users\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"username\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"teams\",\"kind\":\"object\",\"type\":\"UsersTeams\",\"relationName\":\"UsersToUsersTeams\"},{\"name\":\"notes\",\"kind\":\"object\",\"type\":\"Notes\",\"relationName\":\"NotesToUsers\"}],\"dbName\":null},\"Teams\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"users\",\"kind\":\"object\",\"type\":\"UsersTeams\",\"relationName\":\"TeamsToUsersTeams\"},{\"name\":\"keywords\",\"kind\":\"object\",\"type\":\"TeamsKeywords\",\"relationName\":\"TeamsToTeamsKeywords\"},{\"name\":\"comments\",\"kind\":\"object\",\"type\":\"TeamsComments\",\"relationName\":\"TeamsToTeamsComments\"}],\"dbName\":null},\"UsersTeams\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"Users\",\"relationName\":\"UsersToUsersTeams\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"team\",\"kind\":\"object\",\"type\":\"Teams\",\"relationName\":\"TeamsToUsersTeams\"},{\"name\":\"teamId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Keywords\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"keyword\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"teams\",\"kind\":\"object\",\"type\":\"TeamsKeywords\",\"relationName\":\"KeywordsToTeamsKeywords\"}],\"dbName\":null},\"TeamsKeywords\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"team\",\"kind\":\"object\",\"type\":\"Teams\",\"relationName\":\"TeamsToTeamsKeywords\"},{\"name\":\"teamId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"keyword\",\"kind\":\"object\",\"type\":\"Keywords\",\"relationName\":\"KeywordsToTeamsKeywords\"},{\"name\":\"keywordId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"statut\",\"kind\":\"enum\",\"type\":\"StatusKeywords\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":null},\"Comments\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"url\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"teams\",\"kind\":\"object\",\"type\":\"TeamsComments\",\"relationName\":\"CommentsToTeamsComments\"}],\"dbName\":null},\"Notes\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"text\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"user\",\"kind\":\"object\",\"type\":\"Users\",\"relationName\":\"NotesToUsers\"},{\"name\":\"userId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"createdAt\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"teamsComments\",\"kind\":\"object\",\"type\":\"TeamsComments\",\"relationName\":\"NotesToTeamsComments\"}],\"dbName\":null},\"TeamsComments\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"team\",\"kind\":\"object\",\"type\":\"Teams\",\"relationName\":\"TeamsToTeamsComments\"},{\"name\":\"teamId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"comment\",\"kind\":\"object\",\"type\":\"Comments\",\"relationName\":\"CommentsToTeamsComments\"},{\"name\":\"commentId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"note\",\"kind\":\"object\",\"type\":\"Notes\",\"relationName\":\"NotesToTeamsComments\"},{\"name\":\"noteId\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"statut\",\"kind\":\"enum\",\"type\":\"StatusComments\"}],\"dbName\":null}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 config.engineWasm = {
   getRuntime: async () => require('./query_engine_bg.js'),

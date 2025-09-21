@@ -1,9 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/prisma-client"
@@ -14,8 +11,90 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+model Users {
+  id        String       @id @default(uuid())
+  email     String       @unique
+  username  String       @unique
+  password  String
+  createdAt DateTime     @default(now())
+  teams     UsersTeams[]
+  notes     Notes[]
+}
+
+model Teams {
+  id        String          @id @default(uuid())
+  name      String
+  createdAt DateTime        @default(now())
+  users     UsersTeams[]
+  keywords  TeamsKeywords[]
+  comments  TeamsComments[]
+}
+
+// many to many relation between User and Team
+model UsersTeams {
+  id        String   @id @default(uuid())
+  user      Users    @relation(fields: [userId], references: [id])
+  userId    String
+  team      Teams    @relation(fields: [teamId], references: [id])
+  teamId    String
+  createdAt DateTime @default(now())
+}
+
+model Keywords {
+  id        String          @id @default(uuid())
+  keyword   String          @unique
+  createdAt DateTime        @default(now())
+  teams     TeamsKeywords[]
+}
+
+// many to many relation between Keyword and Team
+model TeamsKeywords {
+  id        String         @id @default(uuid())
+  team      Teams          @relation(fields: [teamId], references: [id])
+  teamId    String
+  keyword   Keywords       @relation(fields: [keywordId], references: [id])
+  keywordId String
+  statut    StatusKeywords @default(ACTIVE)
+  createdAt DateTime       @default(now())
+
+  @@unique([teamId, keywordId])
+}
+
+model Comments {
+  id    String          @id @default(uuid())
+  url   String
+  teams TeamsComments[]
+}
+
+model Notes {
+  id            String         @id @default(uuid())
+  text          String
+  user          Users          @relation(fields: [userId], references: [id])
+  userId        String
+  createdAt     DateTime       @default(now())
+  teamsComments TeamsComments?
+}
+
+// many to many relation between Comment and Teams
+model TeamsComments {
+  id        String         @id @default(uuid())
+  team      Teams          @relation(fields: [teamId], references: [id])
+  teamId    String
+  comment   Comments       @relation(fields: [commentId], references: [id])
+  commentId String
+  note      Notes?         @relation(fields: [noteId], references: [id])
+  noteId    String?        @unique
+  statut    StatusComments @default(PENDING)
+
+  @@unique([teamId, commentId])
+}
+
+enum StatusComments {
+  PENDING
+  DONE
+}
+
+enum StatusKeywords {
+  ACTIVE
+  INACTIVE
 }
