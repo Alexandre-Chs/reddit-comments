@@ -1,17 +1,17 @@
-import RegisterForm from "../components/RegisterForm";
+import LoginForm from "../components/LoginForm";
 import WelcomeAuth from "../components/WelcomeAuth";
 
-const RegisterPage = () => {
+const LoginPage = () => {
   return (
     <div className="flex h-screen">
       <div className="flex-1">
         <WelcomeAuth />
       </div>
       <div className="flex-1 flex items-center justify-center">
-        <RegisterForm />
+        <LoginForm />
       </div>
     </div>
   );
 };
 
-export default RegisterPage;
+export default LoginPage;

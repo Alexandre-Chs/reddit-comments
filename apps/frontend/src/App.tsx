@@ -1,7 +1,7 @@
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
-import "./App.css";
 import { AuthProvider, useAuth } from "./features/auth/components/auth";
+import { ThemeProvider } from "./components/theme";
 
 declare module "@tanstack/react-router" {
   interface Register {
@@ -26,7 +26,9 @@ function InnerApp() {
 function App() {
   return (
     <AuthProvider>
-      <InnerApp />
+      <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+        <InnerApp />
+      </ThemeProvider>
     </AuthProvider>
   );
 }
