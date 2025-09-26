@@ -5,8 +5,7 @@ import pgSession from 'connect-pg-simple';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  console.log('App listening on port', process.env.PORT ?? 3000);
-
+  app.enableCors();
   app.use(
     session({
       store: new (pgSession(session))({

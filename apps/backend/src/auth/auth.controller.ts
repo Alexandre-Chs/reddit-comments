@@ -1,13 +1,20 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 
 @Controller('auth')
 export class AuthController {
   @Post('register')
   register(@Body() body: any) {
-    // Simple example: just return the received data
     return {
       message: 'Registration received',
       data: body,
+    };
+  }
+
+  @Get('test')
+  test() {
+    console.log('Test endpoint hit');
+    return {
+      message: 'Test endpoint is working',
     };
   }
 }

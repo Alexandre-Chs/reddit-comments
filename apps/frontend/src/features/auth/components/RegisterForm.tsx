@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { authRegister } from "../api/register";
 
 export type RegisterFormData = {
   userName: string;
@@ -23,9 +24,10 @@ const RegisterForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     console.log("le submit", formData);
+    await authRegister(formData);
   };
 
   return (
