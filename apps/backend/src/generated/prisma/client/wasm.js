@@ -192,7 +192,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "/Users/alexandrechs/Documents/Projets/reddit-comments/apps/backend/src/generated/prisma-client",
+      "value": "/Users/alexandrechs/Documents/Projets/reddit-comments/apps/backend/src/generated/prisma/client",
       "fromEnvVar": null
     },
     "config": {
@@ -210,16 +210,17 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null,
-    "schemaEnvPath": "../../../.env"
+    "rootEnvPath": "../../../../.env",
+    "schemaEnvPath": "../../../../.env"
   },
-  "relativePath": "../../../prisma",
+  "relativePath": "../../../../prisma",
   "clientVersion": "6.16.2",
   "engineVersion": "1c57fdcd7e44b29b9313256c76699e91c3ac3c43",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -228,8 +229,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma-client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Users {\n  id        String       @id @default(uuid())\n  email     String       @unique\n  username  String       @unique\n  password  String\n  createdAt DateTime     @default(now())\n  teams     UsersTeams[]\n  notes     Notes[]\n}\n\nmodel Teams {\n  id        String          @id @default(uuid())\n  name      String\n  createdAt DateTime        @default(now())\n  users     UsersTeams[]\n  keywords  TeamsKeywords[]\n  comments  TeamsComments[]\n}\n\n// many to many relation between User and Team\nmodel UsersTeams {\n  id        String   @id @default(uuid())\n  user      Users    @relation(fields: [userId], references: [id])\n  userId    String\n  team      Teams    @relation(fields: [teamId], references: [id])\n  teamId    String\n  createdAt DateTime @default(now())\n}\n\nmodel Keywords {\n  id        String          @id @default(uuid())\n  keyword   String          @unique\n  createdAt DateTime        @default(now())\n  teams     TeamsKeywords[]\n}\n\n// many to many relation between Keyword and Team\nmodel TeamsKeywords {\n  id        String         @id @default(uuid())\n  team      Teams          @relation(fields: [teamId], references: [id])\n  teamId    String\n  keyword   Keywords       @relation(fields: [keywordId], references: [id])\n  keywordId String\n  statut    StatusKeywords @default(ACTIVE)\n  createdAt DateTime       @default(now())\n\n  @@unique([teamId, keywordId])\n}\n\nmodel Comments {\n  id    String          @id @default(uuid())\n  url   String\n  teams TeamsComments[]\n}\n\nmodel Notes {\n  id            String         @id @default(uuid())\n  text          String\n  user          Users          @relation(fields: [userId], references: [id])\n  userId        String\n  createdAt     DateTime       @default(now())\n  teamsComments TeamsComments?\n}\n\n// many to many relation between Comment and Teams\nmodel TeamsComments {\n  id        String         @id @default(uuid())\n  team      Teams          @relation(fields: [teamId], references: [id])\n  teamId    String\n  comment   Comments       @relation(fields: [commentId], references: [id])\n  commentId String\n  note      Notes?         @relation(fields: [noteId], references: [id])\n  noteId    String?        @unique\n  statut    StatusComments @default(PENDING)\n\n  @@unique([teamId, commentId])\n}\n\nenum StatusComments {\n  PENDING\n  DONE\n}\n\nenum StatusKeywords {\n  ACTIVE\n  INACTIVE\n}\n",
-  "inlineSchemaHash": "00c528fb4943e4a48eeee92675274d03c9a6048d13cc98b7022ea725db4543f9",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma/client\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel Users {\n  id        String       @id @default(uuid())\n  email     String       @unique\n  username  String       @unique\n  password  String\n  createdAt DateTime     @default(now())\n  teams     UsersTeams[]\n  notes     Notes[]\n}\n\nmodel Teams {\n  id        String          @id @default(uuid())\n  name      String\n  createdAt DateTime        @default(now())\n  users     UsersTeams[]\n  keywords  TeamsKeywords[]\n  comments  TeamsComments[]\n}\n\n// many to many relation between User and Team\nmodel UsersTeams {\n  id        String   @id @default(uuid())\n  user      Users    @relation(fields: [userId], references: [id])\n  userId    String\n  team      Teams    @relation(fields: [teamId], references: [id])\n  teamId    String\n  createdAt DateTime @default(now())\n}\n\nmodel Keywords {\n  id        String          @id @default(uuid())\n  keyword   String          @unique\n  createdAt DateTime        @default(now())\n  teams     TeamsKeywords[]\n}\n\n// many to many relation between Keyword and Team\nmodel TeamsKeywords {\n  id        String         @id @default(uuid())\n  team      Teams          @relation(fields: [teamId], references: [id])\n  teamId    String\n  keyword   Keywords       @relation(fields: [keywordId], references: [id])\n  keywordId String\n  statut    StatusKeywords @default(ACTIVE)\n  createdAt DateTime       @default(now())\n\n  @@unique([teamId, keywordId])\n}\n\nmodel Comments {\n  id    String          @id @default(uuid())\n  url   String\n  teams TeamsComments[]\n}\n\nmodel Notes {\n  id            String         @id @default(uuid())\n  text          String\n  user          Users          @relation(fields: [userId], references: [id])\n  userId        String\n  createdAt     DateTime       @default(now())\n  teamsComments TeamsComments?\n}\n\n// many to many relation between Comment and Teams\nmodel TeamsComments {\n  id        String         @id @default(uuid())\n  team      Teams          @relation(fields: [teamId], references: [id])\n  teamId    String\n  comment   Comments       @relation(fields: [commentId], references: [id])\n  commentId String\n  note      Notes?         @relation(fields: [noteId], references: [id])\n  noteId    String?        @unique\n  statut    StatusComments @default(PENDING)\n\n  @@unique([teamId, commentId])\n}\n\nenum StatusComments {\n  PENDING\n  DONE\n}\n\nenum StatusKeywords {\n  ACTIVE\n  INACTIVE\n}\n",
+  "inlineSchemaHash": "175acc15f6599c5b1c5ba1942a08f5d17ac3a4c8e72f13a39bbbd19b99ea3261",
   "copyEngine": true
 }
 config.dirname = '/'
