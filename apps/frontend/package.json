@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
+    "@reddit-comments/types": "workspace:*",
+    "@reddit-comments/schemas": "workspace:*",
     "@tailwindcss/vite": "catalog:",
     "@tanstack/react-router": "^1.131.49",
     "@tanstack/react-router-devtools": "^1.131.49",
@@ -20,7 +22,8 @@
     "react": "catalog:",
     "react-dom": "catalog:",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "catalog:"
+    "tailwindcss": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@tanstack/router-plugin": "^1.131.49",

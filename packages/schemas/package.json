@@ -1,0 +1,16 @@
+{
+  "name": "@reddit-comments/schemas",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Schemas shared across packages, using Zod",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "zod": "catalog:"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

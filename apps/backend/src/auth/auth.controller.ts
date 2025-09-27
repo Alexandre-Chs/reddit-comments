@@ -1,20 +1,17 @@
-import { Controller, Post, Body, Get } from '@nestjs/common';
+import { Controller, Post, Body, Get, UsePipes } from '@nestjs/common';
+import { registerSchema } from '@reddit-comments/schemas';
+import { ZodValidationPipe } from 'src/zod/ZodValidationPipe';
+import type { RegisterDTO } from './register.dto';
 
 @Controller('auth')
 export class AuthController {
   @Post('register')
-  register(@Body() body: any) {
+  @UsePipes(new ZodValidationPipe(registerSchema))
+  async register(@Body() registerDTO: RegisterDTO) {
+    console.log('Données reçues dans le contrôleur:', registerDTO);
     return {
       message: 'Registration received',
-      data: body,
-    };
-  }
-
-  @Get('test')
-  test() {
-    console.log('Test endpoint hit');
-    return {
-      message: 'Test endpoint is working',
+      data: registerDTO,
     };
   }
 }

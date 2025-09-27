@@ -3,13 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { authRegister } from "../api/register";
-
-export type RegisterFormData = {
-  userName: string;
-  teamName: string;
-  email: string;
-  password: string;
-};
+import type { RegisterFormData } from "@reddit-comments/types";
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState<RegisterFormData>({

@@ -25,10 +25,13 @@
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
     "@prisma/client": "6.16.2",
+    "@reddit-comments/types": "workspace:*",
+    "@reddit-comments/schemas": "workspace:*",
     "connect-pg-simple": "^10.0.0",
     "express-session": "^1.18.2",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "catalog:"
+    "rxjs": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
     "@nestjs/cli": "^11.0.0",

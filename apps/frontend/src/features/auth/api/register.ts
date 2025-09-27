@@ -1,4 +1,4 @@
-import type { RegisterFormData } from "../components/RegisterForm";
+import type { RegisterFormData } from "@reddit-comments/types";
 
 export async function authRegister(data: RegisterFormData) {
   const response = await fetch(
