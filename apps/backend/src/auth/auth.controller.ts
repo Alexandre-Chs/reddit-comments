@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Get, UsePipes } from '@nestjs/common';
-import { registerSchema } from '@reddit-comments/schemas';
 import { ZodValidationPipe } from 'src/zod/ZodValidationPipe';
 import type { RegisterDTO } from './register.dto';
+import { registerSchema } from '@reddit-comments/schemas';
 
 @Controller('auth')
 export class AuthController {

@@ -6,3 +6,5 @@ export const registerSchema = z.object({
   teamName: z.string().min(3, "Team name must be at least 3 characters long"),
   password: z.string().min(6, "Password must be at least 6 characters long"),
 });
+
+export type RegisterSchemaType = z.infer<typeof registerSchema>;

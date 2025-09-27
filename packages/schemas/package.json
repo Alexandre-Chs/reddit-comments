@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Schemas shared across packages, using Zod",
-  "main": "index.js",
+  "exports": {
+    ".": "./dist/src/index.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
   },
   "dependencies": {
     "zod": "catalog:"
+  },
+  "devDependencies": {
+    "typescript": "catalog:"
   },
   "keywords": [],
   "author": "",

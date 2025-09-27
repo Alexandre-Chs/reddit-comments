@@ -214,6 +214,10 @@ importers:
       zod:
         specifier: 'catalog:'
         version: 4.1.11
+    devDependencies:
+      typescript:
+        specifier: 'catalog:'
+        version: 5.9.2
 
   packages/types: {}
 
