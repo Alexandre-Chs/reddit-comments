@@ -1,0 +1,12 @@
+{
+  "name": "reddit-comments",
+  "version": "1.0.0",
+  "description": "reddit comments project",
+  "private": "true",
+  "scripts": {
+    "dev": "pnpm -r --parallel run dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
