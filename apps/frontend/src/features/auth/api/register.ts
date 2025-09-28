@@ -1,6 +1,6 @@
-import type { RegisterFormData } from "@reddit-comments/types";
+import type { RegisterSchemaType } from "@reddit-comments/schemas";
 
-export async function authRegister(data: RegisterFormData) {
+export async function authRegister(data: RegisterSchemaType) {
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND_URL}/auth/register`,
     {
@@ -13,7 +13,5 @@ export async function authRegister(data: RegisterFormData) {
   );
 
   const responseData = await response.json();
-
-  console.log("response du backend sur register", responseData);
-  return response;
+  return responseData;
 }

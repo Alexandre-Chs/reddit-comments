@@ -3,15 +3,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { authRegister } from "../api/register";
-import type { RegisterFormData } from "@reddit-comments/types";
+import type { RegisterSchemaType } from "@reddit-comments/schemas";
 
 const RegisterForm = () => {
-  const [formData, setFormData] = useState<RegisterFormData>({
+  const [formData, setFormData] = useState<RegisterSchemaType>({
     userName: "",
     teamName: "",
     email: "",
     password: "",
   });
+  const [errors, setErrors] = useState<string[]>([]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -20,8 +21,12 @@ const RegisterForm = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log("le submit", formData);
-    await authRegister(formData);
+    const response = await authRegister(formData);
+    if (!response.ok) {
+      setErrors(
+        response.errors.map((error: { message: string }) => error.message)
+      );
+    }
   };
 
   return (
@@ -108,6 +113,18 @@ const RegisterForm = () => {
             onChange={handleChange}
           />
         </div>
+        {errors.length > 0 && (
+          <div className="rounded-md bg-red-900/20 border border-red-800 p-4">
+            <ul className="space-y-1 text-sm text-red-400">
+              {errors.map((error, index) => (
+                <li key={index} className="flex items-center">
+                  <span className="mr-2 text-red-500">•</span>
+                  {error}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       <div className="grid gap-1 text-xs text-neutral-500">

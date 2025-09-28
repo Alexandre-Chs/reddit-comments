@@ -8,7 +8,3 @@ export const registerSchema = z.object({
 });
 
 export type RegisterSchemaType = z.infer<typeof registerSchema>;
-
-export type mescouillles = {
-  test: string;
-};

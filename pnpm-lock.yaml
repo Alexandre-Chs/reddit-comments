@@ -36,6 +36,8 @@ catalogs:
 
 importers:
 
+  .: {}
+
   apps/backend:
     dependencies:
       '@nestjs/common':
