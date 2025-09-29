@@ -14,38 +14,16 @@ export class AuthService {
     });
   }
 
-  async addUserAndTeam(
-    username: string,
-    email: string,
-    password: string,
-    teamName: string,
-  ) {
+  async addUser(username: string, email: string, password: string) {
     const passwordHash = bcrypt.hashSync(password, 10);
-    const user = await this.prisma.users.create({
+    return await this.prisma.users.create({
       data: {
         username,
         email,
         password: passwordHash,
       },
     });
-
-    let team = await this.prisma.teams.findFirst({
-      where: { name: teamName },
-    });
-
-    if (!team) {
-      team = await this.prisma.teams.create({
-        data: {
-          name: teamName,
-        },
-      });
-    }
-
-    await this.prisma.usersTeams.create({
-      data: {
-        userId: user.id,
-        teamId: team.id,
-      },
-    });
   }
 }
+
+// faire que ici on supp du register form notre user, au pire dans settings je rajoute un moyen d'ajouter un user existant ensuite via email.

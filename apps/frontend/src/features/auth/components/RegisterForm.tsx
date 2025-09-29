@@ -8,7 +8,6 @@ import type { RegisterSchemaType } from "@reddit-comments/schemas";
 const RegisterForm = () => {
   const [formData, setFormData] = useState<RegisterSchemaType>({
     userName: "",
-    teamName: "",
     email: "",
     password: "",
   });
@@ -66,21 +65,7 @@ const RegisterForm = () => {
           />
         </div>
 
-        <div className="grid gap-2">
-          <label
-            htmlFor="teamName"
-            className="text-xs font-medium uppercase tracking-wide text-neutral-300"
-          >
-            Team name
-          </label>
-          <Input
-            id="teamName"
-            name="teamName"
-            type="text"
-            placeholder="Growth Collective"
-            onChange={handleChange}
-          />
-        </div>
+
 
         <div className="grid gap-2">
           <label

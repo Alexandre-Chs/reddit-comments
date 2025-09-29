@@ -11,16 +11,15 @@ export class AuthController {
   @Post('register')
   @UsePipes(new ZodValidationPipe(registerSchema))
   async register(@Body() registerDTO: RegisterDTO) {
-    const { userName, email, password, teamName } = registerDTO;
+    const { userName, email, password } = registerDTO;
 
     const userExist = await this.authService.getUser(userName, email);
     if (userExist) return { errors: [{ message: 'User already exist' }] };
 
-    await this.authService.addUserAndTeam(userName, email, password, teamName);
+    await this.authService.addUser(userName, email, password);
 
     return {
-      message: 'Registration received',
-      data: registerDTO,
+      message: 'Registration successful',
     };
   }
 }
