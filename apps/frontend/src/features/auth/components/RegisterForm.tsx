@@ -22,11 +22,11 @@ const RegisterForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const response = await authRegister(formData);
-    if (!response.ok) {
+    console.log("la response", response);
+    if (response.errors)
       setErrors(
         response.errors.map((error: { message: string }) => error.message)
       );
-    }
   };
 
   return (
