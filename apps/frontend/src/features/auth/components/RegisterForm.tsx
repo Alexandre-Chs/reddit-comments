@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
@@ -6,6 +6,7 @@ import { authRegister } from "../api/register";
 import type { RegisterSchemaType } from "@reddit-comments/schemas";
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<RegisterSchemaType>({
     userName: "",
     email: "",
@@ -21,11 +22,14 @@ const RegisterForm = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const response = await authRegister(formData);
-    console.log("la response", response);
-    if (response.errors)
+    if (response.errors) {
       setErrors(
         response.errors.map((error: { message: string }) => error.message)
       );
+    } else if (response.ok) {
+      console.log("la response est ok", response);
+      navigate({ to: "/dashboard" });
+    }
   };
 
   return (
@@ -38,7 +42,7 @@ const RegisterForm = () => {
           Create your account
         </h2>
         <p className="text-sm text-neutral-400">
-          Already on Reddit Team Inbox?
+          Already on Reddit comments?
           <Link
             to="/login"
             className="ml-2 font-medium text-neutral-200 hover:text-white"
@@ -64,8 +68,6 @@ const RegisterForm = () => {
             onChange={handleChange}
           />
         </div>
-
-
 
         <div className="grid gap-2">
           <label

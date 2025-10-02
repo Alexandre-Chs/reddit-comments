@@ -24,6 +24,22 @@ export class AuthService {
       },
     });
   }
-}
 
-// faire que ici on supp du register form notre user, au pire dans settings je rajoute un moyen d'ajouter un user existant ensuite via email.
+  async getUserById(id: string) {
+    return await this.prisma.users.findUnique({
+      where: { id },
+    });
+  }
+
+  async getUserRegister(email: string, password: string) {
+    const user = await this.prisma.users.findUnique({
+      where: { email },
+    });
+    if (!user) return null;
+
+    const passwordMatch = bcrypt.compareSync(password, user.password);
+    if (!passwordMatch) return null;
+
+    return user;
+  }
+}
