@@ -5,9 +5,10 @@ import { ConfigModule } from '@nestjs/config';
 import { AuthController } from './auth/auth.controller';
 import { PrismaService } from './prisma.server';
 import { AuthService } from './auth/auth.service';
+import { TeamsModule } from './teams/teams.module';
 
 @Module({
-  imports: [ConfigModule.forRoot()],
+  imports: [ConfigModule.forRoot(), TeamsModule],
   controllers: [AppController, AuthController],
   providers: [AppService, PrismaService, AuthService],
 })

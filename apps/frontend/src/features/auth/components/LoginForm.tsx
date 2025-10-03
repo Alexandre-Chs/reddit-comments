@@ -31,7 +31,7 @@ const LoginForm = () => {
     }
 
     await router.invalidate();
-    navigate({ to: "/dashboard" });
+    navigate({ to: "/" });
   };
 
   return (

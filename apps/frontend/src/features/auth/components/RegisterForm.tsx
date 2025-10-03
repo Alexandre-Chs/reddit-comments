@@ -28,7 +28,7 @@ const RegisterForm = () => {
       );
     } else if (response.ok) {
       console.log("la response est ok", response);
-      navigate({ to: "/dashboard" });
+      navigate({ to: "/" });
     }
   };
 

@@ -1,16 +1,17 @@
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Outlet, useRouteContext } from "@tanstack/react-router";
-import clsx from "clsx";
+import { Outlet, useRouteContext, useRouter } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { teamCreate } from "../api/onboarding";
+import clsx from "clsx";
 
-const LayoutPage = () => {
+const DashboardLayoutPage = () => {
   const [teamName, setTeamName] = useState("");
   const [isCreating, setIsCreating] = useState(false);
 
   const user = useRouteContext({ from: "/_app" });
+  const router = useRouter();
 
   const handleCreateTeam = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,7 +28,7 @@ const LayoutPage = () => {
     }
 
     toast.success("Team created successfully");
-    // update user.teams or refetch user data
+    router.invalidate();
   };
 
   const handleCopyEmail = () => {
@@ -106,4 +107,4 @@ const LayoutPage = () => {
   return <Outlet />;
 };
 
-export default LayoutPage;
+export default DashboardLayoutPage;
