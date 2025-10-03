@@ -1,21 +1,109 @@
-import { Outlet, useNavigate } from "@tanstack/react-router";
-import { logout } from "../api/logout";
+import { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Outlet, useRouteContext } from "@tanstack/react-router";
+import clsx from "clsx";
+import { toast } from "sonner";
+import { teamCreate } from "../api/onboarding";
 
-const DashboardPage = () => {
-  const navigate = useNavigate();
+const LayoutPage = () => {
+  const [teamName, setTeamName] = useState("");
+  const [isCreating, setIsCreating] = useState(false);
 
-  const handleLogout = async () => {
-    logout();
-    navigate({ to: "/login" });
+  const user = useRouteContext({ from: "/_app" });
+
+  const handleCreateTeam = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    setIsCreating(true);
+    const response = await teamCreate({ teamName, userId: user.id });
+    setIsCreating(false);
+
+    if (!response.ok) {
+      toast.error(
+        response.errors?.[0]?.message || "An error occurred, please try again"
+      );
+      return;
+    }
+
+    toast.success("Team created successfully");
+    // update user.teams or refetch user data
   };
 
-  return (
-    <div>
-      LAYOUT DASHBOARD
-      <button onClick={handleLogout}>- logout</button>
-      <Outlet />
-    </div>
-  );
+  const handleCopyEmail = () => {
+    navigator.clipboard.writeText(user.email);
+    toast.success("Email copied to clipboard");
+  };
+
+  if (!user.teams.length) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-background">
+        <div className="w-full max-w-md space-y-8 p-8">
+          <div className="text-left space-y-2">
+            <h1 className="text-3xl font-semibold tracking-tight">
+              Create a team
+            </h1>
+            <p className="text-muted-foreground text-sm">
+              Get started by creating your own team, or ask a team owner to
+              invite you
+            </p>
+          </div>
+
+          <form onSubmit={handleCreateTeam}>
+            <div className="mb-4">
+              <label htmlFor="teamName" className="text-sm font-medium">
+                Team name
+              </label>
+              <Input
+                className="mt-2"
+                id="teamName"
+                type="text"
+                value={teamName}
+                onChange={(e) => setTeamName(e.target.value)}
+                placeholder="Acme Inc."
+                disabled={isCreating}
+                required
+              />
+            </div>
+
+            <Button
+              type="submit"
+              disabled={isCreating || !teamName.trim()}
+              className={clsx("w-full", isCreating && "cursor-not-allowed")}
+            >
+              {isCreating ? "Creating..." : "Create team"}
+            </Button>
+          </form>
+
+          <div className="flex items-center gap-2">
+            <div className="h-px flex flex-1 bg-muted-foreground"></div>
+            <div className="text-sm tracking-wider text-muted-foreground">
+              OR GET INVITED
+            </div>
+            <div className="h-px flex flex-1 bg-muted-foreground"></div>
+          </div>
+
+          <div className="space-y-2">
+            <p className="text-sm text-muted-foreground">
+              Share your email with a team owner to get invited
+            </p>
+            <div className="flex gap-2">
+              <Input value={user.email} readOnly className="flex-1 bg-muted" />
+              <Button type="button" variant="outline" onClick={handleCopyEmail}>
+                Copy
+              </Button>
+            </div>
+            <p className="text-xs text-muted-foreground">
+              Team owners can add you in{" "}
+              <span className="font-medium">Settings → Team → Add member</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return <Outlet />;
 };
 
-export default DashboardPage;
+export default LayoutPage;

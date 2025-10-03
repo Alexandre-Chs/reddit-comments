@@ -1,5 +1,5 @@
 import { getUserSession } from "@/features/auth/api/session";
-import DashboardPage from "@/features/dashboard/views/DashboardPage";
+import LayoutPage from "@/features/dashboard/views/DashboardPage";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_app")({
@@ -13,5 +13,5 @@ export const Route = createFileRoute("/_app")({
 
     return user;
   },
-  component: DashboardPage,
+  component: LayoutPage,
 });

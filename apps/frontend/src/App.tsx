@@ -1,6 +1,7 @@
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import { ThemeProvider } from "./components/theme";
+import { Toaster } from "sonner";
 
 declare module "@tanstack/react-router" {
   interface Register {
@@ -22,6 +23,7 @@ function App() {
   return (
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
       <InnerApp />
+      <Toaster />
     </ThemeProvider>
   );
 }

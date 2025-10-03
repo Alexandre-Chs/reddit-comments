@@ -42,4 +42,16 @@ export class AuthService {
 
     return user;
   }
+
+  async getTeamsByUserId(userId: string) {
+    return await this.prisma.teams.findMany({
+      where: {
+        users: {
+          some: {
+            userId: userId,
+          },
+        },
+      },
+    });
+  }
 }

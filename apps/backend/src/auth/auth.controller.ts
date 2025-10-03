@@ -30,7 +30,9 @@ export class AuthController {
     if (!session.userId) return { user: null };
 
     const me = await this.authService.getUserById(session.userId);
-    return { user: me };
+    const teams = await this.authService.getTeamsByUserId(session.userId);
+
+    return { user: { ...me, teams } };
   }
 
   @Post('logout')
@@ -43,7 +45,6 @@ export class AuthController {
   @UsePipes(new ZodValidationPipe(loginSchema))
   async login(@Body() LoginDTO: LoginDTO, @Session() session) {
     const { email, password } = LoginDTO;
-    console.log('le email et password recu sont', email, password);
 
     const user = await this.authService.getUserRegister(email, password);
     if (!user) return { errors: [{ message: 'User not found', ok: false }] };
