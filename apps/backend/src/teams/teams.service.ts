@@ -17,4 +17,10 @@ export class TeamsService {
       },
     });
   }
+
+  async teamExist(teamId: string) {
+    return await this.prisma.teams.findUnique({
+      where: { id: teamId },
+    });
+  }
 }

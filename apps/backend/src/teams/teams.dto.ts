@@ -1,4 +1,5 @@
 import z from 'zod';
-import { teamCreateSchema } from '@reddit-comments/schemas';
+import { teamActiveSchema, teamCreateSchema } from '@reddit-comments/schemas';
 
-export type teamCreateDTO = z.infer<typeof teamCreateSchema>;
+export type TeamCreateDTO = z.infer<typeof teamCreateSchema>;
+export type ActiveTeamDTO = z.infer<typeof teamActiveSchema>;

@@ -10,8 +10,10 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarHeader,
 } from "@/components/ui/sidebar";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouteContext } from "@tanstack/react-router";
+import { TeamSwitcher } from "./TeamSwitcher";
 
 const contentItems = [
   {
@@ -40,8 +42,12 @@ const footerItems = [
 ];
 
 export function AppSidebar() {
+  const user = useRouteContext({ from: "/_app" });
   return (
     <Sidebar>
+      <SidebarHeader>
+        <TeamSwitcher teams={user.teams} userActiveTeam={user.activeTeam} />
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Reddit comments</SidebarGroupLabel>

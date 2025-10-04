@@ -31,8 +31,10 @@ export class AuthController {
 
     const me = await this.authService.getUserById(session.userId);
     const teams = await this.authService.getTeamsByUserId(session.userId);
+    const activeTeam =
+      teams.find((team) => team.id === session.activeTeamId) || null;
 
-    return { user: { ...me, teams } };
+    return { user: { ...me, teams, activeTeam } };
   }
 
   @Post('logout')
@@ -49,7 +51,10 @@ export class AuthController {
     const user = await this.authService.getUserRegister(email, password);
     if (!user) return { errors: [{ message: 'User not found', ok: false }] };
 
+    const teams = await this.authService.getTeamsByUserId(user.id);
+
     session.userId = user.id;
+    session.activeTeamId = teams[0]?.id || null;
 
     return { message: 'Login successful', ok: true };
   }
