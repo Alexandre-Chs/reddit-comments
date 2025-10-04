@@ -13,6 +13,9 @@ import { Route as RegisterRouteImport } from './routes/register'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppRouteRouteImport } from './routes/_app/route'
 import { Route as AppIndexRouteImport } from './routes/_app/index'
+import { Route as AppSettingsIndexRouteImport } from './routes/_app/settings/index'
+import { Route as AppCommentsIndexRouteImport } from './routes/_app/comments/index'
+import { Route as AppAssignedIndexRouteImport } from './routes/_app/assigned/index'
 
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
@@ -33,16 +36,37 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppSettingsIndexRoute = AppSettingsIndexRouteImport.update({
+  id: '/settings/',
+  path: '/settings/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCommentsIndexRoute = AppCommentsIndexRouteImport.update({
+  id: '/comments/',
+  path: '/comments/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppAssignedIndexRoute = AppAssignedIndexRouteImport.update({
+  id: '/assigned/',
+  path: '/assigned/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/': typeof AppIndexRoute
+  '/assigned': typeof AppAssignedIndexRoute
+  '/comments': typeof AppCommentsIndexRoute
+  '/settings': typeof AppSettingsIndexRoute
 }
 export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/': typeof AppIndexRoute
+  '/assigned': typeof AppAssignedIndexRoute
+  '/comments': typeof AppCommentsIndexRoute
+  '/settings': typeof AppSettingsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -50,13 +74,30 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/register': typeof RegisterRoute
   '/_app/': typeof AppIndexRoute
+  '/_app/assigned/': typeof AppAssignedIndexRoute
+  '/_app/comments/': typeof AppCommentsIndexRoute
+  '/_app/settings/': typeof AppSettingsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/login' | '/register' | '/'
+  fullPaths:
+    | '/login'
+    | '/register'
+    | '/'
+    | '/assigned'
+    | '/comments'
+    | '/settings'
   fileRoutesByTo: FileRoutesByTo
-  to: '/login' | '/register' | '/'
-  id: '__root__' | '/_app' | '/login' | '/register' | '/_app/'
+  to: '/login' | '/register' | '/' | '/assigned' | '/comments' | '/settings'
+  id:
+    | '__root__'
+    | '/_app'
+    | '/login'
+    | '/register'
+    | '/_app/'
+    | '/_app/assigned/'
+    | '/_app/comments/'
+    | '/_app/settings/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -95,15 +136,42 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/_app/settings/': {
+      id: '/_app/settings/'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof AppSettingsIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/comments/': {
+      id: '/_app/comments/'
+      path: '/comments'
+      fullPath: '/comments'
+      preLoaderRoute: typeof AppCommentsIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/assigned/': {
+      id: '/_app/assigned/'
+      path: '/assigned'
+      fullPath: '/assigned'
+      preLoaderRoute: typeof AppAssignedIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
   }
 }
 
 interface AppRouteRouteChildren {
   AppIndexRoute: typeof AppIndexRoute
+  AppAssignedIndexRoute: typeof AppAssignedIndexRoute
+  AppCommentsIndexRoute: typeof AppCommentsIndexRoute
+  AppSettingsIndexRoute: typeof AppSettingsIndexRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppIndexRoute: AppIndexRoute,
+  AppAssignedIndexRoute: AppAssignedIndexRoute,
+  AppCommentsIndexRoute: AppCommentsIndexRoute,
+  AppSettingsIndexRoute: AppSettingsIndexRoute,
 }
 
 const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(

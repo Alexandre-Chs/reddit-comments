@@ -5,6 +5,8 @@ import { Outlet, useRouteContext, useRouter } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { teamCreate } from "../api/onboarding";
 import clsx from "clsx";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { AppSidebar } from "../components/AppSidebar";
 
 const DashboardLayoutPage = () => {
   const [teamName, setTeamName] = useState("");
@@ -104,7 +106,14 @@ const DashboardLayoutPage = () => {
     );
   }
 
-  return <Outlet />;
+  return (
+    <SidebarProvider defaultOpen>
+      <AppSidebar />
+      <main className="w-full bg-zinc-900 p-6">
+        <Outlet />
+      </main>
+    </SidebarProvider>
+  );
 };
 
 export default DashboardLayoutPage;
