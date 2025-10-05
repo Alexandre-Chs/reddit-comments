@@ -10,3 +10,13 @@ export async function teamUserAdd(email: string) {
 
   return response.json();
 }
+
+export async function getTeamUsers() {
+  const response = await fetch("/api/teams/users", {
+    method: "GET",
+    credentials: "include",
+  });
+
+  if (!response.ok) throw new Error("Failed to fetch team users");
+  return response.json();
+}

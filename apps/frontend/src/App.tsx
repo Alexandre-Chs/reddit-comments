@@ -2,6 +2,7 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import { ThemeProvider } from "./components/theme";
 import { Toaster } from "sonner";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 declare module "@tanstack/react-router" {
   interface Register {
@@ -15,8 +16,14 @@ const router = createRouter({
   scrollRestoration: true,
 });
 
+const queryClient = new QueryClient();
+
 function InnerApp() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />;
+    </QueryClientProvider>
+  );
 }
 
 function App() {

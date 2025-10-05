@@ -1,4 +1,4 @@
-import { Body, Controller, Post, Session, UsePipes } from '@nestjs/common';
+import { Body, Controller, Get, Post, Session, UsePipes } from '@nestjs/common';
 import { TeamsService } from './teams.service';
 import { ZodValidationPipe } from 'src/zod/ZodValidationPipe';
 import {
@@ -47,5 +47,12 @@ export class TeamsController {
 
     if (response.ok) return { message: response.message, ok: true };
     return { errors: [{ message: response.message }], ok: false };
+  }
+
+  @Get('users')
+  async teamUsers(@Session() session) {
+    const users = await this.teamsService.teamUsers(session.activeTeamId);
+
+    return { users, ok: true };
   }
 }

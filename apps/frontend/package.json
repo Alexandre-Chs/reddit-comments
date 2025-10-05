@@ -19,6 +19,7 @@
     "@reddit-comments/schemas": "workspace:*",
     "@reddit-comments/types": "workspace:*",
     "@tailwindcss/vite": "catalog:",
+    "@tanstack/react-query": "^5.90.2",
     "@tanstack/react-router": "^1.131.49",
     "@tanstack/react-router-devtools": "^1.131.49",
     "class-variance-authority": "^0.7.1",

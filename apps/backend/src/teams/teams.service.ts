@@ -40,7 +40,6 @@ export class TeamsService {
         teamId,
       },
     });
-    console.log('user in team', userInTeam);
     if (userInTeam)
       return { ok: false, message: 'User is already in the team' };
 
@@ -52,5 +51,22 @@ export class TeamsService {
     });
 
     return { ok: true, message: 'User added to team' };
+  }
+
+  async teamUsers(teamId: string) {
+    const usersTeams = await this.prisma.usersTeams.findMany({
+      where: { teamId },
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+            username: true,
+          },
+        },
+      },
+    });
+
+    return usersTeams.map((ut) => ut.user);
   }
 }

@@ -5,7 +5,9 @@ import { useRouteContext, useRouter } from "@tanstack/react-router";
 import { teamCreate as apiTeamCreate } from "../../dashboard/api/onboarding";
 import Errors from "@/components/errors";
 import { toast } from "sonner";
-import { teamUserAdd } from "../api/settings";
+import { teamUserAdd, getTeamUsers } from "../api/settings";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import type { Users } from "@reddit-comments/types";
 
 type errorsType = {
   createTeam?: string[];
@@ -19,12 +21,14 @@ const SettingsTeams = () => {
 
   const user = useRouteContext({ from: "/_app" });
   const router = useRouter();
+  const queryClient = useQueryClient();
 
-  const members = [
-    { email: "user1@example.com", username: "user1" },
-    { email: "user2@example.com", username: "user2" },
-    { email: "user3@example.com", username: "user3" },
-  ];
+  const { data, isLoading } = useQuery({
+    queryKey: ["team-users"],
+    queryFn: getTeamUsers,
+  });
+
+  const users = data?.users || [];
 
   const handleUserAdd = async () => {
     if (!email || email.trim() === "") return;
@@ -42,7 +46,7 @@ const SettingsTeams = () => {
     setEmail("");
     toast.success("User added to team");
     setErrors({});
-    router.invalidate();
+    queryClient.invalidateQueries({ queryKey: ["team-users"] });
   };
 
   const handleTeamCreate = async () => {
@@ -101,24 +105,28 @@ const SettingsTeams = () => {
         <div>
           <h3 className="text-lg font-medium">Team members</h3>
           <p className="text-sm text-muted-foreground">
-            {members.length} {members.length > 1 ? "members" : "member"}
+            {users.length} {users.length > 1 ? "members" : "member"}
           </p>
         </div>
 
-        <div className="border rounded-lg divide-y">
-          {members.map((member) => (
-            <div key={member.email} className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors">
-              <div className="space-y-1">
-                <p className="text-sm font-medium">{member.username}</p>
-                <p className="text-sm text-muted-foreground">{member.email}</p>
-              </div>
+        {isLoading ? (
+          <p className="text-sm text-muted-foreground">Loading...</p>
+        ) : (
+          <div className="border rounded-lg divide-y">
+            {users.map((user: Users) => (
+              <div key={user.email} className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors">
+                <div className="space-y-1">
+                  <p className="text-sm font-medium">{user.username}</p>
+                  <p className="text-sm text-muted-foreground">{user.email}</p>
+                </div>
 
-              <Button variant="secondary" size="sm" className="cursor-pointer">
-                Remove
-              </Button>
-            </div>
-          ))}
-        </div>
+                <Button variant="secondary" size="sm" className="cursor-pointer">
+                  Remove
+                </Button>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
