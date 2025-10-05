@@ -1,4 +1,4 @@
-import { Home, MessageCircleMore, LayoutList, Settings } from "lucide-react";
+import { Home, MessageCircleMore, LayoutList, Settings, ScanSearch } from "lucide-react";
 
 import {
   Sidebar,
@@ -30,6 +30,11 @@ const contentItems = [
     title: "Assigned Comments",
     url: "/assigned",
     icon: LayoutList,
+  },
+  {
+    title: "Keywords",
+    url: "/keywords",
+    icon: ScanSearch,
   },
 ];
 
