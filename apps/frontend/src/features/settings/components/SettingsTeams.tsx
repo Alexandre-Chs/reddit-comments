@@ -5,9 +5,11 @@ import { useRouteContext, useRouter } from "@tanstack/react-router";
 import { teamCreate as apiTeamCreate } from "../../dashboard/api/onboarding";
 import Errors from "@/components/errors";
 import { toast } from "sonner";
+import { teamUserAdd } from "../api/settings";
 
 type errorsType = {
   createTeam?: string[];
+  teamUserAdd?: string[];
 };
 
 const SettingsTeams = () => {
@@ -24,7 +26,24 @@ const SettingsTeams = () => {
     { email: "user3@example.com", username: "user3" },
   ];
 
-  const handleUserAdd = () => {};
+  const handleUserAdd = async () => {
+    if (!email || email.trim() === "") return;
+
+    const response = await teamUserAdd(email);
+    if (response.errors) {
+      setErrors({
+        ...errors,
+        teamUserAdd: response.errors.map((item: any) => item.message),
+      });
+
+      return;
+    }
+
+    setEmail("");
+    toast.success("User added to team");
+    setErrors({});
+    router.invalidate();
+  };
 
   const handleTeamCreate = async () => {
     if (!teamCreate || teamCreate.trim() === "") return;
@@ -53,19 +72,11 @@ const SettingsTeams = () => {
       <div className="space-y-6">
         <div>
           <h3 className="text-lg font-medium">Create a team</h3>
-          <p className="text-sm text-muted-foreground">
-            Create a new team to collaborate with others
-          </p>
+          <p className="text-sm text-muted-foreground">Create a new team to collaborate with others</p>
         </div>
 
         <div className="flex gap-2 max-w-md">
-          <Input
-            type="teamName"
-            placeholder="Acme Inc."
-            className="flex-1"
-            value={teamCreate}
-            onChange={(e) => setTeamCreate(e.target.value)}
-          />
+          <Input type="teamName" placeholder="Acme Inc." className="flex-1" value={teamCreate} onChange={(e) => setTeamCreate(e.target.value)} />
           <Button onClick={handleTeamCreate}>Create</Button>
         </div>
         {errors.createTeam && <Errors errors={errors.createTeam} />}
@@ -75,21 +86,14 @@ const SettingsTeams = () => {
       <div className="space-y-6">
         <div>
           <h3 className="text-lg font-medium">Add member</h3>
-          <p className="text-sm text-muted-foreground">
-            Invite a new member to join your team
-          </p>
+          <p className="text-sm text-muted-foreground">Invite a new member to join your team</p>
         </div>
 
         <div className="flex gap-2 max-w-md">
-          <Input
-            type="email"
-            placeholder="email@example.com"
-            className="flex-1"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          <Input type="email" placeholder="email@example.com" className="flex-1" value={email} onChange={(e) => setEmail(e.target.value)} />
           <Button onClick={handleUserAdd}>Add</Button>
         </div>
+        {errors.teamUserAdd && <Errors errors={errors.teamUserAdd} />}
       </div>
 
       {/* Members list section */}
@@ -103,10 +107,7 @@ const SettingsTeams = () => {
 
         <div className="border rounded-lg divide-y">
           {members.map((member) => (
-            <div
-              key={member.email}
-              className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors"
-            >
+            <div key={member.email} className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors">
               <div className="space-y-1">
                 <p className="text-sm font-medium">{member.username}</p>
                 <p className="text-sm text-muted-foreground">{member.email}</p>

@@ -1,8 +1,12 @@
 import { Body, Controller, Post, Session, UsePipes } from '@nestjs/common';
 import { TeamsService } from './teams.service';
 import { ZodValidationPipe } from 'src/zod/ZodValidationPipe';
-import { teamActiveSchema, teamCreateSchema } from '@reddit-comments/schemas';
-import type { ActiveTeamDTO, TeamCreateDTO } from './teams.dto';
+import {
+  teamActiveSchema,
+  teamCreateSchema,
+  teamUserAddSchema,
+} from '@reddit-comments/schemas';
+import type { ActiveTeamDTO, TeamCreateDTO, UserTeamAddDTO } from './teams.dto';
 
 @Controller('teams')
 export class TeamsController {
@@ -28,5 +32,20 @@ export class TeamsController {
     session.activeTeamId = activeTeamDTO.teamId;
 
     return { message: 'Team active switched', ok: true };
+  }
+
+  @Post('add-user')
+  @UsePipes(new ZodValidationPipe(teamUserAddSchema))
+  async addUserToTeam(
+    @Body() userTeamAddDTO: UserTeamAddDTO,
+    @Session() session,
+  ) {
+    const response = await this.teamsService.userTeamAdd(
+      userTeamAddDTO.email,
+      session.activeTeamId,
+    );
+
+    if (response.ok) return { message: response.message, ok: true };
+    return { errors: [{ message: response.message }], ok: false };
   }
 }

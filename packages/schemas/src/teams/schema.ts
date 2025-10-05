@@ -8,5 +8,10 @@ export const teamActiveSchema = z.object({
   teamId: z.string().uuid("Invalid team ID"),
 });
 
+export const teamUserAddSchema = z.object({
+  email: z.string().email("Invalid email address"),
+});
+
 export type TeamCreateSchemaType = z.infer<typeof teamCreateSchema>;
 export type TeamActiveSchemaType = z.infer<typeof teamActiveSchema>;
+export type TeamUserAddSchemaType = z.infer<typeof teamUserAddSchema>;

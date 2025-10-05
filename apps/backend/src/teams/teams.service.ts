@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.server';
 
 @Injectable()
@@ -22,5 +22,35 @@ export class TeamsService {
     return await this.prisma.teams.findUnique({
       where: { id: teamId },
     });
+  }
+
+  async userTeamAdd(email: string, teamId: string) {
+    const user = await this.prisma.users.findUnique({
+      where: { email },
+    });
+    if (!user)
+      return {
+        ok: false,
+        message: 'User not found. They must create an account first',
+      };
+
+    const userInTeam = await this.prisma.usersTeams.findFirst({
+      where: {
+        userId: user.id,
+        teamId,
+      },
+    });
+    console.log('user in team', userInTeam);
+    if (userInTeam)
+      return { ok: false, message: 'User is already in the team' };
+
+    await this.prisma.usersTeams.create({
+      data: {
+        userId: user.id,
+        teamId,
+      },
+    });
+
+    return { ok: true, message: 'User added to team' };
   }
 }
