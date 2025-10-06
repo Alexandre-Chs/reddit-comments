@@ -4,9 +4,15 @@ import { ZodValidationPipe } from 'src/zod/ZodValidationPipe';
 import {
   teamActiveSchema,
   teamCreateSchema,
+  teamKeywordAddSchema,
   teamUserAddSchema,
 } from '@reddit-comments/schemas';
-import type { ActiveTeamDTO, TeamCreateDTO, UserTeamAddDTO } from './teams.dto';
+import type {
+  ActiveTeamDTO,
+  TeamCreateDTO,
+  TeamKeywordAddDTO,
+  UserTeamAddDTO,
+} from './teams.dto';
 
 @Controller('teams')
 export class TeamsController {
@@ -54,5 +60,32 @@ export class TeamsController {
     const users = await this.teamsService.teamUsers(session.activeTeamId);
 
     return { users, ok: true };
+  }
+
+  @Get('keywords')
+  async teamKeywords(@Session() session) {
+    const teamId = session.activeTeamId;
+    if (!teamId) return { keywords: [], ok: true };
+
+    const keywords = await this.teamsService.teamKeywords(teamId);
+
+    return { keywords, ok: true };
+  }
+
+  @Post('keywords')
+  @UsePipes(new ZodValidationPipe(teamKeywordAddSchema))
+  async teamKeywordAdd(
+    @Body() keywordAddDTO: TeamKeywordAddDTO,
+    @Session() session,
+  ) {
+    const teamId = session.activeTeamId;
+    if (!teamId) return { errors: [{ message: 'No active team' }], ok: false };
+
+    const keywordAdd = await this.teamsService.teamKeywordAdd(
+      teamId,
+      keywordAddDTO.keyword,
+    );
+
+    return { ok: true, message: 'Keyword added', keyword: keywordAdd };
   }
 }

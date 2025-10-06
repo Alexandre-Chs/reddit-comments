@@ -69,4 +69,44 @@ export class TeamsService {
 
     return usersTeams.map((ut) => ut.user);
   }
+
+  async teamKeywords(teamId: string) {
+    const keywords = await this.prisma.teamsKeywords.findMany({
+      where: { teamId },
+      select: {
+        keyword: true,
+        statut: true,
+      },
+    });
+
+    return keywords.map((k) => ({ ...k.keyword, statut: k.statut }));
+  }
+
+  async teamKeywordAdd(teamId: string, keyword: string) {
+    let keywordCurrent = await this.prisma.keywords.findUnique({
+      where: { keyword },
+    });
+
+    if (!keywordCurrent) {
+      keywordCurrent = await this.prisma.keywords.create({
+        data: { keyword },
+      });
+    }
+
+    const keywordInTeam = await this.prisma.teamsKeywords.findFirst({
+      where: {
+        teamId,
+        keywordId: keywordCurrent.id,
+      },
+    });
+
+    if (!keywordInTeam) {
+      await this.prisma.teamsKeywords.create({
+        data: {
+          teamId,
+          keywordId: keywordCurrent.id,
+        },
+      });
+    }
+  }
 }

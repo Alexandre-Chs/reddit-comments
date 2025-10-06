@@ -1,9 +1,6 @@
+import KeywordsPage from "@/features/keywords/view/KeywordsPage";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_app/keywords/")({
-  component: RouteComponent,
+  component: KeywordsPage,
 });
-
-function RouteComponent() {
-  return <div>Hello "/_app/keywords/"!</div>;
-}

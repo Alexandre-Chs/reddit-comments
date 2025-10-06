@@ -93,7 +93,7 @@ const DashboardLayoutPage = () => {
   return (
     <SidebarProvider defaultOpen>
       <AppSidebar />
-      <main className="w-full bg-zinc-900 p-6">
+      <main className="w-full bg-zinc-800/60 p-6 rounded-lg">
         <Outlet />
       </main>
     </SidebarProvider>

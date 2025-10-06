@@ -12,6 +12,11 @@ export const teamUserAddSchema = z.object({
   email: z.string().email("Invalid email address"),
 });
 
+export const teamKeywordAddSchema = z.object({
+  keyword: z.string().min(1, "Keyword cannot be empty"),
+});
+
 export type TeamCreateSchemaType = z.infer<typeof teamCreateSchema>;
 export type TeamActiveSchemaType = z.infer<typeof teamActiveSchema>;
 export type TeamUserAddSchemaType = z.infer<typeof teamUserAddSchema>;
+export type TeamKeywordAddSchemaType = z.infer<typeof teamKeywordAddSchema>;
