@@ -5,6 +5,7 @@ import {
   teamActiveSchema,
   teamCreateSchema,
   teamKeywordAddSchema,
+  teamKeywordToggleStatusSchema,
   teamUserAddSchema,
 } from '@reddit-comments/schemas';
 import type {
@@ -87,5 +88,26 @@ export class TeamsController {
     );
 
     return { ok: true, message: 'Keyword added', keyword: keywordAdd };
+  }
+
+  @Post('keywords/status')
+  @UsePipes(new ZodValidationPipe(teamKeywordToggleStatusSchema))
+  async teamKeywordToggleStatus(
+    @Body()
+    keywordToggleStatusDTO: {
+      keywordId: string;
+      status: 'ACTIVE' | 'INACTIVE';
+    },
+    @Session() session,
+  ) {
+    const teamId = session.activeTeamId;
+    if (!teamId) return { errors: [{ message: 'No active team' }], ok: false };
+
+    await this.teamsService.teamKeywordToggleStatus(
+      teamId,
+      keywordToggleStatusDTO.keywordId,
+    );
+
+    return { ok: true, message: 'Keyword status toggled' };
   }
 }

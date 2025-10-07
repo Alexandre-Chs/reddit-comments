@@ -22,3 +22,16 @@ export async function keywordTeamAdd(keyword: string) {
 
   return response.json();
 }
+
+export async function keywordTeamToggleStatus(keywordId: string) {
+  const response = await fetch("api/teams/keywords/status", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify({ keywordId }),
+  });
+
+  return response.json();
+}

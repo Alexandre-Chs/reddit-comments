@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@tanstack/router-plugin": "^1.131.49",
+    "@types/luxon": "^3.7.1",
     "@types/node": "^22.10.7",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",

@@ -109,4 +109,20 @@ export class TeamsService {
       });
     }
   }
+
+  async teamKeywordToggleStatus(teamId: string, keywordId: string) {
+    const keyword = await this.prisma.teamsKeywords.findFirst({
+      where: {
+        teamId,
+        keywordId,
+      },
+    });
+
+    if (!keyword) throw new NotFoundException('Keyword not found in team');
+
+    await this.prisma.teamsKeywords.update({
+      where: { id: keyword.id },
+      data: { statut: keyword.statut === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE' },
+    });
+  }
 }

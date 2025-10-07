@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { keywordsTeam, keywordTeamAdd } from "../api/keywords";
+import { keywordsTeam, keywordTeamAdd, keywordTeamToggleStatus } from "../api/keywords";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -44,10 +44,12 @@ const KeywordsPage = () => {
     }
   };
 
-  const handleToggleStatus = async (keywordId: string, currentStatus: string) => {
-    // TODO: Implement status toggle API call
-    console.log("Toggle status for keyword:", keywordId, currentStatus);
-    toast.info("Status toggle - API to be implemented");
+  const handleToggleStatus = async (keywordId: string) => {
+    const response = await keywordTeamToggleStatus(keywordId);
+    if (!response.ok) return toast.error("Failed to update keyword status");
+
+    toast.success("keyword status updated");
+    queryClient.invalidateQueries({ queryKey: ["team-keywords"] });
   };
 
   if (isLoading) {
@@ -91,7 +93,7 @@ const KeywordsPage = () => {
             <div key={kw.id} className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors group">
               <div className="flex items-center gap-4 flex-1 min-w-0">
                 <button
-                  onClick={() => handleToggleStatus(kw.id, kw.statut)}
+                  onClick={() => handleToggleStatus(kw.id)}
                   className={`flex-shrink-0 text-xs font-medium px-2.5 py-1 rounded-full cursor-pointer transition-all hover:opacity-80 ${
                     kw.statut === "ACTIVE" ? "bg-green-500/10 text-green-700 dark:text-green-400" : "bg-red-500/10 text-red-700 dark:text-red-400"
                   }`}
