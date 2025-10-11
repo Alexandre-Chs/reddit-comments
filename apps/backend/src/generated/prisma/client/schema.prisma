@@ -27,7 +27,7 @@ model Teams {
   createdAt DateTime        @default(now())
   users     UsersTeams[]
   keywords  TeamsKeywords[]
-  comments  TeamsComments[]
+  posts     TeamsPosts[]
 }
 
 // many to many relation between User and Team
@@ -60,36 +60,41 @@ model TeamsKeywords {
   @@unique([teamId, keywordId])
 }
 
-model Comments {
-  id    String          @id @default(uuid())
-  url   String
-  teams TeamsComments[]
+model Posts {
+  id        String       @id @default(uuid())
+  url       String       @unique
+  title     String
+  text      String?
+  subreddit String
+  author    String
+  createdAt DateTime
+  teams     TeamsPosts[]
 }
 
 model Notes {
-  id            String         @id @default(uuid())
-  text          String
-  user          Users          @relation(fields: [userId], references: [id])
-  userId        String
-  createdAt     DateTime       @default(now())
-  teamsComments TeamsComments?
+  id         String      @id @default(uuid())
+  text       String
+  user       Users       @relation(fields: [userId], references: [id])
+  userId     String
+  createdAt  DateTime    @default(now())
+  teamsPosts TeamsPosts?
 }
 
-// many to many relation between Comment and Teams
-model TeamsComments {
-  id        String         @id @default(uuid())
-  team      Teams          @relation(fields: [teamId], references: [id])
-  teamId    String
-  comment   Comments       @relation(fields: [commentId], references: [id])
-  commentId String
-  note      Notes?         @relation(fields: [noteId], references: [id])
-  noteId    String?        @unique
-  statut    StatusComments @default(PENDING)
+// many to many relation between Post and Teams
+model TeamsPosts {
+  id     String      @id @default(uuid())
+  team   Teams       @relation(fields: [teamId], references: [id])
+  teamId String
+  post   Posts       @relation(fields: [postId], references: [id])
+  postId String
+  note   Notes?      @relation(fields: [noteId], references: [id])
+  noteId String?     @unique
+  statut StatusPosts @default(PENDING)
 
-  @@unique([teamId, commentId])
+  @@unique([teamId, postId])
 }
 
-enum StatusComments {
+enum StatusPosts {
   PENDING
   DONE
 }

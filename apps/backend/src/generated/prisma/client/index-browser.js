@@ -155,9 +155,14 @@ exports.Prisma.TeamsKeywordsScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.CommentsScalarFieldEnum = {
+exports.Prisma.PostsScalarFieldEnum = {
   id: 'id',
-  url: 'url'
+  url: 'url',
+  title: 'title',
+  text: 'text',
+  subreddit: 'subreddit',
+  author: 'author',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.NotesScalarFieldEnum = {
@@ -167,10 +172,10 @@ exports.Prisma.NotesScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
-exports.Prisma.TeamsCommentsScalarFieldEnum = {
+exports.Prisma.TeamsPostsScalarFieldEnum = {
   id: 'id',
   teamId: 'teamId',
-  commentId: 'commentId',
+  postId: 'postId',
   noteId: 'noteId',
   statut: 'statut'
 };
@@ -194,7 +199,7 @@ exports.StatusKeywords = exports.$Enums.StatusKeywords = {
   INACTIVE: 'INACTIVE'
 };
 
-exports.StatusComments = exports.$Enums.StatusComments = {
+exports.StatusPosts = exports.$Enums.StatusPosts = {
   PENDING: 'PENDING',
   DONE: 'DONE'
 };
@@ -205,9 +210,9 @@ exports.Prisma.ModelName = {
   UsersTeams: 'UsersTeams',
   Keywords: 'Keywords',
   TeamsKeywords: 'TeamsKeywords',
-  Comments: 'Comments',
+  Posts: 'Posts',
   Notes: 'Notes',
-  TeamsComments: 'TeamsComments'
+  TeamsPosts: 'TeamsPosts'
 };
 
 /**

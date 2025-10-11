@@ -14,8 +14,8 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as AppRouteRouteImport } from './routes/_app/route'
 import { Route as AppIndexRouteImport } from './routes/_app/index'
 import { Route as AppSettingsIndexRouteImport } from './routes/_app/settings/index'
+import { Route as AppPostsIndexRouteImport } from './routes/_app/posts/index'
 import { Route as AppKeywordsIndexRouteImport } from './routes/_app/keywords/index'
-import { Route as AppCommentsIndexRouteImport } from './routes/_app/comments/index'
 import { Route as AppAssignedIndexRouteImport } from './routes/_app/assigned/index'
 
 const RegisterRoute = RegisterRouteImport.update({
@@ -42,14 +42,14 @@ const AppSettingsIndexRoute = AppSettingsIndexRouteImport.update({
   path: '/settings/',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppPostsIndexRoute = AppPostsIndexRouteImport.update({
+  id: '/posts/',
+  path: '/posts/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
 const AppKeywordsIndexRoute = AppKeywordsIndexRouteImport.update({
   id: '/keywords/',
   path: '/keywords/',
-  getParentRoute: () => AppRouteRoute,
-} as any)
-const AppCommentsIndexRoute = AppCommentsIndexRouteImport.update({
-  id: '/comments/',
-  path: '/comments/',
   getParentRoute: () => AppRouteRoute,
 } as any)
 const AppAssignedIndexRoute = AppAssignedIndexRouteImport.update({
@@ -63,8 +63,8 @@ export interface FileRoutesByFullPath {
   '/register': typeof RegisterRoute
   '/': typeof AppIndexRoute
   '/assigned': typeof AppAssignedIndexRoute
-  '/comments': typeof AppCommentsIndexRoute
   '/keywords': typeof AppKeywordsIndexRoute
+  '/posts': typeof AppPostsIndexRoute
   '/settings': typeof AppSettingsIndexRoute
 }
 export interface FileRoutesByTo {
@@ -72,8 +72,8 @@ export interface FileRoutesByTo {
   '/register': typeof RegisterRoute
   '/': typeof AppIndexRoute
   '/assigned': typeof AppAssignedIndexRoute
-  '/comments': typeof AppCommentsIndexRoute
   '/keywords': typeof AppKeywordsIndexRoute
+  '/posts': typeof AppPostsIndexRoute
   '/settings': typeof AppSettingsIndexRoute
 }
 export interface FileRoutesById {
@@ -83,8 +83,8 @@ export interface FileRoutesById {
   '/register': typeof RegisterRoute
   '/_app/': typeof AppIndexRoute
   '/_app/assigned/': typeof AppAssignedIndexRoute
-  '/_app/comments/': typeof AppCommentsIndexRoute
   '/_app/keywords/': typeof AppKeywordsIndexRoute
+  '/_app/posts/': typeof AppPostsIndexRoute
   '/_app/settings/': typeof AppSettingsIndexRoute
 }
 export interface FileRouteTypes {
@@ -94,8 +94,8 @@ export interface FileRouteTypes {
     | '/register'
     | '/'
     | '/assigned'
-    | '/comments'
     | '/keywords'
+    | '/posts'
     | '/settings'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -103,8 +103,8 @@ export interface FileRouteTypes {
     | '/register'
     | '/'
     | '/assigned'
-    | '/comments'
     | '/keywords'
+    | '/posts'
     | '/settings'
   id:
     | '__root__'
@@ -113,8 +113,8 @@ export interface FileRouteTypes {
     | '/register'
     | '/_app/'
     | '/_app/assigned/'
-    | '/_app/comments/'
     | '/_app/keywords/'
+    | '/_app/posts/'
     | '/_app/settings/'
   fileRoutesById: FileRoutesById
 }
@@ -161,18 +161,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppSettingsIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/_app/posts/': {
+      id: '/_app/posts/'
+      path: '/posts'
+      fullPath: '/posts'
+      preLoaderRoute: typeof AppPostsIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/_app/keywords/': {
       id: '/_app/keywords/'
       path: '/keywords'
       fullPath: '/keywords'
       preLoaderRoute: typeof AppKeywordsIndexRouteImport
-      parentRoute: typeof AppRouteRoute
-    }
-    '/_app/comments/': {
-      id: '/_app/comments/'
-      path: '/comments'
-      fullPath: '/comments'
-      preLoaderRoute: typeof AppCommentsIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
     '/_app/assigned/': {
@@ -188,16 +188,16 @@ declare module '@tanstack/react-router' {
 interface AppRouteRouteChildren {
   AppIndexRoute: typeof AppIndexRoute
   AppAssignedIndexRoute: typeof AppAssignedIndexRoute
-  AppCommentsIndexRoute: typeof AppCommentsIndexRoute
   AppKeywordsIndexRoute: typeof AppKeywordsIndexRoute
+  AppPostsIndexRoute: typeof AppPostsIndexRoute
   AppSettingsIndexRoute: typeof AppSettingsIndexRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppIndexRoute: AppIndexRoute,
   AppAssignedIndexRoute: AppAssignedIndexRoute,
-  AppCommentsIndexRoute: AppCommentsIndexRoute,
   AppKeywordsIndexRoute: AppKeywordsIndexRoute,
+  AppPostsIndexRoute: AppPostsIndexRoute,
   AppSettingsIndexRoute: AppSettingsIndexRoute,
 }
 

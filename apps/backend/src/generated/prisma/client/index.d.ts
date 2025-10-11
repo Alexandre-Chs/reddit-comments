@@ -39,31 +39,31 @@ export type Keywords = $Result.DefaultSelection<Prisma.$KeywordsPayload>
  */
 export type TeamsKeywords = $Result.DefaultSelection<Prisma.$TeamsKeywordsPayload>
 /**
- * Model Comments
+ * Model Posts
  * 
  */
-export type Comments = $Result.DefaultSelection<Prisma.$CommentsPayload>
+export type Posts = $Result.DefaultSelection<Prisma.$PostsPayload>
 /**
  * Model Notes
  * 
  */
 export type Notes = $Result.DefaultSelection<Prisma.$NotesPayload>
 /**
- * Model TeamsComments
+ * Model TeamsPosts
  * 
  */
-export type TeamsComments = $Result.DefaultSelection<Prisma.$TeamsCommentsPayload>
+export type TeamsPosts = $Result.DefaultSelection<Prisma.$TeamsPostsPayload>
 
 /**
  * Enums
  */
 export namespace $Enums {
-  export const StatusComments: {
+  export const StatusPosts: {
   PENDING: 'PENDING',
   DONE: 'DONE'
 };
 
-export type StatusComments = (typeof StatusComments)[keyof typeof StatusComments]
+export type StatusPosts = (typeof StatusPosts)[keyof typeof StatusPosts]
 
 
 export const StatusKeywords: {
@@ -75,9 +75,9 @@ export type StatusKeywords = (typeof StatusKeywords)[keyof typeof StatusKeywords
 
 }
 
-export type StatusComments = $Enums.StatusComments
+export type StatusPosts = $Enums.StatusPosts
 
-export const StatusComments: typeof $Enums.StatusComments
+export const StatusPosts: typeof $Enums.StatusPosts
 
 export type StatusKeywords = $Enums.StatusKeywords
 
@@ -252,14 +252,14 @@ export class PrismaClient<
   get teamsKeywords(): Prisma.TeamsKeywordsDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.comments`: Exposes CRUD operations for the **Comments** model.
+   * `prisma.posts`: Exposes CRUD operations for the **Posts** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Comments
-    * const comments = await prisma.comments.findMany()
+    * // Fetch zero or more Posts
+    * const posts = await prisma.posts.findMany()
     * ```
     */
-  get comments(): Prisma.CommentsDelegate<ExtArgs, ClientOptions>;
+  get posts(): Prisma.PostsDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.notes`: Exposes CRUD operations for the **Notes** model.
@@ -272,14 +272,14 @@ export class PrismaClient<
   get notes(): Prisma.NotesDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.teamsComments`: Exposes CRUD operations for the **TeamsComments** model.
+   * `prisma.teamsPosts`: Exposes CRUD operations for the **TeamsPosts** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more TeamsComments
-    * const teamsComments = await prisma.teamsComments.findMany()
+    * // Fetch zero or more TeamsPosts
+    * const teamsPosts = await prisma.teamsPosts.findMany()
     * ```
     */
-  get teamsComments(): Prisma.TeamsCommentsDelegate<ExtArgs, ClientOptions>;
+  get teamsPosts(): Prisma.TeamsPostsDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -725,9 +725,9 @@ export namespace Prisma {
     UsersTeams: 'UsersTeams',
     Keywords: 'Keywords',
     TeamsKeywords: 'TeamsKeywords',
-    Comments: 'Comments',
+    Posts: 'Posts',
     Notes: 'Notes',
-    TeamsComments: 'TeamsComments'
+    TeamsPosts: 'TeamsPosts'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -746,7 +746,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "users" | "teams" | "usersTeams" | "keywords" | "teamsKeywords" | "comments" | "notes" | "teamsComments"
+      modelProps: "users" | "teams" | "usersTeams" | "keywords" | "teamsKeywords" | "posts" | "notes" | "teamsPosts"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1120,77 +1120,77 @@ export namespace Prisma {
           }
         }
       }
-      Comments: {
-        payload: Prisma.$CommentsPayload<ExtArgs>
-        fields: Prisma.CommentsFieldRefs
+      Posts: {
+        payload: Prisma.$PostsPayload<ExtArgs>
+        fields: Prisma.PostsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.CommentsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CommentsPayload> | null
+            args: Prisma.PostsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.CommentsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+            args: Prisma.PostsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostsPayload>
           }
           findFirst: {
-            args: Prisma.CommentsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CommentsPayload> | null
+            args: Prisma.PostsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.CommentsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+            args: Prisma.PostsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostsPayload>
           }
           findMany: {
-            args: Prisma.CommentsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>[]
+            args: Prisma.PostsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostsPayload>[]
           }
           create: {
-            args: Prisma.CommentsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+            args: Prisma.PostsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostsPayload>
           }
           createMany: {
-            args: Prisma.CommentsCreateManyArgs<ExtArgs>
+            args: Prisma.PostsCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.CommentsCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>[]
+            args: Prisma.PostsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostsPayload>[]
           }
           delete: {
-            args: Prisma.CommentsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+            args: Prisma.PostsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostsPayload>
           }
           update: {
-            args: Prisma.CommentsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+            args: Prisma.PostsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostsPayload>
           }
           deleteMany: {
-            args: Prisma.CommentsDeleteManyArgs<ExtArgs>
+            args: Prisma.PostsDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.CommentsUpdateManyArgs<ExtArgs>
+            args: Prisma.PostsUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.CommentsUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>[]
+            args: Prisma.PostsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostsPayload>[]
           }
           upsert: {
-            args: Prisma.CommentsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$CommentsPayload>
+            args: Prisma.PostsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostsPayload>
           }
           aggregate: {
-            args: Prisma.CommentsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateComments>
+            args: Prisma.PostsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePosts>
           }
           groupBy: {
-            args: Prisma.CommentsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<CommentsGroupByOutputType>[]
+            args: Prisma.PostsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PostsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.CommentsCountArgs<ExtArgs>
-            result: $Utils.Optional<CommentsCountAggregateOutputType> | number
+            args: Prisma.PostsCountArgs<ExtArgs>
+            result: $Utils.Optional<PostsCountAggregateOutputType> | number
           }
         }
       }
@@ -1268,77 +1268,77 @@ export namespace Prisma {
           }
         }
       }
-      TeamsComments: {
-        payload: Prisma.$TeamsCommentsPayload<ExtArgs>
-        fields: Prisma.TeamsCommentsFieldRefs
+      TeamsPosts: {
+        payload: Prisma.$TeamsPostsPayload<ExtArgs>
+        fields: Prisma.TeamsPostsFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.TeamsCommentsFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TeamsCommentsPayload> | null
+            args: Prisma.TeamsPostsFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeamsPostsPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.TeamsCommentsFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TeamsCommentsPayload>
+            args: Prisma.TeamsPostsFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeamsPostsPayload>
           }
           findFirst: {
-            args: Prisma.TeamsCommentsFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TeamsCommentsPayload> | null
+            args: Prisma.TeamsPostsFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeamsPostsPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.TeamsCommentsFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TeamsCommentsPayload>
+            args: Prisma.TeamsPostsFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeamsPostsPayload>
           }
           findMany: {
-            args: Prisma.TeamsCommentsFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TeamsCommentsPayload>[]
+            args: Prisma.TeamsPostsFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeamsPostsPayload>[]
           }
           create: {
-            args: Prisma.TeamsCommentsCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TeamsCommentsPayload>
+            args: Prisma.TeamsPostsCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeamsPostsPayload>
           }
           createMany: {
-            args: Prisma.TeamsCommentsCreateManyArgs<ExtArgs>
+            args: Prisma.TeamsPostsCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.TeamsCommentsCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TeamsCommentsPayload>[]
+            args: Prisma.TeamsPostsCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeamsPostsPayload>[]
           }
           delete: {
-            args: Prisma.TeamsCommentsDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TeamsCommentsPayload>
+            args: Prisma.TeamsPostsDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeamsPostsPayload>
           }
           update: {
-            args: Prisma.TeamsCommentsUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TeamsCommentsPayload>
+            args: Prisma.TeamsPostsUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeamsPostsPayload>
           }
           deleteMany: {
-            args: Prisma.TeamsCommentsDeleteManyArgs<ExtArgs>
+            args: Prisma.TeamsPostsDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.TeamsCommentsUpdateManyArgs<ExtArgs>
+            args: Prisma.TeamsPostsUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.TeamsCommentsUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TeamsCommentsPayload>[]
+            args: Prisma.TeamsPostsUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeamsPostsPayload>[]
           }
           upsert: {
-            args: Prisma.TeamsCommentsUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TeamsCommentsPayload>
+            args: Prisma.TeamsPostsUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TeamsPostsPayload>
           }
           aggregate: {
-            args: Prisma.TeamsCommentsAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTeamsComments>
+            args: Prisma.TeamsPostsAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTeamsPosts>
           }
           groupBy: {
-            args: Prisma.TeamsCommentsGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TeamsCommentsGroupByOutputType>[]
+            args: Prisma.TeamsPostsGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TeamsPostsGroupByOutputType>[]
           }
           count: {
-            args: Prisma.TeamsCommentsCountArgs<ExtArgs>
-            result: $Utils.Optional<TeamsCommentsCountAggregateOutputType> | number
+            args: Prisma.TeamsPostsCountArgs<ExtArgs>
+            result: $Utils.Optional<TeamsPostsCountAggregateOutputType> | number
           }
         }
       }
@@ -1443,9 +1443,9 @@ export namespace Prisma {
     usersTeams?: UsersTeamsOmit
     keywords?: KeywordsOmit
     teamsKeywords?: TeamsKeywordsOmit
-    comments?: CommentsOmit
+    posts?: PostsOmit
     notes?: NotesOmit
-    teamsComments?: TeamsCommentsOmit
+    teamsPosts?: TeamsPostsOmit
   }
 
   /* Types for Logging */
@@ -1568,13 +1568,13 @@ export namespace Prisma {
   export type TeamsCountOutputType = {
     users: number
     keywords: number
-    comments: number
+    posts: number
   }
 
   export type TeamsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | TeamsCountOutputTypeCountUsersArgs
     keywords?: boolean | TeamsCountOutputTypeCountKeywordsArgs
-    comments?: boolean | TeamsCountOutputTypeCountCommentsArgs
+    posts?: boolean | TeamsCountOutputTypeCountPostsArgs
   }
 
   // Custom InputTypes
@@ -1605,8 +1605,8 @@ export namespace Prisma {
   /**
    * TeamsCountOutputType without action
    */
-  export type TeamsCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TeamsCommentsWhereInput
+  export type TeamsCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TeamsPostsWhereInput
   }
 
 
@@ -1642,33 +1642,33 @@ export namespace Prisma {
 
 
   /**
-   * Count Type CommentsCountOutputType
+   * Count Type PostsCountOutputType
    */
 
-  export type CommentsCountOutputType = {
+  export type PostsCountOutputType = {
     teams: number
   }
 
-  export type CommentsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    teams?: boolean | CommentsCountOutputTypeCountTeamsArgs
+  export type PostsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    teams?: boolean | PostsCountOutputTypeCountTeamsArgs
   }
 
   // Custom InputTypes
   /**
-   * CommentsCountOutputType without action
+   * PostsCountOutputType without action
    */
-  export type CommentsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CommentsCountOutputType
+     * Select specific fields to fetch from the PostsCountOutputType
      */
-    select?: CommentsCountOutputTypeSelect<ExtArgs> | null
+    select?: PostsCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * CommentsCountOutputType without action
+   * PostsCountOutputType without action
    */
-  export type CommentsCountOutputTypeCountTeamsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TeamsCommentsWhereInput
+  export type PostsCountOutputTypeCountTeamsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TeamsPostsWhereInput
   }
 
 
@@ -2924,7 +2924,7 @@ export namespace Prisma {
     createdAt?: boolean
     users?: boolean | Teams$usersArgs<ExtArgs>
     keywords?: boolean | Teams$keywordsArgs<ExtArgs>
-    comments?: boolean | Teams$commentsArgs<ExtArgs>
+    posts?: boolean | Teams$postsArgs<ExtArgs>
     _count?: boolean | TeamsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["teams"]>
 
@@ -2950,7 +2950,7 @@ export namespace Prisma {
   export type TeamsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | Teams$usersArgs<ExtArgs>
     keywords?: boolean | Teams$keywordsArgs<ExtArgs>
-    comments?: boolean | Teams$commentsArgs<ExtArgs>
+    posts?: boolean | Teams$postsArgs<ExtArgs>
     _count?: boolean | TeamsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type TeamsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2961,7 +2961,7 @@ export namespace Prisma {
     objects: {
       users: Prisma.$UsersTeamsPayload<ExtArgs>[]
       keywords: Prisma.$TeamsKeywordsPayload<ExtArgs>[]
-      comments: Prisma.$TeamsCommentsPayload<ExtArgs>[]
+      posts: Prisma.$TeamsPostsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3363,7 +3363,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     users<T extends Teams$usersArgs<ExtArgs> = {}>(args?: Subset<T, Teams$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UsersTeamsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     keywords<T extends Teams$keywordsArgs<ExtArgs> = {}>(args?: Subset<T, Teams$keywordsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamsKeywordsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    comments<T extends Teams$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Teams$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    posts<T extends Teams$postsArgs<ExtArgs> = {}>(args?: Subset<T, Teams$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3832,27 +3832,27 @@ export namespace Prisma {
   }
 
   /**
-   * Teams.comments
+   * Teams.posts
    */
-  export type Teams$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Teams$postsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
-    where?: TeamsCommentsWhereInput
-    orderBy?: TeamsCommentsOrderByWithRelationInput | TeamsCommentsOrderByWithRelationInput[]
-    cursor?: TeamsCommentsWhereUniqueInput
+    include?: TeamsPostsInclude<ExtArgs> | null
+    where?: TeamsPostsWhereInput
+    orderBy?: TeamsPostsOrderByWithRelationInput | TeamsPostsOrderByWithRelationInput[]
+    cursor?: TeamsPostsWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: TeamsCommentsScalarFieldEnum | TeamsCommentsScalarFieldEnum[]
+    distinct?: TeamsPostsScalarFieldEnum | TeamsPostsScalarFieldEnum[]
   }
 
   /**
@@ -7038,310 +7038,370 @@ export namespace Prisma {
 
 
   /**
-   * Model Comments
+   * Model Posts
    */
 
-  export type AggregateComments = {
-    _count: CommentsCountAggregateOutputType | null
-    _min: CommentsMinAggregateOutputType | null
-    _max: CommentsMaxAggregateOutputType | null
+  export type AggregatePosts = {
+    _count: PostsCountAggregateOutputType | null
+    _min: PostsMinAggregateOutputType | null
+    _max: PostsMaxAggregateOutputType | null
   }
 
-  export type CommentsMinAggregateOutputType = {
+  export type PostsMinAggregateOutputType = {
     id: string | null
     url: string | null
+    title: string | null
+    text: string | null
+    subreddit: string | null
+    author: string | null
+    createdAt: Date | null
   }
 
-  export type CommentsMaxAggregateOutputType = {
+  export type PostsMaxAggregateOutputType = {
     id: string | null
     url: string | null
+    title: string | null
+    text: string | null
+    subreddit: string | null
+    author: string | null
+    createdAt: Date | null
   }
 
-  export type CommentsCountAggregateOutputType = {
+  export type PostsCountAggregateOutputType = {
     id: number
     url: number
+    title: number
+    text: number
+    subreddit: number
+    author: number
+    createdAt: number
     _all: number
   }
 
 
-  export type CommentsMinAggregateInputType = {
+  export type PostsMinAggregateInputType = {
     id?: true
     url?: true
+    title?: true
+    text?: true
+    subreddit?: true
+    author?: true
+    createdAt?: true
   }
 
-  export type CommentsMaxAggregateInputType = {
+  export type PostsMaxAggregateInputType = {
     id?: true
     url?: true
+    title?: true
+    text?: true
+    subreddit?: true
+    author?: true
+    createdAt?: true
   }
 
-  export type CommentsCountAggregateInputType = {
+  export type PostsCountAggregateInputType = {
     id?: true
     url?: true
+    title?: true
+    text?: true
+    subreddit?: true
+    author?: true
+    createdAt?: true
     _all?: true
   }
 
-  export type CommentsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Comments to aggregate.
+     * Filter which Posts to aggregate.
      */
-    where?: CommentsWhereInput
+    where?: PostsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Comments to fetch.
+     * Determine the order of Posts to fetch.
      */
-    orderBy?: CommentsOrderByWithRelationInput | CommentsOrderByWithRelationInput[]
+    orderBy?: PostsOrderByWithRelationInput | PostsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: CommentsWhereUniqueInput
+    cursor?: PostsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Comments from the position of the cursor.
+     * Take `±n` Posts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Comments.
+     * Skip the first `n` Posts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Comments
+     * Count returned Posts
     **/
-    _count?: true | CommentsCountAggregateInputType
+    _count?: true | PostsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: CommentsMinAggregateInputType
+    _min?: PostsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: CommentsMaxAggregateInputType
+    _max?: PostsMaxAggregateInputType
   }
 
-  export type GetCommentsAggregateType<T extends CommentsAggregateArgs> = {
-        [P in keyof T & keyof AggregateComments]: P extends '_count' | 'count'
+  export type GetPostsAggregateType<T extends PostsAggregateArgs> = {
+        [P in keyof T & keyof AggregatePosts]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateComments[P]>
-      : GetScalarType<T[P], AggregateComments[P]>
+        : GetScalarType<T[P], AggregatePosts[P]>
+      : GetScalarType<T[P], AggregatePosts[P]>
   }
 
 
 
 
-  export type CommentsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: CommentsWhereInput
-    orderBy?: CommentsOrderByWithAggregationInput | CommentsOrderByWithAggregationInput[]
-    by: CommentsScalarFieldEnum[] | CommentsScalarFieldEnum
-    having?: CommentsScalarWhereWithAggregatesInput
+  export type PostsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostsWhereInput
+    orderBy?: PostsOrderByWithAggregationInput | PostsOrderByWithAggregationInput[]
+    by: PostsScalarFieldEnum[] | PostsScalarFieldEnum
+    having?: PostsScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: CommentsCountAggregateInputType | true
-    _min?: CommentsMinAggregateInputType
-    _max?: CommentsMaxAggregateInputType
+    _count?: PostsCountAggregateInputType | true
+    _min?: PostsMinAggregateInputType
+    _max?: PostsMaxAggregateInputType
   }
 
-  export type CommentsGroupByOutputType = {
+  export type PostsGroupByOutputType = {
     id: string
     url: string
-    _count: CommentsCountAggregateOutputType | null
-    _min: CommentsMinAggregateOutputType | null
-    _max: CommentsMaxAggregateOutputType | null
+    title: string
+    text: string | null
+    subreddit: string
+    author: string
+    createdAt: Date
+    _count: PostsCountAggregateOutputType | null
+    _min: PostsMinAggregateOutputType | null
+    _max: PostsMaxAggregateOutputType | null
   }
 
-  type GetCommentsGroupByPayload<T extends CommentsGroupByArgs> = Prisma.PrismaPromise<
+  type GetPostsGroupByPayload<T extends PostsGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<CommentsGroupByOutputType, T['by']> &
+      PickEnumerable<PostsGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof CommentsGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof PostsGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], CommentsGroupByOutputType[P]>
-            : GetScalarType<T[P], CommentsGroupByOutputType[P]>
+              : GetScalarType<T[P], PostsGroupByOutputType[P]>
+            : GetScalarType<T[P], PostsGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type CommentsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PostsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     url?: boolean
-    teams?: boolean | Comments$teamsArgs<ExtArgs>
-    _count?: boolean | CommentsCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["comments"]>
+    title?: boolean
+    text?: boolean
+    subreddit?: boolean
+    author?: boolean
+    createdAt?: boolean
+    teams?: boolean | Posts$teamsArgs<ExtArgs>
+    _count?: boolean | PostsCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["posts"]>
 
-  export type CommentsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PostsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     url?: boolean
-  }, ExtArgs["result"]["comments"]>
+    title?: boolean
+    text?: boolean
+    subreddit?: boolean
+    author?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["posts"]>
 
-  export type CommentsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PostsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     url?: boolean
-  }, ExtArgs["result"]["comments"]>
+    title?: boolean
+    text?: boolean
+    subreddit?: boolean
+    author?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["posts"]>
 
-  export type CommentsSelectScalar = {
+  export type PostsSelectScalar = {
     id?: boolean
     url?: boolean
+    title?: boolean
+    text?: boolean
+    subreddit?: boolean
+    author?: boolean
+    createdAt?: boolean
   }
 
-  export type CommentsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url", ExtArgs["result"]["comments"]>
-  export type CommentsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    teams?: boolean | Comments$teamsArgs<ExtArgs>
-    _count?: boolean | CommentsCountOutputTypeDefaultArgs<ExtArgs>
+  export type PostsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "title" | "text" | "subreddit" | "author" | "createdAt", ExtArgs["result"]["posts"]>
+  export type PostsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    teams?: boolean | Posts$teamsArgs<ExtArgs>
+    _count?: boolean | PostsCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type CommentsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type CommentsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type PostsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type PostsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
-  export type $CommentsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Comments"
+  export type $PostsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Posts"
     objects: {
-      teams: Prisma.$TeamsCommentsPayload<ExtArgs>[]
+      teams: Prisma.$TeamsPostsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       url: string
-    }, ExtArgs["result"]["comments"]>
+      title: string
+      text: string | null
+      subreddit: string
+      author: string
+      createdAt: Date
+    }, ExtArgs["result"]["posts"]>
     composites: {}
   }
 
-  type CommentsGetPayload<S extends boolean | null | undefined | CommentsDefaultArgs> = $Result.GetResult<Prisma.$CommentsPayload, S>
+  type PostsGetPayload<S extends boolean | null | undefined | PostsDefaultArgs> = $Result.GetResult<Prisma.$PostsPayload, S>
 
-  type CommentsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<CommentsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: CommentsCountAggregateInputType | true
+  type PostsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PostsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PostsCountAggregateInputType | true
     }
 
-  export interface CommentsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Comments'], meta: { name: 'Comments' } }
+  export interface PostsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Posts'], meta: { name: 'Posts' } }
     /**
-     * Find zero or one Comments that matches the filter.
-     * @param {CommentsFindUniqueArgs} args - Arguments to find a Comments
+     * Find zero or one Posts that matches the filter.
+     * @param {PostsFindUniqueArgs} args - Arguments to find a Posts
      * @example
-     * // Get one Comments
-     * const comments = await prisma.comments.findUnique({
+     * // Get one Posts
+     * const posts = await prisma.posts.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CommentsFindUniqueArgs>(args: SelectSubset<T, CommentsFindUniqueArgs<ExtArgs>>): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends PostsFindUniqueArgs>(args: SelectSubset<T, PostsFindUniqueArgs<ExtArgs>>): Prisma__PostsClient<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Comments that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Posts that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {CommentsFindUniqueOrThrowArgs} args - Arguments to find a Comments
+     * @param {PostsFindUniqueOrThrowArgs} args - Arguments to find a Posts
      * @example
-     * // Get one Comments
-     * const comments = await prisma.comments.findUniqueOrThrow({
+     * // Get one Posts
+     * const posts = await prisma.posts.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CommentsFindUniqueOrThrowArgs>(args: SelectSubset<T, CommentsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends PostsFindUniqueOrThrowArgs>(args: SelectSubset<T, PostsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PostsClient<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Comments that matches the filter.
+     * Find the first Posts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CommentsFindFirstArgs} args - Arguments to find a Comments
+     * @param {PostsFindFirstArgs} args - Arguments to find a Posts
      * @example
-     * // Get one Comments
-     * const comments = await prisma.comments.findFirst({
+     * // Get one Posts
+     * const posts = await prisma.posts.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CommentsFindFirstArgs>(args?: SelectSubset<T, CommentsFindFirstArgs<ExtArgs>>): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends PostsFindFirstArgs>(args?: SelectSubset<T, PostsFindFirstArgs<ExtArgs>>): Prisma__PostsClient<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Comments that matches the filter or
+     * Find the first Posts that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CommentsFindFirstOrThrowArgs} args - Arguments to find a Comments
+     * @param {PostsFindFirstOrThrowArgs} args - Arguments to find a Posts
      * @example
-     * // Get one Comments
-     * const comments = await prisma.comments.findFirstOrThrow({
+     * // Get one Posts
+     * const posts = await prisma.posts.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CommentsFindFirstOrThrowArgs>(args?: SelectSubset<T, CommentsFindFirstOrThrowArgs<ExtArgs>>): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends PostsFindFirstOrThrowArgs>(args?: SelectSubset<T, PostsFindFirstOrThrowArgs<ExtArgs>>): Prisma__PostsClient<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Comments that matches the filter.
+     * Find zero or more Posts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CommentsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {PostsFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Comments
-     * const comments = await prisma.comments.findMany()
+     * // Get all Posts
+     * const posts = await prisma.posts.findMany()
      * 
-     * // Get first 10 Comments
-     * const comments = await prisma.comments.findMany({ take: 10 })
+     * // Get first 10 Posts
+     * const posts = await prisma.posts.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const commentsWithIdOnly = await prisma.comments.findMany({ select: { id: true } })
+     * const postsWithIdOnly = await prisma.posts.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends CommentsFindManyArgs>(args?: SelectSubset<T, CommentsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends PostsFindManyArgs>(args?: SelectSubset<T, PostsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Comments.
-     * @param {CommentsCreateArgs} args - Arguments to create a Comments.
+     * Create a Posts.
+     * @param {PostsCreateArgs} args - Arguments to create a Posts.
      * @example
-     * // Create one Comments
-     * const Comments = await prisma.comments.create({
+     * // Create one Posts
+     * const Posts = await prisma.posts.create({
      *   data: {
-     *     // ... data to create a Comments
+     *     // ... data to create a Posts
      *   }
      * })
      * 
      */
-    create<T extends CommentsCreateArgs>(args: SelectSubset<T, CommentsCreateArgs<ExtArgs>>): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends PostsCreateArgs>(args: SelectSubset<T, PostsCreateArgs<ExtArgs>>): Prisma__PostsClient<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Comments.
-     * @param {CommentsCreateManyArgs} args - Arguments to create many Comments.
+     * Create many Posts.
+     * @param {PostsCreateManyArgs} args - Arguments to create many Posts.
      * @example
-     * // Create many Comments
-     * const comments = await prisma.comments.createMany({
+     * // Create many Posts
+     * const posts = await prisma.posts.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends CommentsCreateManyArgs>(args?: SelectSubset<T, CommentsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends PostsCreateManyArgs>(args?: SelectSubset<T, PostsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Comments and returns the data saved in the database.
-     * @param {CommentsCreateManyAndReturnArgs} args - Arguments to create many Comments.
+     * Create many Posts and returns the data saved in the database.
+     * @param {PostsCreateManyAndReturnArgs} args - Arguments to create many Posts.
      * @example
-     * // Create many Comments
-     * const comments = await prisma.comments.createManyAndReturn({
+     * // Create many Posts
+     * const posts = await prisma.posts.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Comments and only return the `id`
-     * const commentsWithIdOnly = await prisma.comments.createManyAndReturn({
+     * // Create many Posts and only return the `id`
+     * const postsWithIdOnly = await prisma.posts.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -7351,28 +7411,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends CommentsCreateManyAndReturnArgs>(args?: SelectSubset<T, CommentsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends PostsCreateManyAndReturnArgs>(args?: SelectSubset<T, PostsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Comments.
-     * @param {CommentsDeleteArgs} args - Arguments to delete one Comments.
+     * Delete a Posts.
+     * @param {PostsDeleteArgs} args - Arguments to delete one Posts.
      * @example
-     * // Delete one Comments
-     * const Comments = await prisma.comments.delete({
+     * // Delete one Posts
+     * const Posts = await prisma.posts.delete({
      *   where: {
-     *     // ... filter to delete one Comments
+     *     // ... filter to delete one Posts
      *   }
      * })
      * 
      */
-    delete<T extends CommentsDeleteArgs>(args: SelectSubset<T, CommentsDeleteArgs<ExtArgs>>): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends PostsDeleteArgs>(args: SelectSubset<T, PostsDeleteArgs<ExtArgs>>): Prisma__PostsClient<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Comments.
-     * @param {CommentsUpdateArgs} args - Arguments to update one Comments.
+     * Update one Posts.
+     * @param {PostsUpdateArgs} args - Arguments to update one Posts.
      * @example
-     * // Update one Comments
-     * const comments = await prisma.comments.update({
+     * // Update one Posts
+     * const posts = await prisma.posts.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7382,30 +7442,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends CommentsUpdateArgs>(args: SelectSubset<T, CommentsUpdateArgs<ExtArgs>>): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends PostsUpdateArgs>(args: SelectSubset<T, PostsUpdateArgs<ExtArgs>>): Prisma__PostsClient<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Comments.
-     * @param {CommentsDeleteManyArgs} args - Arguments to filter Comments to delete.
+     * Delete zero or more Posts.
+     * @param {PostsDeleteManyArgs} args - Arguments to filter Posts to delete.
      * @example
-     * // Delete a few Comments
-     * const { count } = await prisma.comments.deleteMany({
+     * // Delete a few Posts
+     * const { count } = await prisma.posts.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends CommentsDeleteManyArgs>(args?: SelectSubset<T, CommentsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends PostsDeleteManyArgs>(args?: SelectSubset<T, PostsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Comments.
+     * Update zero or more Posts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CommentsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {PostsUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Comments
-     * const comments = await prisma.comments.updateMany({
+     * // Update many Posts
+     * const posts = await prisma.posts.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7415,14 +7475,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends CommentsUpdateManyArgs>(args: SelectSubset<T, CommentsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends PostsUpdateManyArgs>(args: SelectSubset<T, PostsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Comments and returns the data updated in the database.
-     * @param {CommentsUpdateManyAndReturnArgs} args - Arguments to update many Comments.
+     * Update zero or more Posts and returns the data updated in the database.
+     * @param {PostsUpdateManyAndReturnArgs} args - Arguments to update many Posts.
      * @example
-     * // Update many Comments
-     * const comments = await prisma.comments.updateManyAndReturn({
+     * // Update many Posts
+     * const posts = await prisma.posts.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -7431,8 +7491,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Comments and only return the `id`
-     * const commentsWithIdOnly = await prisma.comments.updateManyAndReturn({
+     * // Update zero or more Posts and only return the `id`
+     * const postsWithIdOnly = await prisma.posts.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -7445,56 +7505,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends CommentsUpdateManyAndReturnArgs>(args: SelectSubset<T, CommentsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends PostsUpdateManyAndReturnArgs>(args: SelectSubset<T, PostsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Comments.
-     * @param {CommentsUpsertArgs} args - Arguments to update or create a Comments.
+     * Create or update one Posts.
+     * @param {PostsUpsertArgs} args - Arguments to update or create a Posts.
      * @example
-     * // Update or create a Comments
-     * const comments = await prisma.comments.upsert({
+     * // Update or create a Posts
+     * const posts = await prisma.posts.upsert({
      *   create: {
-     *     // ... data to create a Comments
+     *     // ... data to create a Posts
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Comments we want to update
+     *     // ... the filter for the Posts we want to update
      *   }
      * })
      */
-    upsert<T extends CommentsUpsertArgs>(args: SelectSubset<T, CommentsUpsertArgs<ExtArgs>>): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends PostsUpsertArgs>(args: SelectSubset<T, PostsUpsertArgs<ExtArgs>>): Prisma__PostsClient<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Comments.
+     * Count the number of Posts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CommentsCountArgs} args - Arguments to filter Comments to count.
+     * @param {PostsCountArgs} args - Arguments to filter Posts to count.
      * @example
-     * // Count the number of Comments
-     * const count = await prisma.comments.count({
+     * // Count the number of Posts
+     * const count = await prisma.posts.count({
      *   where: {
-     *     // ... the filter for the Comments we want to count
+     *     // ... the filter for the Posts we want to count
      *   }
      * })
     **/
-    count<T extends CommentsCountArgs>(
-      args?: Subset<T, CommentsCountArgs>,
+    count<T extends PostsCountArgs>(
+      args?: Subset<T, PostsCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CommentsCountAggregateOutputType>
+          : GetScalarType<T['select'], PostsCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Comments.
+     * Allows you to perform aggregations operations on a Posts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CommentsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {PostsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -7514,13 +7574,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends CommentsAggregateArgs>(args: Subset<T, CommentsAggregateArgs>): Prisma.PrismaPromise<GetCommentsAggregateType<T>>
+    aggregate<T extends PostsAggregateArgs>(args: Subset<T, PostsAggregateArgs>): Prisma.PrismaPromise<GetPostsAggregateType<T>>
 
     /**
-     * Group by Comments.
+     * Group by Posts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CommentsGroupByArgs} args - Group by arguments.
+     * @param {PostsGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -7535,14 +7595,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends CommentsGroupByArgs,
+      T extends PostsGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CommentsGroupByArgs['orderBy'] }
-        : { orderBy?: CommentsGroupByArgs['orderBy'] },
+        ? { orderBy: PostsGroupByArgs['orderBy'] }
+        : { orderBy?: PostsGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -7591,22 +7651,22 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, CommentsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCommentsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, PostsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Comments model
+   * Fields of the Posts model
    */
-  readonly fields: CommentsFieldRefs;
+  readonly fields: PostsFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Comments.
+   * The delegate class that acts as a "Promise-like" for Posts.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CommentsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PostsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    teams<T extends Comments$teamsArgs<ExtArgs> = {}>(args?: Subset<T, Comments$teamsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    teams<T extends Posts$teamsArgs<ExtArgs> = {}>(args?: Subset<T, Posts$teamsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7633,438 +7693,443 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Comments model
+   * Fields of the Posts model
    */
-  interface CommentsFieldRefs {
-    readonly id: FieldRef<"Comments", 'String'>
-    readonly url: FieldRef<"Comments", 'String'>
+  interface PostsFieldRefs {
+    readonly id: FieldRef<"Posts", 'String'>
+    readonly url: FieldRef<"Posts", 'String'>
+    readonly title: FieldRef<"Posts", 'String'>
+    readonly text: FieldRef<"Posts", 'String'>
+    readonly subreddit: FieldRef<"Posts", 'String'>
+    readonly author: FieldRef<"Posts", 'String'>
+    readonly createdAt: FieldRef<"Posts", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Comments findUnique
+   * Posts findUnique
    */
-  export type CommentsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelect<ExtArgs> | null
+    select?: PostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CommentsInclude<ExtArgs> | null
+    include?: PostsInclude<ExtArgs> | null
     /**
-     * Filter, which Comments to fetch.
+     * Filter, which Posts to fetch.
      */
-    where: CommentsWhereUniqueInput
+    where: PostsWhereUniqueInput
   }
 
   /**
-   * Comments findUniqueOrThrow
+   * Posts findUniqueOrThrow
    */
-  export type CommentsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelect<ExtArgs> | null
+    select?: PostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CommentsInclude<ExtArgs> | null
+    include?: PostsInclude<ExtArgs> | null
     /**
-     * Filter, which Comments to fetch.
+     * Filter, which Posts to fetch.
      */
-    where: CommentsWhereUniqueInput
+    where: PostsWhereUniqueInput
   }
 
   /**
-   * Comments findFirst
+   * Posts findFirst
    */
-  export type CommentsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelect<ExtArgs> | null
+    select?: PostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CommentsInclude<ExtArgs> | null
+    include?: PostsInclude<ExtArgs> | null
     /**
-     * Filter, which Comments to fetch.
+     * Filter, which Posts to fetch.
      */
-    where?: CommentsWhereInput
+    where?: PostsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Comments to fetch.
+     * Determine the order of Posts to fetch.
      */
-    orderBy?: CommentsOrderByWithRelationInput | CommentsOrderByWithRelationInput[]
+    orderBy?: PostsOrderByWithRelationInput | PostsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Comments.
+     * Sets the position for searching for Posts.
      */
-    cursor?: CommentsWhereUniqueInput
+    cursor?: PostsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Comments from the position of the cursor.
+     * Take `±n` Posts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Comments.
+     * Skip the first `n` Posts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Comments.
+     * Filter by unique combinations of Posts.
      */
-    distinct?: CommentsScalarFieldEnum | CommentsScalarFieldEnum[]
+    distinct?: PostsScalarFieldEnum | PostsScalarFieldEnum[]
   }
 
   /**
-   * Comments findFirstOrThrow
+   * Posts findFirstOrThrow
    */
-  export type CommentsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelect<ExtArgs> | null
+    select?: PostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CommentsInclude<ExtArgs> | null
+    include?: PostsInclude<ExtArgs> | null
     /**
-     * Filter, which Comments to fetch.
+     * Filter, which Posts to fetch.
      */
-    where?: CommentsWhereInput
+    where?: PostsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Comments to fetch.
+     * Determine the order of Posts to fetch.
      */
-    orderBy?: CommentsOrderByWithRelationInput | CommentsOrderByWithRelationInput[]
+    orderBy?: PostsOrderByWithRelationInput | PostsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Comments.
+     * Sets the position for searching for Posts.
      */
-    cursor?: CommentsWhereUniqueInput
+    cursor?: PostsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Comments from the position of the cursor.
+     * Take `±n` Posts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Comments.
+     * Skip the first `n` Posts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Comments.
+     * Filter by unique combinations of Posts.
      */
-    distinct?: CommentsScalarFieldEnum | CommentsScalarFieldEnum[]
+    distinct?: PostsScalarFieldEnum | PostsScalarFieldEnum[]
   }
 
   /**
-   * Comments findMany
+   * Posts findMany
    */
-  export type CommentsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelect<ExtArgs> | null
+    select?: PostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CommentsInclude<ExtArgs> | null
+    include?: PostsInclude<ExtArgs> | null
     /**
-     * Filter, which Comments to fetch.
+     * Filter, which Posts to fetch.
      */
-    where?: CommentsWhereInput
+    where?: PostsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Comments to fetch.
+     * Determine the order of Posts to fetch.
      */
-    orderBy?: CommentsOrderByWithRelationInput | CommentsOrderByWithRelationInput[]
+    orderBy?: PostsOrderByWithRelationInput | PostsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Comments.
+     * Sets the position for listing Posts.
      */
-    cursor?: CommentsWhereUniqueInput
+    cursor?: PostsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Comments from the position of the cursor.
+     * Take `±n` Posts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Comments.
+     * Skip the first `n` Posts.
      */
     skip?: number
-    distinct?: CommentsScalarFieldEnum | CommentsScalarFieldEnum[]
+    distinct?: PostsScalarFieldEnum | PostsScalarFieldEnum[]
   }
 
   /**
-   * Comments create
+   * Posts create
    */
-  export type CommentsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelect<ExtArgs> | null
+    select?: PostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CommentsInclude<ExtArgs> | null
+    include?: PostsInclude<ExtArgs> | null
     /**
-     * The data needed to create a Comments.
+     * The data needed to create a Posts.
      */
-    data: XOR<CommentsCreateInput, CommentsUncheckedCreateInput>
+    data: XOR<PostsCreateInput, PostsUncheckedCreateInput>
   }
 
   /**
-   * Comments createMany
+   * Posts createMany
    */
-  export type CommentsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Comments.
+     * The data used to create many Posts.
      */
-    data: CommentsCreateManyInput | CommentsCreateManyInput[]
+    data: PostsCreateManyInput | PostsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Comments createManyAndReturn
+   * Posts createManyAndReturn
    */
-  export type CommentsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelectCreateManyAndReturn<ExtArgs> | null
+    select?: PostsSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
-     * The data used to create many Comments.
+     * The data used to create many Posts.
      */
-    data: CommentsCreateManyInput | CommentsCreateManyInput[]
+    data: PostsCreateManyInput | PostsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Comments update
+   * Posts update
    */
-  export type CommentsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelect<ExtArgs> | null
+    select?: PostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CommentsInclude<ExtArgs> | null
+    include?: PostsInclude<ExtArgs> | null
     /**
-     * The data needed to update a Comments.
+     * The data needed to update a Posts.
      */
-    data: XOR<CommentsUpdateInput, CommentsUncheckedUpdateInput>
+    data: XOR<PostsUpdateInput, PostsUncheckedUpdateInput>
     /**
-     * Choose, which Comments to update.
+     * Choose, which Posts to update.
      */
-    where: CommentsWhereUniqueInput
+    where: PostsWhereUniqueInput
   }
 
   /**
-   * Comments updateMany
+   * Posts updateMany
    */
-  export type CommentsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Comments.
+     * The data used to update Posts.
      */
-    data: XOR<CommentsUpdateManyMutationInput, CommentsUncheckedUpdateManyInput>
+    data: XOR<PostsUpdateManyMutationInput, PostsUncheckedUpdateManyInput>
     /**
-     * Filter which Comments to update
+     * Filter which Posts to update
      */
-    where?: CommentsWhereInput
+    where?: PostsWhereInput
     /**
-     * Limit how many Comments to update.
+     * Limit how many Posts to update.
      */
     limit?: number
   }
 
   /**
-   * Comments updateManyAndReturn
+   * Posts updateManyAndReturn
    */
-  export type CommentsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: PostsSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
-     * The data used to update Comments.
+     * The data used to update Posts.
      */
-    data: XOR<CommentsUpdateManyMutationInput, CommentsUncheckedUpdateManyInput>
+    data: XOR<PostsUpdateManyMutationInput, PostsUncheckedUpdateManyInput>
     /**
-     * Filter which Comments to update
+     * Filter which Posts to update
      */
-    where?: CommentsWhereInput
+    where?: PostsWhereInput
     /**
-     * Limit how many Comments to update.
+     * Limit how many Posts to update.
      */
     limit?: number
   }
 
   /**
-   * Comments upsert
+   * Posts upsert
    */
-  export type CommentsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelect<ExtArgs> | null
+    select?: PostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CommentsInclude<ExtArgs> | null
+    include?: PostsInclude<ExtArgs> | null
     /**
-     * The filter to search for the Comments to update in case it exists.
+     * The filter to search for the Posts to update in case it exists.
      */
-    where: CommentsWhereUniqueInput
+    where: PostsWhereUniqueInput
     /**
-     * In case the Comments found by the `where` argument doesn't exist, create a new Comments with this data.
+     * In case the Posts found by the `where` argument doesn't exist, create a new Posts with this data.
      */
-    create: XOR<CommentsCreateInput, CommentsUncheckedCreateInput>
+    create: XOR<PostsCreateInput, PostsUncheckedCreateInput>
     /**
-     * In case the Comments was found with the provided `where` argument, update it with this data.
+     * In case the Posts was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<CommentsUpdateInput, CommentsUncheckedUpdateInput>
+    update: XOR<PostsUpdateInput, PostsUncheckedUpdateInput>
   }
 
   /**
-   * Comments delete
+   * Posts delete
    */
-  export type CommentsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelect<ExtArgs> | null
+    select?: PostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CommentsInclude<ExtArgs> | null
+    include?: PostsInclude<ExtArgs> | null
     /**
-     * Filter which Comments to delete.
+     * Filter which Posts to delete.
      */
-    where: CommentsWhereUniqueInput
+    where: PostsWhereUniqueInput
   }
 
   /**
-   * Comments deleteMany
+   * Posts deleteMany
    */
-  export type CommentsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Comments to delete
+     * Filter which Posts to delete
      */
-    where?: CommentsWhereInput
+    where?: PostsWhereInput
     /**
-     * Limit how many Comments to delete.
+     * Limit how many Posts to delete.
      */
     limit?: number
   }
 
   /**
-   * Comments.teams
+   * Posts.teams
    */
-  export type Comments$teamsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Posts$teamsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
-    where?: TeamsCommentsWhereInput
-    orderBy?: TeamsCommentsOrderByWithRelationInput | TeamsCommentsOrderByWithRelationInput[]
-    cursor?: TeamsCommentsWhereUniqueInput
+    include?: TeamsPostsInclude<ExtArgs> | null
+    where?: TeamsPostsWhereInput
+    orderBy?: TeamsPostsOrderByWithRelationInput | TeamsPostsOrderByWithRelationInput[]
+    cursor?: TeamsPostsWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: TeamsCommentsScalarFieldEnum | TeamsCommentsScalarFieldEnum[]
+    distinct?: TeamsPostsScalarFieldEnum | TeamsPostsScalarFieldEnum[]
   }
 
   /**
-   * Comments without action
+   * Posts without action
    */
-  export type CommentsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Comments
+     * Select specific fields to fetch from the Posts
      */
-    select?: CommentsSelect<ExtArgs> | null
+    select?: PostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Comments
+     * Omit specific fields from the Posts
      */
-    omit?: CommentsOmit<ExtArgs> | null
+    omit?: PostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: CommentsInclude<ExtArgs> | null
+    include?: PostsInclude<ExtArgs> | null
   }
 
 
@@ -8225,7 +8290,7 @@ export namespace Prisma {
     userId?: boolean
     createdAt?: boolean
     user?: boolean | UsersDefaultArgs<ExtArgs>
-    teamsComments?: boolean | Notes$teamsCommentsArgs<ExtArgs>
+    teamsPosts?: boolean | Notes$teamsPostsArgs<ExtArgs>
   }, ExtArgs["result"]["notes"]>
 
   export type NotesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -8254,7 +8319,7 @@ export namespace Prisma {
   export type NotesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "text" | "userId" | "createdAt", ExtArgs["result"]["notes"]>
   export type NotesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
-    teamsComments?: boolean | Notes$teamsCommentsArgs<ExtArgs>
+    teamsPosts?: boolean | Notes$teamsPostsArgs<ExtArgs>
   }
   export type NotesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UsersDefaultArgs<ExtArgs>
@@ -8267,7 +8332,7 @@ export namespace Prisma {
     name: "Notes"
     objects: {
       user: Prisma.$UsersPayload<ExtArgs>
-      teamsComments: Prisma.$TeamsCommentsPayload<ExtArgs> | null
+      teamsPosts: Prisma.$TeamsPostsPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8669,7 +8734,7 @@ export namespace Prisma {
   export interface Prisma__NotesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     user<T extends UsersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsersDefaultArgs<ExtArgs>>): Prisma__UsersClient<$Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    teamsComments<T extends Notes$teamsCommentsArgs<ExtArgs> = {}>(args?: Subset<T, Notes$teamsCommentsArgs<ExtArgs>>): Prisma__TeamsCommentsClient<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    teamsPosts<T extends Notes$teamsPostsArgs<ExtArgs> = {}>(args?: Subset<T, Notes$teamsPostsArgs<ExtArgs>>): Prisma__TeamsPostsClient<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9099,22 +9164,22 @@ export namespace Prisma {
   }
 
   /**
-   * Notes.teamsComments
+   * Notes.teamsPosts
    */
-  export type Notes$teamsCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Notes$teamsPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
-    where?: TeamsCommentsWhereInput
+    include?: TeamsPostsInclude<ExtArgs> | null
+    where?: TeamsPostsWhereInput
   }
 
   /**
@@ -9137,364 +9202,364 @@ export namespace Prisma {
 
 
   /**
-   * Model TeamsComments
+   * Model TeamsPosts
    */
 
-  export type AggregateTeamsComments = {
-    _count: TeamsCommentsCountAggregateOutputType | null
-    _min: TeamsCommentsMinAggregateOutputType | null
-    _max: TeamsCommentsMaxAggregateOutputType | null
+  export type AggregateTeamsPosts = {
+    _count: TeamsPostsCountAggregateOutputType | null
+    _min: TeamsPostsMinAggregateOutputType | null
+    _max: TeamsPostsMaxAggregateOutputType | null
   }
 
-  export type TeamsCommentsMinAggregateOutputType = {
+  export type TeamsPostsMinAggregateOutputType = {
     id: string | null
     teamId: string | null
-    commentId: string | null
+    postId: string | null
     noteId: string | null
-    statut: $Enums.StatusComments | null
+    statut: $Enums.StatusPosts | null
   }
 
-  export type TeamsCommentsMaxAggregateOutputType = {
+  export type TeamsPostsMaxAggregateOutputType = {
     id: string | null
     teamId: string | null
-    commentId: string | null
+    postId: string | null
     noteId: string | null
-    statut: $Enums.StatusComments | null
+    statut: $Enums.StatusPosts | null
   }
 
-  export type TeamsCommentsCountAggregateOutputType = {
+  export type TeamsPostsCountAggregateOutputType = {
     id: number
     teamId: number
-    commentId: number
+    postId: number
     noteId: number
     statut: number
     _all: number
   }
 
 
-  export type TeamsCommentsMinAggregateInputType = {
+  export type TeamsPostsMinAggregateInputType = {
     id?: true
     teamId?: true
-    commentId?: true
+    postId?: true
     noteId?: true
     statut?: true
   }
 
-  export type TeamsCommentsMaxAggregateInputType = {
+  export type TeamsPostsMaxAggregateInputType = {
     id?: true
     teamId?: true
-    commentId?: true
+    postId?: true
     noteId?: true
     statut?: true
   }
 
-  export type TeamsCommentsCountAggregateInputType = {
+  export type TeamsPostsCountAggregateInputType = {
     id?: true
     teamId?: true
-    commentId?: true
+    postId?: true
     noteId?: true
     statut?: true
     _all?: true
   }
 
-  export type TeamsCommentsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which TeamsComments to aggregate.
+     * Filter which TeamsPosts to aggregate.
      */
-    where?: TeamsCommentsWhereInput
+    where?: TeamsPostsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TeamsComments to fetch.
+     * Determine the order of TeamsPosts to fetch.
      */
-    orderBy?: TeamsCommentsOrderByWithRelationInput | TeamsCommentsOrderByWithRelationInput[]
+    orderBy?: TeamsPostsOrderByWithRelationInput | TeamsPostsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: TeamsCommentsWhereUniqueInput
+    cursor?: TeamsPostsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TeamsComments from the position of the cursor.
+     * Take `±n` TeamsPosts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TeamsComments.
+     * Skip the first `n` TeamsPosts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned TeamsComments
+     * Count returned TeamsPosts
     **/
-    _count?: true | TeamsCommentsCountAggregateInputType
+    _count?: true | TeamsPostsCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: TeamsCommentsMinAggregateInputType
+    _min?: TeamsPostsMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: TeamsCommentsMaxAggregateInputType
+    _max?: TeamsPostsMaxAggregateInputType
   }
 
-  export type GetTeamsCommentsAggregateType<T extends TeamsCommentsAggregateArgs> = {
-        [P in keyof T & keyof AggregateTeamsComments]: P extends '_count' | 'count'
+  export type GetTeamsPostsAggregateType<T extends TeamsPostsAggregateArgs> = {
+        [P in keyof T & keyof AggregateTeamsPosts]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateTeamsComments[P]>
-      : GetScalarType<T[P], AggregateTeamsComments[P]>
+        : GetScalarType<T[P], AggregateTeamsPosts[P]>
+      : GetScalarType<T[P], AggregateTeamsPosts[P]>
   }
 
 
 
 
-  export type TeamsCommentsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TeamsCommentsWhereInput
-    orderBy?: TeamsCommentsOrderByWithAggregationInput | TeamsCommentsOrderByWithAggregationInput[]
-    by: TeamsCommentsScalarFieldEnum[] | TeamsCommentsScalarFieldEnum
-    having?: TeamsCommentsScalarWhereWithAggregatesInput
+  export type TeamsPostsGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TeamsPostsWhereInput
+    orderBy?: TeamsPostsOrderByWithAggregationInput | TeamsPostsOrderByWithAggregationInput[]
+    by: TeamsPostsScalarFieldEnum[] | TeamsPostsScalarFieldEnum
+    having?: TeamsPostsScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: TeamsCommentsCountAggregateInputType | true
-    _min?: TeamsCommentsMinAggregateInputType
-    _max?: TeamsCommentsMaxAggregateInputType
+    _count?: TeamsPostsCountAggregateInputType | true
+    _min?: TeamsPostsMinAggregateInputType
+    _max?: TeamsPostsMaxAggregateInputType
   }
 
-  export type TeamsCommentsGroupByOutputType = {
+  export type TeamsPostsGroupByOutputType = {
     id: string
     teamId: string
-    commentId: string
+    postId: string
     noteId: string | null
-    statut: $Enums.StatusComments
-    _count: TeamsCommentsCountAggregateOutputType | null
-    _min: TeamsCommentsMinAggregateOutputType | null
-    _max: TeamsCommentsMaxAggregateOutputType | null
+    statut: $Enums.StatusPosts
+    _count: TeamsPostsCountAggregateOutputType | null
+    _min: TeamsPostsMinAggregateOutputType | null
+    _max: TeamsPostsMaxAggregateOutputType | null
   }
 
-  type GetTeamsCommentsGroupByPayload<T extends TeamsCommentsGroupByArgs> = Prisma.PrismaPromise<
+  type GetTeamsPostsGroupByPayload<T extends TeamsPostsGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<TeamsCommentsGroupByOutputType, T['by']> &
+      PickEnumerable<TeamsPostsGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof TeamsCommentsGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof TeamsPostsGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], TeamsCommentsGroupByOutputType[P]>
-            : GetScalarType<T[P], TeamsCommentsGroupByOutputType[P]>
+              : GetScalarType<T[P], TeamsPostsGroupByOutputType[P]>
+            : GetScalarType<T[P], TeamsPostsGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type TeamsCommentsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TeamsPostsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     teamId?: boolean
-    commentId?: boolean
+    postId?: boolean
     noteId?: boolean
     statut?: boolean
     team?: boolean | TeamsDefaultArgs<ExtArgs>
-    comment?: boolean | CommentsDefaultArgs<ExtArgs>
-    note?: boolean | TeamsComments$noteArgs<ExtArgs>
-  }, ExtArgs["result"]["teamsComments"]>
+    post?: boolean | PostsDefaultArgs<ExtArgs>
+    note?: boolean | TeamsPosts$noteArgs<ExtArgs>
+  }, ExtArgs["result"]["teamsPosts"]>
 
-  export type TeamsCommentsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TeamsPostsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     teamId?: boolean
-    commentId?: boolean
+    postId?: boolean
     noteId?: boolean
     statut?: boolean
     team?: boolean | TeamsDefaultArgs<ExtArgs>
-    comment?: boolean | CommentsDefaultArgs<ExtArgs>
-    note?: boolean | TeamsComments$noteArgs<ExtArgs>
-  }, ExtArgs["result"]["teamsComments"]>
+    post?: boolean | PostsDefaultArgs<ExtArgs>
+    note?: boolean | TeamsPosts$noteArgs<ExtArgs>
+  }, ExtArgs["result"]["teamsPosts"]>
 
-  export type TeamsCommentsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type TeamsPostsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     teamId?: boolean
-    commentId?: boolean
+    postId?: boolean
     noteId?: boolean
     statut?: boolean
     team?: boolean | TeamsDefaultArgs<ExtArgs>
-    comment?: boolean | CommentsDefaultArgs<ExtArgs>
-    note?: boolean | TeamsComments$noteArgs<ExtArgs>
-  }, ExtArgs["result"]["teamsComments"]>
+    post?: boolean | PostsDefaultArgs<ExtArgs>
+    note?: boolean | TeamsPosts$noteArgs<ExtArgs>
+  }, ExtArgs["result"]["teamsPosts"]>
 
-  export type TeamsCommentsSelectScalar = {
+  export type TeamsPostsSelectScalar = {
     id?: boolean
     teamId?: boolean
-    commentId?: boolean
+    postId?: boolean
     noteId?: boolean
     statut?: boolean
   }
 
-  export type TeamsCommentsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "teamId" | "commentId" | "noteId" | "statut", ExtArgs["result"]["teamsComments"]>
-  export type TeamsCommentsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "teamId" | "postId" | "noteId" | "statut", ExtArgs["result"]["teamsPosts"]>
+  export type TeamsPostsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     team?: boolean | TeamsDefaultArgs<ExtArgs>
-    comment?: boolean | CommentsDefaultArgs<ExtArgs>
-    note?: boolean | TeamsComments$noteArgs<ExtArgs>
+    post?: boolean | PostsDefaultArgs<ExtArgs>
+    note?: boolean | TeamsPosts$noteArgs<ExtArgs>
   }
-  export type TeamsCommentsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     team?: boolean | TeamsDefaultArgs<ExtArgs>
-    comment?: boolean | CommentsDefaultArgs<ExtArgs>
-    note?: boolean | TeamsComments$noteArgs<ExtArgs>
+    post?: boolean | PostsDefaultArgs<ExtArgs>
+    note?: boolean | TeamsPosts$noteArgs<ExtArgs>
   }
-  export type TeamsCommentsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     team?: boolean | TeamsDefaultArgs<ExtArgs>
-    comment?: boolean | CommentsDefaultArgs<ExtArgs>
-    note?: boolean | TeamsComments$noteArgs<ExtArgs>
+    post?: boolean | PostsDefaultArgs<ExtArgs>
+    note?: boolean | TeamsPosts$noteArgs<ExtArgs>
   }
 
-  export type $TeamsCommentsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "TeamsComments"
+  export type $TeamsPostsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TeamsPosts"
     objects: {
       team: Prisma.$TeamsPayload<ExtArgs>
-      comment: Prisma.$CommentsPayload<ExtArgs>
+      post: Prisma.$PostsPayload<ExtArgs>
       note: Prisma.$NotesPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       teamId: string
-      commentId: string
+      postId: string
       noteId: string | null
-      statut: $Enums.StatusComments
-    }, ExtArgs["result"]["teamsComments"]>
+      statut: $Enums.StatusPosts
+    }, ExtArgs["result"]["teamsPosts"]>
     composites: {}
   }
 
-  type TeamsCommentsGetPayload<S extends boolean | null | undefined | TeamsCommentsDefaultArgs> = $Result.GetResult<Prisma.$TeamsCommentsPayload, S>
+  type TeamsPostsGetPayload<S extends boolean | null | undefined | TeamsPostsDefaultArgs> = $Result.GetResult<Prisma.$TeamsPostsPayload, S>
 
-  type TeamsCommentsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TeamsCommentsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: TeamsCommentsCountAggregateInputType | true
+  type TeamsPostsCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TeamsPostsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TeamsPostsCountAggregateInputType | true
     }
 
-  export interface TeamsCommentsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TeamsComments'], meta: { name: 'TeamsComments' } }
+  export interface TeamsPostsDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TeamsPosts'], meta: { name: 'TeamsPosts' } }
     /**
-     * Find zero or one TeamsComments that matches the filter.
-     * @param {TeamsCommentsFindUniqueArgs} args - Arguments to find a TeamsComments
+     * Find zero or one TeamsPosts that matches the filter.
+     * @param {TeamsPostsFindUniqueArgs} args - Arguments to find a TeamsPosts
      * @example
-     * // Get one TeamsComments
-     * const teamsComments = await prisma.teamsComments.findUnique({
+     * // Get one TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends TeamsCommentsFindUniqueArgs>(args: SelectSubset<T, TeamsCommentsFindUniqueArgs<ExtArgs>>): Prisma__TeamsCommentsClient<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends TeamsPostsFindUniqueArgs>(args: SelectSubset<T, TeamsPostsFindUniqueArgs<ExtArgs>>): Prisma__TeamsPostsClient<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one TeamsComments that matches the filter or throw an error with `error.code='P2025'`
+     * Find one TeamsPosts that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {TeamsCommentsFindUniqueOrThrowArgs} args - Arguments to find a TeamsComments
+     * @param {TeamsPostsFindUniqueOrThrowArgs} args - Arguments to find a TeamsPosts
      * @example
-     * // Get one TeamsComments
-     * const teamsComments = await prisma.teamsComments.findUniqueOrThrow({
+     * // Get one TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends TeamsCommentsFindUniqueOrThrowArgs>(args: SelectSubset<T, TeamsCommentsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TeamsCommentsClient<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends TeamsPostsFindUniqueOrThrowArgs>(args: SelectSubset<T, TeamsPostsFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TeamsPostsClient<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first TeamsComments that matches the filter.
+     * Find the first TeamsPosts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TeamsCommentsFindFirstArgs} args - Arguments to find a TeamsComments
+     * @param {TeamsPostsFindFirstArgs} args - Arguments to find a TeamsPosts
      * @example
-     * // Get one TeamsComments
-     * const teamsComments = await prisma.teamsComments.findFirst({
+     * // Get one TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends TeamsCommentsFindFirstArgs>(args?: SelectSubset<T, TeamsCommentsFindFirstArgs<ExtArgs>>): Prisma__TeamsCommentsClient<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends TeamsPostsFindFirstArgs>(args?: SelectSubset<T, TeamsPostsFindFirstArgs<ExtArgs>>): Prisma__TeamsPostsClient<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first TeamsComments that matches the filter or
+     * Find the first TeamsPosts that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TeamsCommentsFindFirstOrThrowArgs} args - Arguments to find a TeamsComments
+     * @param {TeamsPostsFindFirstOrThrowArgs} args - Arguments to find a TeamsPosts
      * @example
-     * // Get one TeamsComments
-     * const teamsComments = await prisma.teamsComments.findFirstOrThrow({
+     * // Get one TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends TeamsCommentsFindFirstOrThrowArgs>(args?: SelectSubset<T, TeamsCommentsFindFirstOrThrowArgs<ExtArgs>>): Prisma__TeamsCommentsClient<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends TeamsPostsFindFirstOrThrowArgs>(args?: SelectSubset<T, TeamsPostsFindFirstOrThrowArgs<ExtArgs>>): Prisma__TeamsPostsClient<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more TeamsComments that matches the filter.
+     * Find zero or more TeamsPosts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TeamsCommentsFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {TeamsPostsFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all TeamsComments
-     * const teamsComments = await prisma.teamsComments.findMany()
+     * // Get all TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.findMany()
      * 
-     * // Get first 10 TeamsComments
-     * const teamsComments = await prisma.teamsComments.findMany({ take: 10 })
+     * // Get first 10 TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const teamsCommentsWithIdOnly = await prisma.teamsComments.findMany({ select: { id: true } })
+     * const teamsPostsWithIdOnly = await prisma.teamsPosts.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends TeamsCommentsFindManyArgs>(args?: SelectSubset<T, TeamsCommentsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends TeamsPostsFindManyArgs>(args?: SelectSubset<T, TeamsPostsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a TeamsComments.
-     * @param {TeamsCommentsCreateArgs} args - Arguments to create a TeamsComments.
+     * Create a TeamsPosts.
+     * @param {TeamsPostsCreateArgs} args - Arguments to create a TeamsPosts.
      * @example
-     * // Create one TeamsComments
-     * const TeamsComments = await prisma.teamsComments.create({
+     * // Create one TeamsPosts
+     * const TeamsPosts = await prisma.teamsPosts.create({
      *   data: {
-     *     // ... data to create a TeamsComments
+     *     // ... data to create a TeamsPosts
      *   }
      * })
      * 
      */
-    create<T extends TeamsCommentsCreateArgs>(args: SelectSubset<T, TeamsCommentsCreateArgs<ExtArgs>>): Prisma__TeamsCommentsClient<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends TeamsPostsCreateArgs>(args: SelectSubset<T, TeamsPostsCreateArgs<ExtArgs>>): Prisma__TeamsPostsClient<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many TeamsComments.
-     * @param {TeamsCommentsCreateManyArgs} args - Arguments to create many TeamsComments.
+     * Create many TeamsPosts.
+     * @param {TeamsPostsCreateManyArgs} args - Arguments to create many TeamsPosts.
      * @example
-     * // Create many TeamsComments
-     * const teamsComments = await prisma.teamsComments.createMany({
+     * // Create many TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends TeamsCommentsCreateManyArgs>(args?: SelectSubset<T, TeamsCommentsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends TeamsPostsCreateManyArgs>(args?: SelectSubset<T, TeamsPostsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many TeamsComments and returns the data saved in the database.
-     * @param {TeamsCommentsCreateManyAndReturnArgs} args - Arguments to create many TeamsComments.
+     * Create many TeamsPosts and returns the data saved in the database.
+     * @param {TeamsPostsCreateManyAndReturnArgs} args - Arguments to create many TeamsPosts.
      * @example
-     * // Create many TeamsComments
-     * const teamsComments = await prisma.teamsComments.createManyAndReturn({
+     * // Create many TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many TeamsComments and only return the `id`
-     * const teamsCommentsWithIdOnly = await prisma.teamsComments.createManyAndReturn({
+     * // Create many TeamsPosts and only return the `id`
+     * const teamsPostsWithIdOnly = await prisma.teamsPosts.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -9504,28 +9569,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends TeamsCommentsCreateManyAndReturnArgs>(args?: SelectSubset<T, TeamsCommentsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends TeamsPostsCreateManyAndReturnArgs>(args?: SelectSubset<T, TeamsPostsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a TeamsComments.
-     * @param {TeamsCommentsDeleteArgs} args - Arguments to delete one TeamsComments.
+     * Delete a TeamsPosts.
+     * @param {TeamsPostsDeleteArgs} args - Arguments to delete one TeamsPosts.
      * @example
-     * // Delete one TeamsComments
-     * const TeamsComments = await prisma.teamsComments.delete({
+     * // Delete one TeamsPosts
+     * const TeamsPosts = await prisma.teamsPosts.delete({
      *   where: {
-     *     // ... filter to delete one TeamsComments
+     *     // ... filter to delete one TeamsPosts
      *   }
      * })
      * 
      */
-    delete<T extends TeamsCommentsDeleteArgs>(args: SelectSubset<T, TeamsCommentsDeleteArgs<ExtArgs>>): Prisma__TeamsCommentsClient<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends TeamsPostsDeleteArgs>(args: SelectSubset<T, TeamsPostsDeleteArgs<ExtArgs>>): Prisma__TeamsPostsClient<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one TeamsComments.
-     * @param {TeamsCommentsUpdateArgs} args - Arguments to update one TeamsComments.
+     * Update one TeamsPosts.
+     * @param {TeamsPostsUpdateArgs} args - Arguments to update one TeamsPosts.
      * @example
-     * // Update one TeamsComments
-     * const teamsComments = await prisma.teamsComments.update({
+     * // Update one TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9535,30 +9600,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends TeamsCommentsUpdateArgs>(args: SelectSubset<T, TeamsCommentsUpdateArgs<ExtArgs>>): Prisma__TeamsCommentsClient<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends TeamsPostsUpdateArgs>(args: SelectSubset<T, TeamsPostsUpdateArgs<ExtArgs>>): Prisma__TeamsPostsClient<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more TeamsComments.
-     * @param {TeamsCommentsDeleteManyArgs} args - Arguments to filter TeamsComments to delete.
+     * Delete zero or more TeamsPosts.
+     * @param {TeamsPostsDeleteManyArgs} args - Arguments to filter TeamsPosts to delete.
      * @example
-     * // Delete a few TeamsComments
-     * const { count } = await prisma.teamsComments.deleteMany({
+     * // Delete a few TeamsPosts
+     * const { count } = await prisma.teamsPosts.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends TeamsCommentsDeleteManyArgs>(args?: SelectSubset<T, TeamsCommentsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends TeamsPostsDeleteManyArgs>(args?: SelectSubset<T, TeamsPostsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more TeamsComments.
+     * Update zero or more TeamsPosts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TeamsCommentsUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {TeamsPostsUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many TeamsComments
-     * const teamsComments = await prisma.teamsComments.updateMany({
+     * // Update many TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9568,14 +9633,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends TeamsCommentsUpdateManyArgs>(args: SelectSubset<T, TeamsCommentsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends TeamsPostsUpdateManyArgs>(args: SelectSubset<T, TeamsPostsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more TeamsComments and returns the data updated in the database.
-     * @param {TeamsCommentsUpdateManyAndReturnArgs} args - Arguments to update many TeamsComments.
+     * Update zero or more TeamsPosts and returns the data updated in the database.
+     * @param {TeamsPostsUpdateManyAndReturnArgs} args - Arguments to update many TeamsPosts.
      * @example
-     * // Update many TeamsComments
-     * const teamsComments = await prisma.teamsComments.updateManyAndReturn({
+     * // Update many TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -9584,8 +9649,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more TeamsComments and only return the `id`
-     * const teamsCommentsWithIdOnly = await prisma.teamsComments.updateManyAndReturn({
+     * // Update zero or more TeamsPosts and only return the `id`
+     * const teamsPostsWithIdOnly = await prisma.teamsPosts.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -9598,56 +9663,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends TeamsCommentsUpdateManyAndReturnArgs>(args: SelectSubset<T, TeamsCommentsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends TeamsPostsUpdateManyAndReturnArgs>(args: SelectSubset<T, TeamsPostsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one TeamsComments.
-     * @param {TeamsCommentsUpsertArgs} args - Arguments to update or create a TeamsComments.
+     * Create or update one TeamsPosts.
+     * @param {TeamsPostsUpsertArgs} args - Arguments to update or create a TeamsPosts.
      * @example
-     * // Update or create a TeamsComments
-     * const teamsComments = await prisma.teamsComments.upsert({
+     * // Update or create a TeamsPosts
+     * const teamsPosts = await prisma.teamsPosts.upsert({
      *   create: {
-     *     // ... data to create a TeamsComments
+     *     // ... data to create a TeamsPosts
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the TeamsComments we want to update
+     *     // ... the filter for the TeamsPosts we want to update
      *   }
      * })
      */
-    upsert<T extends TeamsCommentsUpsertArgs>(args: SelectSubset<T, TeamsCommentsUpsertArgs<ExtArgs>>): Prisma__TeamsCommentsClient<$Result.GetResult<Prisma.$TeamsCommentsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends TeamsPostsUpsertArgs>(args: SelectSubset<T, TeamsPostsUpsertArgs<ExtArgs>>): Prisma__TeamsPostsClient<$Result.GetResult<Prisma.$TeamsPostsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of TeamsComments.
+     * Count the number of TeamsPosts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TeamsCommentsCountArgs} args - Arguments to filter TeamsComments to count.
+     * @param {TeamsPostsCountArgs} args - Arguments to filter TeamsPosts to count.
      * @example
-     * // Count the number of TeamsComments
-     * const count = await prisma.teamsComments.count({
+     * // Count the number of TeamsPosts
+     * const count = await prisma.teamsPosts.count({
      *   where: {
-     *     // ... the filter for the TeamsComments we want to count
+     *     // ... the filter for the TeamsPosts we want to count
      *   }
      * })
     **/
-    count<T extends TeamsCommentsCountArgs>(
-      args?: Subset<T, TeamsCommentsCountArgs>,
+    count<T extends TeamsPostsCountArgs>(
+      args?: Subset<T, TeamsPostsCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], TeamsCommentsCountAggregateOutputType>
+          : GetScalarType<T['select'], TeamsPostsCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a TeamsComments.
+     * Allows you to perform aggregations operations on a TeamsPosts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TeamsCommentsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {TeamsPostsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -9667,13 +9732,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends TeamsCommentsAggregateArgs>(args: Subset<T, TeamsCommentsAggregateArgs>): Prisma.PrismaPromise<GetTeamsCommentsAggregateType<T>>
+    aggregate<T extends TeamsPostsAggregateArgs>(args: Subset<T, TeamsPostsAggregateArgs>): Prisma.PrismaPromise<GetTeamsPostsAggregateType<T>>
 
     /**
-     * Group by TeamsComments.
+     * Group by TeamsPosts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TeamsCommentsGroupByArgs} args - Group by arguments.
+     * @param {TeamsPostsGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -9688,14 +9753,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends TeamsCommentsGroupByArgs,
+      T extends TeamsPostsGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TeamsCommentsGroupByArgs['orderBy'] }
-        : { orderBy?: TeamsCommentsGroupByArgs['orderBy'] },
+        ? { orderBy: TeamsPostsGroupByArgs['orderBy'] }
+        : { orderBy?: TeamsPostsGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -9744,24 +9809,24 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, TeamsCommentsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTeamsCommentsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, TeamsPostsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTeamsPostsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the TeamsComments model
+   * Fields of the TeamsPosts model
    */
-  readonly fields: TeamsCommentsFieldRefs;
+  readonly fields: TeamsPostsFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for TeamsComments.
+   * The delegate class that acts as a "Promise-like" for TeamsPosts.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__TeamsCommentsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__TeamsPostsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     team<T extends TeamsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TeamsDefaultArgs<ExtArgs>>): Prisma__TeamsClient<$Result.GetResult<Prisma.$TeamsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    comment<T extends CommentsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CommentsDefaultArgs<ExtArgs>>): Prisma__CommentsClient<$Result.GetResult<Prisma.$CommentsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    note<T extends TeamsComments$noteArgs<ExtArgs> = {}>(args?: Subset<T, TeamsComments$noteArgs<ExtArgs>>): Prisma__NotesClient<$Result.GetResult<Prisma.$NotesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    post<T extends PostsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostsDefaultArgs<ExtArgs>>): Prisma__PostsClient<$Result.GetResult<Prisma.$PostsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    note<T extends TeamsPosts$noteArgs<ExtArgs> = {}>(args?: Subset<T, TeamsPosts$noteArgs<ExtArgs>>): Prisma__NotesClient<$Result.GetResult<Prisma.$NotesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9788,413 +9853,413 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the TeamsComments model
+   * Fields of the TeamsPosts model
    */
-  interface TeamsCommentsFieldRefs {
-    readonly id: FieldRef<"TeamsComments", 'String'>
-    readonly teamId: FieldRef<"TeamsComments", 'String'>
-    readonly commentId: FieldRef<"TeamsComments", 'String'>
-    readonly noteId: FieldRef<"TeamsComments", 'String'>
-    readonly statut: FieldRef<"TeamsComments", 'StatusComments'>
+  interface TeamsPostsFieldRefs {
+    readonly id: FieldRef<"TeamsPosts", 'String'>
+    readonly teamId: FieldRef<"TeamsPosts", 'String'>
+    readonly postId: FieldRef<"TeamsPosts", 'String'>
+    readonly noteId: FieldRef<"TeamsPosts", 'String'>
+    readonly statut: FieldRef<"TeamsPosts", 'StatusPosts'>
   }
     
 
   // Custom InputTypes
   /**
-   * TeamsComments findUnique
+   * TeamsPosts findUnique
    */
-  export type TeamsCommentsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
+    include?: TeamsPostsInclude<ExtArgs> | null
     /**
-     * Filter, which TeamsComments to fetch.
+     * Filter, which TeamsPosts to fetch.
      */
-    where: TeamsCommentsWhereUniqueInput
+    where: TeamsPostsWhereUniqueInput
   }
 
   /**
-   * TeamsComments findUniqueOrThrow
+   * TeamsPosts findUniqueOrThrow
    */
-  export type TeamsCommentsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
+    include?: TeamsPostsInclude<ExtArgs> | null
     /**
-     * Filter, which TeamsComments to fetch.
+     * Filter, which TeamsPosts to fetch.
      */
-    where: TeamsCommentsWhereUniqueInput
+    where: TeamsPostsWhereUniqueInput
   }
 
   /**
-   * TeamsComments findFirst
+   * TeamsPosts findFirst
    */
-  export type TeamsCommentsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
+    include?: TeamsPostsInclude<ExtArgs> | null
     /**
-     * Filter, which TeamsComments to fetch.
+     * Filter, which TeamsPosts to fetch.
      */
-    where?: TeamsCommentsWhereInput
+    where?: TeamsPostsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TeamsComments to fetch.
+     * Determine the order of TeamsPosts to fetch.
      */
-    orderBy?: TeamsCommentsOrderByWithRelationInput | TeamsCommentsOrderByWithRelationInput[]
+    orderBy?: TeamsPostsOrderByWithRelationInput | TeamsPostsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for TeamsComments.
+     * Sets the position for searching for TeamsPosts.
      */
-    cursor?: TeamsCommentsWhereUniqueInput
+    cursor?: TeamsPostsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TeamsComments from the position of the cursor.
+     * Take `±n` TeamsPosts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TeamsComments.
+     * Skip the first `n` TeamsPosts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of TeamsComments.
+     * Filter by unique combinations of TeamsPosts.
      */
-    distinct?: TeamsCommentsScalarFieldEnum | TeamsCommentsScalarFieldEnum[]
+    distinct?: TeamsPostsScalarFieldEnum | TeamsPostsScalarFieldEnum[]
   }
 
   /**
-   * TeamsComments findFirstOrThrow
+   * TeamsPosts findFirstOrThrow
    */
-  export type TeamsCommentsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
+    include?: TeamsPostsInclude<ExtArgs> | null
     /**
-     * Filter, which TeamsComments to fetch.
+     * Filter, which TeamsPosts to fetch.
      */
-    where?: TeamsCommentsWhereInput
+    where?: TeamsPostsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TeamsComments to fetch.
+     * Determine the order of TeamsPosts to fetch.
      */
-    orderBy?: TeamsCommentsOrderByWithRelationInput | TeamsCommentsOrderByWithRelationInput[]
+    orderBy?: TeamsPostsOrderByWithRelationInput | TeamsPostsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for TeamsComments.
+     * Sets the position for searching for TeamsPosts.
      */
-    cursor?: TeamsCommentsWhereUniqueInput
+    cursor?: TeamsPostsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TeamsComments from the position of the cursor.
+     * Take `±n` TeamsPosts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TeamsComments.
+     * Skip the first `n` TeamsPosts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of TeamsComments.
+     * Filter by unique combinations of TeamsPosts.
      */
-    distinct?: TeamsCommentsScalarFieldEnum | TeamsCommentsScalarFieldEnum[]
+    distinct?: TeamsPostsScalarFieldEnum | TeamsPostsScalarFieldEnum[]
   }
 
   /**
-   * TeamsComments findMany
+   * TeamsPosts findMany
    */
-  export type TeamsCommentsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
+    include?: TeamsPostsInclude<ExtArgs> | null
     /**
-     * Filter, which TeamsComments to fetch.
+     * Filter, which TeamsPosts to fetch.
      */
-    where?: TeamsCommentsWhereInput
+    where?: TeamsPostsWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of TeamsComments to fetch.
+     * Determine the order of TeamsPosts to fetch.
      */
-    orderBy?: TeamsCommentsOrderByWithRelationInput | TeamsCommentsOrderByWithRelationInput[]
+    orderBy?: TeamsPostsOrderByWithRelationInput | TeamsPostsOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing TeamsComments.
+     * Sets the position for listing TeamsPosts.
      */
-    cursor?: TeamsCommentsWhereUniqueInput
+    cursor?: TeamsPostsWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` TeamsComments from the position of the cursor.
+     * Take `±n` TeamsPosts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` TeamsComments.
+     * Skip the first `n` TeamsPosts.
      */
     skip?: number
-    distinct?: TeamsCommentsScalarFieldEnum | TeamsCommentsScalarFieldEnum[]
+    distinct?: TeamsPostsScalarFieldEnum | TeamsPostsScalarFieldEnum[]
   }
 
   /**
-   * TeamsComments create
+   * TeamsPosts create
    */
-  export type TeamsCommentsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
+    include?: TeamsPostsInclude<ExtArgs> | null
     /**
-     * The data needed to create a TeamsComments.
+     * The data needed to create a TeamsPosts.
      */
-    data: XOR<TeamsCommentsCreateInput, TeamsCommentsUncheckedCreateInput>
+    data: XOR<TeamsPostsCreateInput, TeamsPostsUncheckedCreateInput>
   }
 
   /**
-   * TeamsComments createMany
+   * TeamsPosts createMany
    */
-  export type TeamsCommentsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many TeamsComments.
+     * The data used to create many TeamsPosts.
      */
-    data: TeamsCommentsCreateManyInput | TeamsCommentsCreateManyInput[]
+    data: TeamsPostsCreateManyInput | TeamsPostsCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * TeamsComments createManyAndReturn
+   * TeamsPosts createManyAndReturn
    */
-  export type TeamsCommentsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelectCreateManyAndReturn<ExtArgs> | null
+    select?: TeamsPostsSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
-     * The data used to create many TeamsComments.
+     * The data used to create many TeamsPosts.
      */
-    data: TeamsCommentsCreateManyInput | TeamsCommentsCreateManyInput[]
+    data: TeamsPostsCreateManyInput | TeamsPostsCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: TeamsPostsIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * TeamsComments update
+   * TeamsPosts update
    */
-  export type TeamsCommentsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
+    include?: TeamsPostsInclude<ExtArgs> | null
     /**
-     * The data needed to update a TeamsComments.
+     * The data needed to update a TeamsPosts.
      */
-    data: XOR<TeamsCommentsUpdateInput, TeamsCommentsUncheckedUpdateInput>
+    data: XOR<TeamsPostsUpdateInput, TeamsPostsUncheckedUpdateInput>
     /**
-     * Choose, which TeamsComments to update.
+     * Choose, which TeamsPosts to update.
      */
-    where: TeamsCommentsWhereUniqueInput
+    where: TeamsPostsWhereUniqueInput
   }
 
   /**
-   * TeamsComments updateMany
+   * TeamsPosts updateMany
    */
-  export type TeamsCommentsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update TeamsComments.
+     * The data used to update TeamsPosts.
      */
-    data: XOR<TeamsCommentsUpdateManyMutationInput, TeamsCommentsUncheckedUpdateManyInput>
+    data: XOR<TeamsPostsUpdateManyMutationInput, TeamsPostsUncheckedUpdateManyInput>
     /**
-     * Filter which TeamsComments to update
+     * Filter which TeamsPosts to update
      */
-    where?: TeamsCommentsWhereInput
+    where?: TeamsPostsWhereInput
     /**
-     * Limit how many TeamsComments to update.
+     * Limit how many TeamsPosts to update.
      */
     limit?: number
   }
 
   /**
-   * TeamsComments updateManyAndReturn
+   * TeamsPosts updateManyAndReturn
    */
-  export type TeamsCommentsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: TeamsPostsSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
-     * The data used to update TeamsComments.
+     * The data used to update TeamsPosts.
      */
-    data: XOR<TeamsCommentsUpdateManyMutationInput, TeamsCommentsUncheckedUpdateManyInput>
+    data: XOR<TeamsPostsUpdateManyMutationInput, TeamsPostsUncheckedUpdateManyInput>
     /**
-     * Filter which TeamsComments to update
+     * Filter which TeamsPosts to update
      */
-    where?: TeamsCommentsWhereInput
+    where?: TeamsPostsWhereInput
     /**
-     * Limit how many TeamsComments to update.
+     * Limit how many TeamsPosts to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: TeamsPostsIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * TeamsComments upsert
+   * TeamsPosts upsert
    */
-  export type TeamsCommentsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
+    include?: TeamsPostsInclude<ExtArgs> | null
     /**
-     * The filter to search for the TeamsComments to update in case it exists.
+     * The filter to search for the TeamsPosts to update in case it exists.
      */
-    where: TeamsCommentsWhereUniqueInput
+    where: TeamsPostsWhereUniqueInput
     /**
-     * In case the TeamsComments found by the `where` argument doesn't exist, create a new TeamsComments with this data.
+     * In case the TeamsPosts found by the `where` argument doesn't exist, create a new TeamsPosts with this data.
      */
-    create: XOR<TeamsCommentsCreateInput, TeamsCommentsUncheckedCreateInput>
+    create: XOR<TeamsPostsCreateInput, TeamsPostsUncheckedCreateInput>
     /**
-     * In case the TeamsComments was found with the provided `where` argument, update it with this data.
+     * In case the TeamsPosts was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<TeamsCommentsUpdateInput, TeamsCommentsUncheckedUpdateInput>
+    update: XOR<TeamsPostsUpdateInput, TeamsPostsUncheckedUpdateInput>
   }
 
   /**
-   * TeamsComments delete
+   * TeamsPosts delete
    */
-  export type TeamsCommentsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
+    include?: TeamsPostsInclude<ExtArgs> | null
     /**
-     * Filter which TeamsComments to delete.
+     * Filter which TeamsPosts to delete.
      */
-    where: TeamsCommentsWhereUniqueInput
+    where: TeamsPostsWhereUniqueInput
   }
 
   /**
-   * TeamsComments deleteMany
+   * TeamsPosts deleteMany
    */
-  export type TeamsCommentsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which TeamsComments to delete
+     * Filter which TeamsPosts to delete
      */
-    where?: TeamsCommentsWhereInput
+    where?: TeamsPostsWhereInput
     /**
-     * Limit how many TeamsComments to delete.
+     * Limit how many TeamsPosts to delete.
      */
     limit?: number
   }
 
   /**
-   * TeamsComments.note
+   * TeamsPosts.note
    */
-  export type TeamsComments$noteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPosts$noteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Notes
      */
@@ -10211,21 +10276,21 @@ export namespace Prisma {
   }
 
   /**
-   * TeamsComments without action
+   * TeamsPosts without action
    */
-  export type TeamsCommentsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type TeamsPostsDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TeamsComments
+     * Select specific fields to fetch from the TeamsPosts
      */
-    select?: TeamsCommentsSelect<ExtArgs> | null
+    select?: TeamsPostsSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the TeamsComments
+     * Omit specific fields from the TeamsPosts
      */
-    omit?: TeamsCommentsOmit<ExtArgs> | null
+    omit?: TeamsPostsOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TeamsCommentsInclude<ExtArgs> | null
+    include?: TeamsPostsInclude<ExtArgs> | null
   }
 
 
@@ -10293,12 +10358,17 @@ export namespace Prisma {
   export type TeamsKeywordsScalarFieldEnum = (typeof TeamsKeywordsScalarFieldEnum)[keyof typeof TeamsKeywordsScalarFieldEnum]
 
 
-  export const CommentsScalarFieldEnum: {
+  export const PostsScalarFieldEnum: {
     id: 'id',
-    url: 'url'
+    url: 'url',
+    title: 'title',
+    text: 'text',
+    subreddit: 'subreddit',
+    author: 'author',
+    createdAt: 'createdAt'
   };
 
-  export type CommentsScalarFieldEnum = (typeof CommentsScalarFieldEnum)[keyof typeof CommentsScalarFieldEnum]
+  export type PostsScalarFieldEnum = (typeof PostsScalarFieldEnum)[keyof typeof PostsScalarFieldEnum]
 
 
   export const NotesScalarFieldEnum: {
@@ -10311,15 +10381,15 @@ export namespace Prisma {
   export type NotesScalarFieldEnum = (typeof NotesScalarFieldEnum)[keyof typeof NotesScalarFieldEnum]
 
 
-  export const TeamsCommentsScalarFieldEnum: {
+  export const TeamsPostsScalarFieldEnum: {
     id: 'id',
     teamId: 'teamId',
-    commentId: 'commentId',
+    postId: 'postId',
     noteId: 'noteId',
     statut: 'statut'
   };
 
-  export type TeamsCommentsScalarFieldEnum = (typeof TeamsCommentsScalarFieldEnum)[keyof typeof TeamsCommentsScalarFieldEnum]
+  export type TeamsPostsScalarFieldEnum = (typeof TeamsPostsScalarFieldEnum)[keyof typeof TeamsPostsScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -10394,16 +10464,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'StatusComments'
+   * Reference to a field of type 'StatusPosts'
    */
-  export type EnumStatusCommentsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusComments'>
+  export type EnumStatusPostsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusPosts'>
     
 
 
   /**
-   * Reference to a field of type 'StatusComments[]'
+   * Reference to a field of type 'StatusPosts[]'
    */
-  export type ListEnumStatusCommentsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusComments[]'>
+  export type ListEnumStatusPostsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'StatusPosts[]'>
     
 
 
@@ -10491,7 +10561,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Teams"> | Date | string
     users?: UsersTeamsListRelationFilter
     keywords?: TeamsKeywordsListRelationFilter
-    comments?: TeamsCommentsListRelationFilter
+    posts?: TeamsPostsListRelationFilter
   }
 
   export type TeamsOrderByWithRelationInput = {
@@ -10500,7 +10570,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     users?: UsersTeamsOrderByRelationAggregateInput
     keywords?: TeamsKeywordsOrderByRelationAggregateInput
-    comments?: TeamsCommentsOrderByRelationAggregateInput
+    posts?: TeamsPostsOrderByRelationAggregateInput
   }
 
   export type TeamsWhereUniqueInput = Prisma.AtLeast<{
@@ -10512,7 +10582,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Teams"> | Date | string
     users?: UsersTeamsListRelationFilter
     keywords?: TeamsKeywordsListRelationFilter
-    comments?: TeamsCommentsListRelationFilter
+    posts?: TeamsPostsListRelationFilter
   }, "id">
 
   export type TeamsOrderByWithAggregationInput = {
@@ -10690,44 +10760,69 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"TeamsKeywords"> | Date | string
   }
 
-  export type CommentsWhereInput = {
-    AND?: CommentsWhereInput | CommentsWhereInput[]
-    OR?: CommentsWhereInput[]
-    NOT?: CommentsWhereInput | CommentsWhereInput[]
-    id?: StringFilter<"Comments"> | string
-    url?: StringFilter<"Comments"> | string
-    teams?: TeamsCommentsListRelationFilter
+  export type PostsWhereInput = {
+    AND?: PostsWhereInput | PostsWhereInput[]
+    OR?: PostsWhereInput[]
+    NOT?: PostsWhereInput | PostsWhereInput[]
+    id?: StringFilter<"Posts"> | string
+    url?: StringFilter<"Posts"> | string
+    title?: StringFilter<"Posts"> | string
+    text?: StringNullableFilter<"Posts"> | string | null
+    subreddit?: StringFilter<"Posts"> | string
+    author?: StringFilter<"Posts"> | string
+    createdAt?: DateTimeFilter<"Posts"> | Date | string
+    teams?: TeamsPostsListRelationFilter
   }
 
-  export type CommentsOrderByWithRelationInput = {
+  export type PostsOrderByWithRelationInput = {
     id?: SortOrder
     url?: SortOrder
-    teams?: TeamsCommentsOrderByRelationAggregateInput
+    title?: SortOrder
+    text?: SortOrderInput | SortOrder
+    subreddit?: SortOrder
+    author?: SortOrder
+    createdAt?: SortOrder
+    teams?: TeamsPostsOrderByRelationAggregateInput
   }
 
-  export type CommentsWhereUniqueInput = Prisma.AtLeast<{
+  export type PostsWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: CommentsWhereInput | CommentsWhereInput[]
-    OR?: CommentsWhereInput[]
-    NOT?: CommentsWhereInput | CommentsWhereInput[]
-    url?: StringFilter<"Comments"> | string
-    teams?: TeamsCommentsListRelationFilter
-  }, "id">
+    url?: string
+    AND?: PostsWhereInput | PostsWhereInput[]
+    OR?: PostsWhereInput[]
+    NOT?: PostsWhereInput | PostsWhereInput[]
+    title?: StringFilter<"Posts"> | string
+    text?: StringNullableFilter<"Posts"> | string | null
+    subreddit?: StringFilter<"Posts"> | string
+    author?: StringFilter<"Posts"> | string
+    createdAt?: DateTimeFilter<"Posts"> | Date | string
+    teams?: TeamsPostsListRelationFilter
+  }, "id" | "url">
 
-  export type CommentsOrderByWithAggregationInput = {
+  export type PostsOrderByWithAggregationInput = {
     id?: SortOrder
     url?: SortOrder
-    _count?: CommentsCountOrderByAggregateInput
-    _max?: CommentsMaxOrderByAggregateInput
-    _min?: CommentsMinOrderByAggregateInput
+    title?: SortOrder
+    text?: SortOrderInput | SortOrder
+    subreddit?: SortOrder
+    author?: SortOrder
+    createdAt?: SortOrder
+    _count?: PostsCountOrderByAggregateInput
+    _max?: PostsMaxOrderByAggregateInput
+    _min?: PostsMinOrderByAggregateInput
   }
 
-  export type CommentsScalarWhereWithAggregatesInput = {
-    AND?: CommentsScalarWhereWithAggregatesInput | CommentsScalarWhereWithAggregatesInput[]
-    OR?: CommentsScalarWhereWithAggregatesInput[]
-    NOT?: CommentsScalarWhereWithAggregatesInput | CommentsScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Comments"> | string
-    url?: StringWithAggregatesFilter<"Comments"> | string
+  export type PostsScalarWhereWithAggregatesInput = {
+    AND?: PostsScalarWhereWithAggregatesInput | PostsScalarWhereWithAggregatesInput[]
+    OR?: PostsScalarWhereWithAggregatesInput[]
+    NOT?: PostsScalarWhereWithAggregatesInput | PostsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Posts"> | string
+    url?: StringWithAggregatesFilter<"Posts"> | string
+    title?: StringWithAggregatesFilter<"Posts"> | string
+    text?: StringNullableWithAggregatesFilter<"Posts"> | string | null
+    subreddit?: StringWithAggregatesFilter<"Posts"> | string
+    author?: StringWithAggregatesFilter<"Posts"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Posts"> | Date | string
   }
 
   export type NotesWhereInput = {
@@ -10739,7 +10834,7 @@ export namespace Prisma {
     userId?: StringFilter<"Notes"> | string
     createdAt?: DateTimeFilter<"Notes"> | Date | string
     user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
-    teamsComments?: XOR<TeamsCommentsNullableScalarRelationFilter, TeamsCommentsWhereInput> | null
+    teamsPosts?: XOR<TeamsPostsNullableScalarRelationFilter, TeamsPostsWhereInput> | null
   }
 
   export type NotesOrderByWithRelationInput = {
@@ -10748,7 +10843,7 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     user?: UsersOrderByWithRelationInput
-    teamsComments?: TeamsCommentsOrderByWithRelationInput
+    teamsPosts?: TeamsPostsOrderByWithRelationInput
   }
 
   export type NotesWhereUniqueInput = Prisma.AtLeast<{
@@ -10760,7 +10855,7 @@ export namespace Prisma {
     userId?: StringFilter<"Notes"> | string
     createdAt?: DateTimeFilter<"Notes"> | Date | string
     user?: XOR<UsersScalarRelationFilter, UsersWhereInput>
-    teamsComments?: XOR<TeamsCommentsNullableScalarRelationFilter, TeamsCommentsWhereInput> | null
+    teamsPosts?: XOR<TeamsPostsNullableScalarRelationFilter, TeamsPostsWhereInput> | null
   }, "id">
 
   export type NotesOrderByWithAggregationInput = {
@@ -10783,66 +10878,66 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"Notes"> | Date | string
   }
 
-  export type TeamsCommentsWhereInput = {
-    AND?: TeamsCommentsWhereInput | TeamsCommentsWhereInput[]
-    OR?: TeamsCommentsWhereInput[]
-    NOT?: TeamsCommentsWhereInput | TeamsCommentsWhereInput[]
-    id?: StringFilter<"TeamsComments"> | string
-    teamId?: StringFilter<"TeamsComments"> | string
-    commentId?: StringFilter<"TeamsComments"> | string
-    noteId?: StringNullableFilter<"TeamsComments"> | string | null
-    statut?: EnumStatusCommentsFilter<"TeamsComments"> | $Enums.StatusComments
+  export type TeamsPostsWhereInput = {
+    AND?: TeamsPostsWhereInput | TeamsPostsWhereInput[]
+    OR?: TeamsPostsWhereInput[]
+    NOT?: TeamsPostsWhereInput | TeamsPostsWhereInput[]
+    id?: StringFilter<"TeamsPosts"> | string
+    teamId?: StringFilter<"TeamsPosts"> | string
+    postId?: StringFilter<"TeamsPosts"> | string
+    noteId?: StringNullableFilter<"TeamsPosts"> | string | null
+    statut?: EnumStatusPostsFilter<"TeamsPosts"> | $Enums.StatusPosts
     team?: XOR<TeamsScalarRelationFilter, TeamsWhereInput>
-    comment?: XOR<CommentsScalarRelationFilter, CommentsWhereInput>
+    post?: XOR<PostsScalarRelationFilter, PostsWhereInput>
     note?: XOR<NotesNullableScalarRelationFilter, NotesWhereInput> | null
   }
 
-  export type TeamsCommentsOrderByWithRelationInput = {
+  export type TeamsPostsOrderByWithRelationInput = {
     id?: SortOrder
     teamId?: SortOrder
-    commentId?: SortOrder
+    postId?: SortOrder
     noteId?: SortOrderInput | SortOrder
     statut?: SortOrder
     team?: TeamsOrderByWithRelationInput
-    comment?: CommentsOrderByWithRelationInput
+    post?: PostsOrderByWithRelationInput
     note?: NotesOrderByWithRelationInput
   }
 
-  export type TeamsCommentsWhereUniqueInput = Prisma.AtLeast<{
+  export type TeamsPostsWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     noteId?: string
-    teamId_commentId?: TeamsCommentsTeamIdCommentIdCompoundUniqueInput
-    AND?: TeamsCommentsWhereInput | TeamsCommentsWhereInput[]
-    OR?: TeamsCommentsWhereInput[]
-    NOT?: TeamsCommentsWhereInput | TeamsCommentsWhereInput[]
-    teamId?: StringFilter<"TeamsComments"> | string
-    commentId?: StringFilter<"TeamsComments"> | string
-    statut?: EnumStatusCommentsFilter<"TeamsComments"> | $Enums.StatusComments
+    teamId_postId?: TeamsPostsTeamIdPostIdCompoundUniqueInput
+    AND?: TeamsPostsWhereInput | TeamsPostsWhereInput[]
+    OR?: TeamsPostsWhereInput[]
+    NOT?: TeamsPostsWhereInput | TeamsPostsWhereInput[]
+    teamId?: StringFilter<"TeamsPosts"> | string
+    postId?: StringFilter<"TeamsPosts"> | string
+    statut?: EnumStatusPostsFilter<"TeamsPosts"> | $Enums.StatusPosts
     team?: XOR<TeamsScalarRelationFilter, TeamsWhereInput>
-    comment?: XOR<CommentsScalarRelationFilter, CommentsWhereInput>
+    post?: XOR<PostsScalarRelationFilter, PostsWhereInput>
     note?: XOR<NotesNullableScalarRelationFilter, NotesWhereInput> | null
-  }, "id" | "noteId" | "teamId_commentId">
+  }, "id" | "noteId" | "teamId_postId">
 
-  export type TeamsCommentsOrderByWithAggregationInput = {
+  export type TeamsPostsOrderByWithAggregationInput = {
     id?: SortOrder
     teamId?: SortOrder
-    commentId?: SortOrder
+    postId?: SortOrder
     noteId?: SortOrderInput | SortOrder
     statut?: SortOrder
-    _count?: TeamsCommentsCountOrderByAggregateInput
-    _max?: TeamsCommentsMaxOrderByAggregateInput
-    _min?: TeamsCommentsMinOrderByAggregateInput
+    _count?: TeamsPostsCountOrderByAggregateInput
+    _max?: TeamsPostsMaxOrderByAggregateInput
+    _min?: TeamsPostsMinOrderByAggregateInput
   }
 
-  export type TeamsCommentsScalarWhereWithAggregatesInput = {
-    AND?: TeamsCommentsScalarWhereWithAggregatesInput | TeamsCommentsScalarWhereWithAggregatesInput[]
-    OR?: TeamsCommentsScalarWhereWithAggregatesInput[]
-    NOT?: TeamsCommentsScalarWhereWithAggregatesInput | TeamsCommentsScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"TeamsComments"> | string
-    teamId?: StringWithAggregatesFilter<"TeamsComments"> | string
-    commentId?: StringWithAggregatesFilter<"TeamsComments"> | string
-    noteId?: StringNullableWithAggregatesFilter<"TeamsComments"> | string | null
-    statut?: EnumStatusCommentsWithAggregatesFilter<"TeamsComments"> | $Enums.StatusComments
+  export type TeamsPostsScalarWhereWithAggregatesInput = {
+    AND?: TeamsPostsScalarWhereWithAggregatesInput | TeamsPostsScalarWhereWithAggregatesInput[]
+    OR?: TeamsPostsScalarWhereWithAggregatesInput[]
+    NOT?: TeamsPostsScalarWhereWithAggregatesInput | TeamsPostsScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TeamsPosts"> | string
+    teamId?: StringWithAggregatesFilter<"TeamsPosts"> | string
+    postId?: StringWithAggregatesFilter<"TeamsPosts"> | string
+    noteId?: StringNullableWithAggregatesFilter<"TeamsPosts"> | string | null
+    statut?: EnumStatusPostsWithAggregatesFilter<"TeamsPosts"> | $Enums.StatusPosts
   }
 
   export type UsersCreateInput = {
@@ -10915,7 +11010,7 @@ export namespace Prisma {
     createdAt?: Date | string
     users?: UsersTeamsCreateNestedManyWithoutTeamInput
     keywords?: TeamsKeywordsCreateNestedManyWithoutTeamInput
-    comments?: TeamsCommentsCreateNestedManyWithoutTeamInput
+    posts?: TeamsPostsCreateNestedManyWithoutTeamInput
   }
 
   export type TeamsUncheckedCreateInput = {
@@ -10924,7 +11019,7 @@ export namespace Prisma {
     createdAt?: Date | string
     users?: UsersTeamsUncheckedCreateNestedManyWithoutTeamInput
     keywords?: TeamsKeywordsUncheckedCreateNestedManyWithoutTeamInput
-    comments?: TeamsCommentsUncheckedCreateNestedManyWithoutTeamInput
+    posts?: TeamsPostsUncheckedCreateNestedManyWithoutTeamInput
   }
 
   export type TeamsUpdateInput = {
@@ -10933,7 +11028,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UsersTeamsUpdateManyWithoutTeamNestedInput
     keywords?: TeamsKeywordsUpdateManyWithoutTeamNestedInput
-    comments?: TeamsCommentsUpdateManyWithoutTeamNestedInput
+    posts?: TeamsPostsUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamsUncheckedUpdateInput = {
@@ -10942,7 +11037,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UsersTeamsUncheckedUpdateManyWithoutTeamNestedInput
     keywords?: TeamsKeywordsUncheckedUpdateManyWithoutTeamNestedInput
-    comments?: TeamsCommentsUncheckedUpdateManyWithoutTeamNestedInput
+    posts?: TeamsPostsUncheckedUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamsCreateManyInput = {
@@ -11110,43 +11205,78 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CommentsCreateInput = {
+  export type PostsCreateInput = {
     id?: string
     url: string
-    teams?: TeamsCommentsCreateNestedManyWithoutCommentInput
+    title: string
+    text?: string | null
+    subreddit: string
+    author: string
+    createdAt: Date | string
+    teams?: TeamsPostsCreateNestedManyWithoutPostInput
   }
 
-  export type CommentsUncheckedCreateInput = {
+  export type PostsUncheckedCreateInput = {
     id?: string
     url: string
-    teams?: TeamsCommentsUncheckedCreateNestedManyWithoutCommentInput
+    title: string
+    text?: string | null
+    subreddit: string
+    author: string
+    createdAt: Date | string
+    teams?: TeamsPostsUncheckedCreateNestedManyWithoutPostInput
   }
 
-  export type CommentsUpdateInput = {
+  export type PostsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    teams?: TeamsCommentsUpdateManyWithoutCommentNestedInput
+    title?: StringFieldUpdateOperationsInput | string
+    text?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teams?: TeamsPostsUpdateManyWithoutPostNestedInput
   }
 
-  export type CommentsUncheckedUpdateInput = {
+  export type PostsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    teams?: TeamsCommentsUncheckedUpdateManyWithoutCommentNestedInput
+    title?: StringFieldUpdateOperationsInput | string
+    text?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    teams?: TeamsPostsUncheckedUpdateManyWithoutPostNestedInput
   }
 
-  export type CommentsCreateManyInput = {
+  export type PostsCreateManyInput = {
     id?: string
     url: string
+    title: string
+    text?: string | null
+    subreddit: string
+    author: string
+    createdAt: Date | string
   }
 
-  export type CommentsUpdateManyMutationInput = {
+  export type PostsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    text?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CommentsUncheckedUpdateManyInput = {
+  export type PostsUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    text?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotesCreateInput = {
@@ -11154,7 +11284,7 @@ export namespace Prisma {
     text: string
     createdAt?: Date | string
     user: UsersCreateNestedOneWithoutNotesInput
-    teamsComments?: TeamsCommentsCreateNestedOneWithoutNoteInput
+    teamsPosts?: TeamsPostsCreateNestedOneWithoutNoteInput
   }
 
   export type NotesUncheckedCreateInput = {
@@ -11162,7 +11292,7 @@ export namespace Prisma {
     text: string
     userId: string
     createdAt?: Date | string
-    teamsComments?: TeamsCommentsUncheckedCreateNestedOneWithoutNoteInput
+    teamsPosts?: TeamsPostsUncheckedCreateNestedOneWithoutNoteInput
   }
 
   export type NotesUpdateInput = {
@@ -11170,7 +11300,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutNotesNestedInput
-    teamsComments?: TeamsCommentsUpdateOneWithoutNoteNestedInput
+    teamsPosts?: TeamsPostsUpdateOneWithoutNoteNestedInput
   }
 
   export type NotesUncheckedUpdateInput = {
@@ -11178,7 +11308,7 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    teamsComments?: TeamsCommentsUncheckedUpdateOneWithoutNoteNestedInput
+    teamsPosts?: TeamsPostsUncheckedUpdateOneWithoutNoteNestedInput
   }
 
   export type NotesCreateManyInput = {
@@ -11201,57 +11331,57 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TeamsCommentsCreateInput = {
+  export type TeamsPostsCreateInput = {
     id?: string
-    statut?: $Enums.StatusComments
-    team: TeamsCreateNestedOneWithoutCommentsInput
-    comment: CommentsCreateNestedOneWithoutTeamsInput
-    note?: NotesCreateNestedOneWithoutTeamsCommentsInput
+    statut?: $Enums.StatusPosts
+    team: TeamsCreateNestedOneWithoutPostsInput
+    post: PostsCreateNestedOneWithoutTeamsInput
+    note?: NotesCreateNestedOneWithoutTeamsPostsInput
   }
 
-  export type TeamsCommentsUncheckedCreateInput = {
-    id?: string
-    teamId: string
-    commentId: string
-    noteId?: string | null
-    statut?: $Enums.StatusComments
-  }
-
-  export type TeamsCommentsUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
-    team?: TeamsUpdateOneRequiredWithoutCommentsNestedInput
-    comment?: CommentsUpdateOneRequiredWithoutTeamsNestedInput
-    note?: NotesUpdateOneWithoutTeamsCommentsNestedInput
-  }
-
-  export type TeamsCommentsUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    teamId?: StringFieldUpdateOperationsInput | string
-    commentId?: StringFieldUpdateOperationsInput | string
-    noteId?: NullableStringFieldUpdateOperationsInput | string | null
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
-  }
-
-  export type TeamsCommentsCreateManyInput = {
+  export type TeamsPostsUncheckedCreateInput = {
     id?: string
     teamId: string
-    commentId: string
+    postId: string
     noteId?: string | null
-    statut?: $Enums.StatusComments
+    statut?: $Enums.StatusPosts
   }
 
-  export type TeamsCommentsUpdateManyMutationInput = {
+  export type TeamsPostsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
+    team?: TeamsUpdateOneRequiredWithoutPostsNestedInput
+    post?: PostsUpdateOneRequiredWithoutTeamsNestedInput
+    note?: NotesUpdateOneWithoutTeamsPostsNestedInput
   }
 
-  export type TeamsCommentsUncheckedUpdateManyInput = {
+  export type TeamsPostsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     teamId?: StringFieldUpdateOperationsInput | string
-    commentId?: StringFieldUpdateOperationsInput | string
+    postId?: StringFieldUpdateOperationsInput | string
     noteId?: NullableStringFieldUpdateOperationsInput | string | null
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
+  }
+
+  export type TeamsPostsCreateManyInput = {
+    id?: string
+    teamId: string
+    postId: string
+    noteId?: string | null
+    statut?: $Enums.StatusPosts
+  }
+
+  export type TeamsPostsUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
+  }
+
+  export type TeamsPostsUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    teamId?: StringFieldUpdateOperationsInput | string
+    postId?: StringFieldUpdateOperationsInput | string
+    noteId?: NullableStringFieldUpdateOperationsInput | string | null
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -11362,17 +11492,17 @@ export namespace Prisma {
     none?: TeamsKeywordsWhereInput
   }
 
-  export type TeamsCommentsListRelationFilter = {
-    every?: TeamsCommentsWhereInput
-    some?: TeamsCommentsWhereInput
-    none?: TeamsCommentsWhereInput
+  export type TeamsPostsListRelationFilter = {
+    every?: TeamsPostsWhereInput
+    some?: TeamsPostsWhereInput
+    none?: TeamsPostsWhereInput
   }
 
   export type TeamsKeywordsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type TeamsCommentsOrderByRelationAggregateInput = {
+  export type TeamsPostsOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -11494,24 +11624,77 @@ export namespace Prisma {
     _max?: NestedEnumStatusKeywordsFilter<$PrismaModel>
   }
 
-  export type CommentsCountOrderByAggregateInput = {
-    id?: SortOrder
-    url?: SortOrder
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type CommentsMaxOrderByAggregateInput = {
-    id?: SortOrder
-    url?: SortOrder
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
-  export type CommentsMinOrderByAggregateInput = {
+  export type PostsCountOrderByAggregateInput = {
     id?: SortOrder
     url?: SortOrder
+    title?: SortOrder
+    text?: SortOrder
+    subreddit?: SortOrder
+    author?: SortOrder
+    createdAt?: SortOrder
   }
 
-  export type TeamsCommentsNullableScalarRelationFilter = {
-    is?: TeamsCommentsWhereInput | null
-    isNot?: TeamsCommentsWhereInput | null
+  export type PostsMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrder
+    text?: SortOrder
+    subreddit?: SortOrder
+    author?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PostsMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    title?: SortOrder
+    text?: SortOrder
+    subreddit?: SortOrder
+    author?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type TeamsPostsNullableScalarRelationFilter = {
+    is?: TeamsPostsWhereInput | null
+    isNot?: TeamsPostsWhereInput | null
   }
 
   export type NotesCountOrderByAggregateInput = {
@@ -11535,31 +11718,16 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  export type EnumStatusPostsFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPosts | EnumStatusPostsFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPostsFilter<$PrismaModel> | $Enums.StatusPosts
   }
 
-  export type EnumStatusCommentsFilter<$PrismaModel = never> = {
-    equals?: $Enums.StatusComments | EnumStatusCommentsFieldRefInput<$PrismaModel>
-    in?: $Enums.StatusComments[] | ListEnumStatusCommentsFieldRefInput<$PrismaModel>
-    notIn?: $Enums.StatusComments[] | ListEnumStatusCommentsFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusCommentsFilter<$PrismaModel> | $Enums.StatusComments
-  }
-
-  export type CommentsScalarRelationFilter = {
-    is?: CommentsWhereInput
-    isNot?: CommentsWhereInput
+  export type PostsScalarRelationFilter = {
+    is?: PostsWhereInput
+    isNot?: PostsWhereInput
   }
 
   export type NotesNullableScalarRelationFilter = {
@@ -11567,66 +11735,43 @@ export namespace Prisma {
     isNot?: NotesWhereInput | null
   }
 
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type TeamsCommentsTeamIdCommentIdCompoundUniqueInput = {
+  export type TeamsPostsTeamIdPostIdCompoundUniqueInput = {
     teamId: string
-    commentId: string
+    postId: string
   }
 
-  export type TeamsCommentsCountOrderByAggregateInput = {
+  export type TeamsPostsCountOrderByAggregateInput = {
     id?: SortOrder
     teamId?: SortOrder
-    commentId?: SortOrder
+    postId?: SortOrder
     noteId?: SortOrder
     statut?: SortOrder
   }
 
-  export type TeamsCommentsMaxOrderByAggregateInput = {
+  export type TeamsPostsMaxOrderByAggregateInput = {
     id?: SortOrder
     teamId?: SortOrder
-    commentId?: SortOrder
+    postId?: SortOrder
     noteId?: SortOrder
     statut?: SortOrder
   }
 
-  export type TeamsCommentsMinOrderByAggregateInput = {
+  export type TeamsPostsMinOrderByAggregateInput = {
     id?: SortOrder
     teamId?: SortOrder
-    commentId?: SortOrder
+    postId?: SortOrder
     noteId?: SortOrder
     statut?: SortOrder
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type EnumStatusCommentsWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.StatusComments | EnumStatusCommentsFieldRefInput<$PrismaModel>
-    in?: $Enums.StatusComments[] | ListEnumStatusCommentsFieldRefInput<$PrismaModel>
-    notIn?: $Enums.StatusComments[] | ListEnumStatusCommentsFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusCommentsWithAggregatesFilter<$PrismaModel> | $Enums.StatusComments
+  export type EnumStatusPostsWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPosts | EnumStatusPostsFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPostsWithAggregatesFilter<$PrismaModel> | $Enums.StatusPosts
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumStatusCommentsFilter<$PrismaModel>
-    _max?: NestedEnumStatusCommentsFilter<$PrismaModel>
+    _min?: NestedEnumStatusPostsFilter<$PrismaModel>
+    _max?: NestedEnumStatusPostsFilter<$PrismaModel>
   }
 
   export type UsersTeamsCreateNestedManyWithoutUserInput = {
@@ -11735,11 +11880,11 @@ export namespace Prisma {
     connect?: TeamsKeywordsWhereUniqueInput | TeamsKeywordsWhereUniqueInput[]
   }
 
-  export type TeamsCommentsCreateNestedManyWithoutTeamInput = {
-    create?: XOR<TeamsCommentsCreateWithoutTeamInput, TeamsCommentsUncheckedCreateWithoutTeamInput> | TeamsCommentsCreateWithoutTeamInput[] | TeamsCommentsUncheckedCreateWithoutTeamInput[]
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutTeamInput | TeamsCommentsCreateOrConnectWithoutTeamInput[]
-    createMany?: TeamsCommentsCreateManyTeamInputEnvelope
-    connect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
+  export type TeamsPostsCreateNestedManyWithoutTeamInput = {
+    create?: XOR<TeamsPostsCreateWithoutTeamInput, TeamsPostsUncheckedCreateWithoutTeamInput> | TeamsPostsCreateWithoutTeamInput[] | TeamsPostsUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutTeamInput | TeamsPostsCreateOrConnectWithoutTeamInput[]
+    createMany?: TeamsPostsCreateManyTeamInputEnvelope
+    connect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
   }
 
   export type UsersTeamsUncheckedCreateNestedManyWithoutTeamInput = {
@@ -11756,11 +11901,11 @@ export namespace Prisma {
     connect?: TeamsKeywordsWhereUniqueInput | TeamsKeywordsWhereUniqueInput[]
   }
 
-  export type TeamsCommentsUncheckedCreateNestedManyWithoutTeamInput = {
-    create?: XOR<TeamsCommentsCreateWithoutTeamInput, TeamsCommentsUncheckedCreateWithoutTeamInput> | TeamsCommentsCreateWithoutTeamInput[] | TeamsCommentsUncheckedCreateWithoutTeamInput[]
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutTeamInput | TeamsCommentsCreateOrConnectWithoutTeamInput[]
-    createMany?: TeamsCommentsCreateManyTeamInputEnvelope
-    connect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
+  export type TeamsPostsUncheckedCreateNestedManyWithoutTeamInput = {
+    create?: XOR<TeamsPostsCreateWithoutTeamInput, TeamsPostsUncheckedCreateWithoutTeamInput> | TeamsPostsCreateWithoutTeamInput[] | TeamsPostsUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutTeamInput | TeamsPostsCreateOrConnectWithoutTeamInput[]
+    createMany?: TeamsPostsCreateManyTeamInputEnvelope
+    connect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
   }
 
   export type UsersTeamsUpdateManyWithoutTeamNestedInput = {
@@ -11791,18 +11936,18 @@ export namespace Prisma {
     deleteMany?: TeamsKeywordsScalarWhereInput | TeamsKeywordsScalarWhereInput[]
   }
 
-  export type TeamsCommentsUpdateManyWithoutTeamNestedInput = {
-    create?: XOR<TeamsCommentsCreateWithoutTeamInput, TeamsCommentsUncheckedCreateWithoutTeamInput> | TeamsCommentsCreateWithoutTeamInput[] | TeamsCommentsUncheckedCreateWithoutTeamInput[]
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutTeamInput | TeamsCommentsCreateOrConnectWithoutTeamInput[]
-    upsert?: TeamsCommentsUpsertWithWhereUniqueWithoutTeamInput | TeamsCommentsUpsertWithWhereUniqueWithoutTeamInput[]
-    createMany?: TeamsCommentsCreateManyTeamInputEnvelope
-    set?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    disconnect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    delete?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    connect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    update?: TeamsCommentsUpdateWithWhereUniqueWithoutTeamInput | TeamsCommentsUpdateWithWhereUniqueWithoutTeamInput[]
-    updateMany?: TeamsCommentsUpdateManyWithWhereWithoutTeamInput | TeamsCommentsUpdateManyWithWhereWithoutTeamInput[]
-    deleteMany?: TeamsCommentsScalarWhereInput | TeamsCommentsScalarWhereInput[]
+  export type TeamsPostsUpdateManyWithoutTeamNestedInput = {
+    create?: XOR<TeamsPostsCreateWithoutTeamInput, TeamsPostsUncheckedCreateWithoutTeamInput> | TeamsPostsCreateWithoutTeamInput[] | TeamsPostsUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutTeamInput | TeamsPostsCreateOrConnectWithoutTeamInput[]
+    upsert?: TeamsPostsUpsertWithWhereUniqueWithoutTeamInput | TeamsPostsUpsertWithWhereUniqueWithoutTeamInput[]
+    createMany?: TeamsPostsCreateManyTeamInputEnvelope
+    set?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    disconnect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    delete?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    connect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    update?: TeamsPostsUpdateWithWhereUniqueWithoutTeamInput | TeamsPostsUpdateWithWhereUniqueWithoutTeamInput[]
+    updateMany?: TeamsPostsUpdateManyWithWhereWithoutTeamInput | TeamsPostsUpdateManyWithWhereWithoutTeamInput[]
+    deleteMany?: TeamsPostsScalarWhereInput | TeamsPostsScalarWhereInput[]
   }
 
   export type UsersTeamsUncheckedUpdateManyWithoutTeamNestedInput = {
@@ -11833,18 +11978,18 @@ export namespace Prisma {
     deleteMany?: TeamsKeywordsScalarWhereInput | TeamsKeywordsScalarWhereInput[]
   }
 
-  export type TeamsCommentsUncheckedUpdateManyWithoutTeamNestedInput = {
-    create?: XOR<TeamsCommentsCreateWithoutTeamInput, TeamsCommentsUncheckedCreateWithoutTeamInput> | TeamsCommentsCreateWithoutTeamInput[] | TeamsCommentsUncheckedCreateWithoutTeamInput[]
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutTeamInput | TeamsCommentsCreateOrConnectWithoutTeamInput[]
-    upsert?: TeamsCommentsUpsertWithWhereUniqueWithoutTeamInput | TeamsCommentsUpsertWithWhereUniqueWithoutTeamInput[]
-    createMany?: TeamsCommentsCreateManyTeamInputEnvelope
-    set?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    disconnect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    delete?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    connect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    update?: TeamsCommentsUpdateWithWhereUniqueWithoutTeamInput | TeamsCommentsUpdateWithWhereUniqueWithoutTeamInput[]
-    updateMany?: TeamsCommentsUpdateManyWithWhereWithoutTeamInput | TeamsCommentsUpdateManyWithWhereWithoutTeamInput[]
-    deleteMany?: TeamsCommentsScalarWhereInput | TeamsCommentsScalarWhereInput[]
+  export type TeamsPostsUncheckedUpdateManyWithoutTeamNestedInput = {
+    create?: XOR<TeamsPostsCreateWithoutTeamInput, TeamsPostsUncheckedCreateWithoutTeamInput> | TeamsPostsCreateWithoutTeamInput[] | TeamsPostsUncheckedCreateWithoutTeamInput[]
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutTeamInput | TeamsPostsCreateOrConnectWithoutTeamInput[]
+    upsert?: TeamsPostsUpsertWithWhereUniqueWithoutTeamInput | TeamsPostsUpsertWithWhereUniqueWithoutTeamInput[]
+    createMany?: TeamsPostsCreateManyTeamInputEnvelope
+    set?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    disconnect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    delete?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    connect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    update?: TeamsPostsUpdateWithWhereUniqueWithoutTeamInput | TeamsPostsUpdateWithWhereUniqueWithoutTeamInput[]
+    updateMany?: TeamsPostsUpdateManyWithWhereWithoutTeamInput | TeamsPostsUpdateManyWithWhereWithoutTeamInput[]
+    deleteMany?: TeamsPostsScalarWhereInput | TeamsPostsScalarWhereInput[]
   }
 
   export type UsersCreateNestedOneWithoutTeamsInput = {
@@ -11949,46 +12094,50 @@ export namespace Prisma {
     update?: XOR<XOR<KeywordsUpdateToOneWithWhereWithoutTeamsInput, KeywordsUpdateWithoutTeamsInput>, KeywordsUncheckedUpdateWithoutTeamsInput>
   }
 
-  export type TeamsCommentsCreateNestedManyWithoutCommentInput = {
-    create?: XOR<TeamsCommentsCreateWithoutCommentInput, TeamsCommentsUncheckedCreateWithoutCommentInput> | TeamsCommentsCreateWithoutCommentInput[] | TeamsCommentsUncheckedCreateWithoutCommentInput[]
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutCommentInput | TeamsCommentsCreateOrConnectWithoutCommentInput[]
-    createMany?: TeamsCommentsCreateManyCommentInputEnvelope
-    connect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
+  export type TeamsPostsCreateNestedManyWithoutPostInput = {
+    create?: XOR<TeamsPostsCreateWithoutPostInput, TeamsPostsUncheckedCreateWithoutPostInput> | TeamsPostsCreateWithoutPostInput[] | TeamsPostsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutPostInput | TeamsPostsCreateOrConnectWithoutPostInput[]
+    createMany?: TeamsPostsCreateManyPostInputEnvelope
+    connect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
   }
 
-  export type TeamsCommentsUncheckedCreateNestedManyWithoutCommentInput = {
-    create?: XOR<TeamsCommentsCreateWithoutCommentInput, TeamsCommentsUncheckedCreateWithoutCommentInput> | TeamsCommentsCreateWithoutCommentInput[] | TeamsCommentsUncheckedCreateWithoutCommentInput[]
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutCommentInput | TeamsCommentsCreateOrConnectWithoutCommentInput[]
-    createMany?: TeamsCommentsCreateManyCommentInputEnvelope
-    connect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
+  export type TeamsPostsUncheckedCreateNestedManyWithoutPostInput = {
+    create?: XOR<TeamsPostsCreateWithoutPostInput, TeamsPostsUncheckedCreateWithoutPostInput> | TeamsPostsCreateWithoutPostInput[] | TeamsPostsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutPostInput | TeamsPostsCreateOrConnectWithoutPostInput[]
+    createMany?: TeamsPostsCreateManyPostInputEnvelope
+    connect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
   }
 
-  export type TeamsCommentsUpdateManyWithoutCommentNestedInput = {
-    create?: XOR<TeamsCommentsCreateWithoutCommentInput, TeamsCommentsUncheckedCreateWithoutCommentInput> | TeamsCommentsCreateWithoutCommentInput[] | TeamsCommentsUncheckedCreateWithoutCommentInput[]
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutCommentInput | TeamsCommentsCreateOrConnectWithoutCommentInput[]
-    upsert?: TeamsCommentsUpsertWithWhereUniqueWithoutCommentInput | TeamsCommentsUpsertWithWhereUniqueWithoutCommentInput[]
-    createMany?: TeamsCommentsCreateManyCommentInputEnvelope
-    set?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    disconnect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    delete?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    connect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    update?: TeamsCommentsUpdateWithWhereUniqueWithoutCommentInput | TeamsCommentsUpdateWithWhereUniqueWithoutCommentInput[]
-    updateMany?: TeamsCommentsUpdateManyWithWhereWithoutCommentInput | TeamsCommentsUpdateManyWithWhereWithoutCommentInput[]
-    deleteMany?: TeamsCommentsScalarWhereInput | TeamsCommentsScalarWhereInput[]
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
-  export type TeamsCommentsUncheckedUpdateManyWithoutCommentNestedInput = {
-    create?: XOR<TeamsCommentsCreateWithoutCommentInput, TeamsCommentsUncheckedCreateWithoutCommentInput> | TeamsCommentsCreateWithoutCommentInput[] | TeamsCommentsUncheckedCreateWithoutCommentInput[]
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutCommentInput | TeamsCommentsCreateOrConnectWithoutCommentInput[]
-    upsert?: TeamsCommentsUpsertWithWhereUniqueWithoutCommentInput | TeamsCommentsUpsertWithWhereUniqueWithoutCommentInput[]
-    createMany?: TeamsCommentsCreateManyCommentInputEnvelope
-    set?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    disconnect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    delete?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    connect?: TeamsCommentsWhereUniqueInput | TeamsCommentsWhereUniqueInput[]
-    update?: TeamsCommentsUpdateWithWhereUniqueWithoutCommentInput | TeamsCommentsUpdateWithWhereUniqueWithoutCommentInput[]
-    updateMany?: TeamsCommentsUpdateManyWithWhereWithoutCommentInput | TeamsCommentsUpdateManyWithWhereWithoutCommentInput[]
-    deleteMany?: TeamsCommentsScalarWhereInput | TeamsCommentsScalarWhereInput[]
+  export type TeamsPostsUpdateManyWithoutPostNestedInput = {
+    create?: XOR<TeamsPostsCreateWithoutPostInput, TeamsPostsUncheckedCreateWithoutPostInput> | TeamsPostsCreateWithoutPostInput[] | TeamsPostsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutPostInput | TeamsPostsCreateOrConnectWithoutPostInput[]
+    upsert?: TeamsPostsUpsertWithWhereUniqueWithoutPostInput | TeamsPostsUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: TeamsPostsCreateManyPostInputEnvelope
+    set?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    disconnect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    delete?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    connect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    update?: TeamsPostsUpdateWithWhereUniqueWithoutPostInput | TeamsPostsUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: TeamsPostsUpdateManyWithWhereWithoutPostInput | TeamsPostsUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: TeamsPostsScalarWhereInput | TeamsPostsScalarWhereInput[]
+  }
+
+  export type TeamsPostsUncheckedUpdateManyWithoutPostNestedInput = {
+    create?: XOR<TeamsPostsCreateWithoutPostInput, TeamsPostsUncheckedCreateWithoutPostInput> | TeamsPostsCreateWithoutPostInput[] | TeamsPostsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutPostInput | TeamsPostsCreateOrConnectWithoutPostInput[]
+    upsert?: TeamsPostsUpsertWithWhereUniqueWithoutPostInput | TeamsPostsUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: TeamsPostsCreateManyPostInputEnvelope
+    set?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    disconnect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    delete?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    connect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
+    update?: TeamsPostsUpdateWithWhereUniqueWithoutPostInput | TeamsPostsUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: TeamsPostsUpdateManyWithWhereWithoutPostInput | TeamsPostsUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: TeamsPostsScalarWhereInput | TeamsPostsScalarWhereInput[]
   }
 
   export type UsersCreateNestedOneWithoutNotesInput = {
@@ -11997,16 +12146,16 @@ export namespace Prisma {
     connect?: UsersWhereUniqueInput
   }
 
-  export type TeamsCommentsCreateNestedOneWithoutNoteInput = {
-    create?: XOR<TeamsCommentsCreateWithoutNoteInput, TeamsCommentsUncheckedCreateWithoutNoteInput>
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutNoteInput
-    connect?: TeamsCommentsWhereUniqueInput
+  export type TeamsPostsCreateNestedOneWithoutNoteInput = {
+    create?: XOR<TeamsPostsCreateWithoutNoteInput, TeamsPostsUncheckedCreateWithoutNoteInput>
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutNoteInput
+    connect?: TeamsPostsWhereUniqueInput
   }
 
-  export type TeamsCommentsUncheckedCreateNestedOneWithoutNoteInput = {
-    create?: XOR<TeamsCommentsCreateWithoutNoteInput, TeamsCommentsUncheckedCreateWithoutNoteInput>
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutNoteInput
-    connect?: TeamsCommentsWhereUniqueInput
+  export type TeamsPostsUncheckedCreateNestedOneWithoutNoteInput = {
+    create?: XOR<TeamsPostsCreateWithoutNoteInput, TeamsPostsUncheckedCreateWithoutNoteInput>
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutNoteInput
+    connect?: TeamsPostsWhereUniqueInput
   }
 
   export type UsersUpdateOneRequiredWithoutNotesNestedInput = {
@@ -12017,76 +12166,72 @@ export namespace Prisma {
     update?: XOR<XOR<UsersUpdateToOneWithWhereWithoutNotesInput, UsersUpdateWithoutNotesInput>, UsersUncheckedUpdateWithoutNotesInput>
   }
 
-  export type TeamsCommentsUpdateOneWithoutNoteNestedInput = {
-    create?: XOR<TeamsCommentsCreateWithoutNoteInput, TeamsCommentsUncheckedCreateWithoutNoteInput>
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutNoteInput
-    upsert?: TeamsCommentsUpsertWithoutNoteInput
-    disconnect?: TeamsCommentsWhereInput | boolean
-    delete?: TeamsCommentsWhereInput | boolean
-    connect?: TeamsCommentsWhereUniqueInput
-    update?: XOR<XOR<TeamsCommentsUpdateToOneWithWhereWithoutNoteInput, TeamsCommentsUpdateWithoutNoteInput>, TeamsCommentsUncheckedUpdateWithoutNoteInput>
+  export type TeamsPostsUpdateOneWithoutNoteNestedInput = {
+    create?: XOR<TeamsPostsCreateWithoutNoteInput, TeamsPostsUncheckedCreateWithoutNoteInput>
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutNoteInput
+    upsert?: TeamsPostsUpsertWithoutNoteInput
+    disconnect?: TeamsPostsWhereInput | boolean
+    delete?: TeamsPostsWhereInput | boolean
+    connect?: TeamsPostsWhereUniqueInput
+    update?: XOR<XOR<TeamsPostsUpdateToOneWithWhereWithoutNoteInput, TeamsPostsUpdateWithoutNoteInput>, TeamsPostsUncheckedUpdateWithoutNoteInput>
   }
 
-  export type TeamsCommentsUncheckedUpdateOneWithoutNoteNestedInput = {
-    create?: XOR<TeamsCommentsCreateWithoutNoteInput, TeamsCommentsUncheckedCreateWithoutNoteInput>
-    connectOrCreate?: TeamsCommentsCreateOrConnectWithoutNoteInput
-    upsert?: TeamsCommentsUpsertWithoutNoteInput
-    disconnect?: TeamsCommentsWhereInput | boolean
-    delete?: TeamsCommentsWhereInput | boolean
-    connect?: TeamsCommentsWhereUniqueInput
-    update?: XOR<XOR<TeamsCommentsUpdateToOneWithWhereWithoutNoteInput, TeamsCommentsUpdateWithoutNoteInput>, TeamsCommentsUncheckedUpdateWithoutNoteInput>
+  export type TeamsPostsUncheckedUpdateOneWithoutNoteNestedInput = {
+    create?: XOR<TeamsPostsCreateWithoutNoteInput, TeamsPostsUncheckedCreateWithoutNoteInput>
+    connectOrCreate?: TeamsPostsCreateOrConnectWithoutNoteInput
+    upsert?: TeamsPostsUpsertWithoutNoteInput
+    disconnect?: TeamsPostsWhereInput | boolean
+    delete?: TeamsPostsWhereInput | boolean
+    connect?: TeamsPostsWhereUniqueInput
+    update?: XOR<XOR<TeamsPostsUpdateToOneWithWhereWithoutNoteInput, TeamsPostsUpdateWithoutNoteInput>, TeamsPostsUncheckedUpdateWithoutNoteInput>
   }
 
-  export type TeamsCreateNestedOneWithoutCommentsInput = {
-    create?: XOR<TeamsCreateWithoutCommentsInput, TeamsUncheckedCreateWithoutCommentsInput>
-    connectOrCreate?: TeamsCreateOrConnectWithoutCommentsInput
+  export type TeamsCreateNestedOneWithoutPostsInput = {
+    create?: XOR<TeamsCreateWithoutPostsInput, TeamsUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: TeamsCreateOrConnectWithoutPostsInput
     connect?: TeamsWhereUniqueInput
   }
 
-  export type CommentsCreateNestedOneWithoutTeamsInput = {
-    create?: XOR<CommentsCreateWithoutTeamsInput, CommentsUncheckedCreateWithoutTeamsInput>
-    connectOrCreate?: CommentsCreateOrConnectWithoutTeamsInput
-    connect?: CommentsWhereUniqueInput
+  export type PostsCreateNestedOneWithoutTeamsInput = {
+    create?: XOR<PostsCreateWithoutTeamsInput, PostsUncheckedCreateWithoutTeamsInput>
+    connectOrCreate?: PostsCreateOrConnectWithoutTeamsInput
+    connect?: PostsWhereUniqueInput
   }
 
-  export type NotesCreateNestedOneWithoutTeamsCommentsInput = {
-    create?: XOR<NotesCreateWithoutTeamsCommentsInput, NotesUncheckedCreateWithoutTeamsCommentsInput>
-    connectOrCreate?: NotesCreateOrConnectWithoutTeamsCommentsInput
+  export type NotesCreateNestedOneWithoutTeamsPostsInput = {
+    create?: XOR<NotesCreateWithoutTeamsPostsInput, NotesUncheckedCreateWithoutTeamsPostsInput>
+    connectOrCreate?: NotesCreateOrConnectWithoutTeamsPostsInput
     connect?: NotesWhereUniqueInput
   }
 
-  export type EnumStatusCommentsFieldUpdateOperationsInput = {
-    set?: $Enums.StatusComments
+  export type EnumStatusPostsFieldUpdateOperationsInput = {
+    set?: $Enums.StatusPosts
   }
 
-  export type TeamsUpdateOneRequiredWithoutCommentsNestedInput = {
-    create?: XOR<TeamsCreateWithoutCommentsInput, TeamsUncheckedCreateWithoutCommentsInput>
-    connectOrCreate?: TeamsCreateOrConnectWithoutCommentsInput
-    upsert?: TeamsUpsertWithoutCommentsInput
+  export type TeamsUpdateOneRequiredWithoutPostsNestedInput = {
+    create?: XOR<TeamsCreateWithoutPostsInput, TeamsUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: TeamsCreateOrConnectWithoutPostsInput
+    upsert?: TeamsUpsertWithoutPostsInput
     connect?: TeamsWhereUniqueInput
-    update?: XOR<XOR<TeamsUpdateToOneWithWhereWithoutCommentsInput, TeamsUpdateWithoutCommentsInput>, TeamsUncheckedUpdateWithoutCommentsInput>
+    update?: XOR<XOR<TeamsUpdateToOneWithWhereWithoutPostsInput, TeamsUpdateWithoutPostsInput>, TeamsUncheckedUpdateWithoutPostsInput>
   }
 
-  export type CommentsUpdateOneRequiredWithoutTeamsNestedInput = {
-    create?: XOR<CommentsCreateWithoutTeamsInput, CommentsUncheckedCreateWithoutTeamsInput>
-    connectOrCreate?: CommentsCreateOrConnectWithoutTeamsInput
-    upsert?: CommentsUpsertWithoutTeamsInput
-    connect?: CommentsWhereUniqueInput
-    update?: XOR<XOR<CommentsUpdateToOneWithWhereWithoutTeamsInput, CommentsUpdateWithoutTeamsInput>, CommentsUncheckedUpdateWithoutTeamsInput>
+  export type PostsUpdateOneRequiredWithoutTeamsNestedInput = {
+    create?: XOR<PostsCreateWithoutTeamsInput, PostsUncheckedCreateWithoutTeamsInput>
+    connectOrCreate?: PostsCreateOrConnectWithoutTeamsInput
+    upsert?: PostsUpsertWithoutTeamsInput
+    connect?: PostsWhereUniqueInput
+    update?: XOR<XOR<PostsUpdateToOneWithWhereWithoutTeamsInput, PostsUpdateWithoutTeamsInput>, PostsUncheckedUpdateWithoutTeamsInput>
   }
 
-  export type NotesUpdateOneWithoutTeamsCommentsNestedInput = {
-    create?: XOR<NotesCreateWithoutTeamsCommentsInput, NotesUncheckedCreateWithoutTeamsCommentsInput>
-    connectOrCreate?: NotesCreateOrConnectWithoutTeamsCommentsInput
-    upsert?: NotesUpsertWithoutTeamsCommentsInput
+  export type NotesUpdateOneWithoutTeamsPostsNestedInput = {
+    create?: XOR<NotesCreateWithoutTeamsPostsInput, NotesUncheckedCreateWithoutTeamsPostsInput>
+    connectOrCreate?: NotesCreateOrConnectWithoutTeamsPostsInput
+    upsert?: NotesUpsertWithoutTeamsPostsInput
     disconnect?: NotesWhereInput | boolean
     delete?: NotesWhereInput | boolean
     connect?: NotesWhereUniqueInput
-    update?: XOR<XOR<NotesUpdateToOneWithWhereWithoutTeamsCommentsInput, NotesUpdateWithoutTeamsCommentsInput>, NotesUncheckedUpdateWithoutTeamsCommentsInput>
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
+    update?: XOR<XOR<NotesUpdateToOneWithWhereWithoutTeamsPostsInput, NotesUpdateWithoutTeamsPostsInput>, NotesUncheckedUpdateWithoutTeamsPostsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -12187,13 +12332,6 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedEnumStatusCommentsFilter<$PrismaModel = never> = {
-    equals?: $Enums.StatusComments | EnumStatusCommentsFieldRefInput<$PrismaModel>
-    in?: $Enums.StatusComments[] | ListEnumStatusCommentsFieldRefInput<$PrismaModel>
-    notIn?: $Enums.StatusComments[] | ListEnumStatusCommentsFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusCommentsFilter<$PrismaModel> | $Enums.StatusComments
-  }
-
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -12222,14 +12360,21 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedEnumStatusCommentsWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.StatusComments | EnumStatusCommentsFieldRefInput<$PrismaModel>
-    in?: $Enums.StatusComments[] | ListEnumStatusCommentsFieldRefInput<$PrismaModel>
-    notIn?: $Enums.StatusComments[] | ListEnumStatusCommentsFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusCommentsWithAggregatesFilter<$PrismaModel> | $Enums.StatusComments
+  export type NestedEnumStatusPostsFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPosts | EnumStatusPostsFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPostsFilter<$PrismaModel> | $Enums.StatusPosts
+  }
+
+  export type NestedEnumStatusPostsWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPosts | EnumStatusPostsFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPostsWithAggregatesFilter<$PrismaModel> | $Enums.StatusPosts
     _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumStatusCommentsFilter<$PrismaModel>
-    _max?: NestedEnumStatusCommentsFilter<$PrismaModel>
+    _min?: NestedEnumStatusPostsFilter<$PrismaModel>
+    _max?: NestedEnumStatusPostsFilter<$PrismaModel>
   }
 
   export type UsersTeamsCreateWithoutUserInput = {
@@ -12258,14 +12403,14 @@ export namespace Prisma {
     id?: string
     text: string
     createdAt?: Date | string
-    teamsComments?: TeamsCommentsCreateNestedOneWithoutNoteInput
+    teamsPosts?: TeamsPostsCreateNestedOneWithoutNoteInput
   }
 
   export type NotesUncheckedCreateWithoutUserInput = {
     id?: string
     text: string
     createdAt?: Date | string
-    teamsComments?: TeamsCommentsUncheckedCreateNestedOneWithoutNoteInput
+    teamsPosts?: TeamsPostsUncheckedCreateNestedOneWithoutNoteInput
   }
 
   export type NotesCreateOrConnectWithoutUserInput = {
@@ -12376,27 +12521,27 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type TeamsCommentsCreateWithoutTeamInput = {
+  export type TeamsPostsCreateWithoutTeamInput = {
     id?: string
-    statut?: $Enums.StatusComments
-    comment: CommentsCreateNestedOneWithoutTeamsInput
-    note?: NotesCreateNestedOneWithoutTeamsCommentsInput
+    statut?: $Enums.StatusPosts
+    post: PostsCreateNestedOneWithoutTeamsInput
+    note?: NotesCreateNestedOneWithoutTeamsPostsInput
   }
 
-  export type TeamsCommentsUncheckedCreateWithoutTeamInput = {
+  export type TeamsPostsUncheckedCreateWithoutTeamInput = {
     id?: string
-    commentId: string
+    postId: string
     noteId?: string | null
-    statut?: $Enums.StatusComments
+    statut?: $Enums.StatusPosts
   }
 
-  export type TeamsCommentsCreateOrConnectWithoutTeamInput = {
-    where: TeamsCommentsWhereUniqueInput
-    create: XOR<TeamsCommentsCreateWithoutTeamInput, TeamsCommentsUncheckedCreateWithoutTeamInput>
+  export type TeamsPostsCreateOrConnectWithoutTeamInput = {
+    where: TeamsPostsWhereUniqueInput
+    create: XOR<TeamsPostsCreateWithoutTeamInput, TeamsPostsUncheckedCreateWithoutTeamInput>
   }
 
-  export type TeamsCommentsCreateManyTeamInputEnvelope = {
-    data: TeamsCommentsCreateManyTeamInput | TeamsCommentsCreateManyTeamInput[]
+  export type TeamsPostsCreateManyTeamInputEnvelope = {
+    data: TeamsPostsCreateManyTeamInput | TeamsPostsCreateManyTeamInput[]
     skipDuplicates?: boolean
   }
 
@@ -12443,31 +12588,31 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"TeamsKeywords"> | Date | string
   }
 
-  export type TeamsCommentsUpsertWithWhereUniqueWithoutTeamInput = {
-    where: TeamsCommentsWhereUniqueInput
-    update: XOR<TeamsCommentsUpdateWithoutTeamInput, TeamsCommentsUncheckedUpdateWithoutTeamInput>
-    create: XOR<TeamsCommentsCreateWithoutTeamInput, TeamsCommentsUncheckedCreateWithoutTeamInput>
+  export type TeamsPostsUpsertWithWhereUniqueWithoutTeamInput = {
+    where: TeamsPostsWhereUniqueInput
+    update: XOR<TeamsPostsUpdateWithoutTeamInput, TeamsPostsUncheckedUpdateWithoutTeamInput>
+    create: XOR<TeamsPostsCreateWithoutTeamInput, TeamsPostsUncheckedCreateWithoutTeamInput>
   }
 
-  export type TeamsCommentsUpdateWithWhereUniqueWithoutTeamInput = {
-    where: TeamsCommentsWhereUniqueInput
-    data: XOR<TeamsCommentsUpdateWithoutTeamInput, TeamsCommentsUncheckedUpdateWithoutTeamInput>
+  export type TeamsPostsUpdateWithWhereUniqueWithoutTeamInput = {
+    where: TeamsPostsWhereUniqueInput
+    data: XOR<TeamsPostsUpdateWithoutTeamInput, TeamsPostsUncheckedUpdateWithoutTeamInput>
   }
 
-  export type TeamsCommentsUpdateManyWithWhereWithoutTeamInput = {
-    where: TeamsCommentsScalarWhereInput
-    data: XOR<TeamsCommentsUpdateManyMutationInput, TeamsCommentsUncheckedUpdateManyWithoutTeamInput>
+  export type TeamsPostsUpdateManyWithWhereWithoutTeamInput = {
+    where: TeamsPostsScalarWhereInput
+    data: XOR<TeamsPostsUpdateManyMutationInput, TeamsPostsUncheckedUpdateManyWithoutTeamInput>
   }
 
-  export type TeamsCommentsScalarWhereInput = {
-    AND?: TeamsCommentsScalarWhereInput | TeamsCommentsScalarWhereInput[]
-    OR?: TeamsCommentsScalarWhereInput[]
-    NOT?: TeamsCommentsScalarWhereInput | TeamsCommentsScalarWhereInput[]
-    id?: StringFilter<"TeamsComments"> | string
-    teamId?: StringFilter<"TeamsComments"> | string
-    commentId?: StringFilter<"TeamsComments"> | string
-    noteId?: StringNullableFilter<"TeamsComments"> | string | null
-    statut?: EnumStatusCommentsFilter<"TeamsComments"> | $Enums.StatusComments
+  export type TeamsPostsScalarWhereInput = {
+    AND?: TeamsPostsScalarWhereInput | TeamsPostsScalarWhereInput[]
+    OR?: TeamsPostsScalarWhereInput[]
+    NOT?: TeamsPostsScalarWhereInput | TeamsPostsScalarWhereInput[]
+    id?: StringFilter<"TeamsPosts"> | string
+    teamId?: StringFilter<"TeamsPosts"> | string
+    postId?: StringFilter<"TeamsPosts"> | string
+    noteId?: StringNullableFilter<"TeamsPosts"> | string | null
+    statut?: EnumStatusPostsFilter<"TeamsPosts"> | $Enums.StatusPosts
   }
 
   export type UsersCreateWithoutTeamsInput = {
@@ -12498,7 +12643,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     keywords?: TeamsKeywordsCreateNestedManyWithoutTeamInput
-    comments?: TeamsCommentsCreateNestedManyWithoutTeamInput
+    posts?: TeamsPostsCreateNestedManyWithoutTeamInput
   }
 
   export type TeamsUncheckedCreateWithoutUsersInput = {
@@ -12506,7 +12651,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     keywords?: TeamsKeywordsUncheckedCreateNestedManyWithoutTeamInput
-    comments?: TeamsCommentsUncheckedCreateNestedManyWithoutTeamInput
+    posts?: TeamsPostsUncheckedCreateNestedManyWithoutTeamInput
   }
 
   export type TeamsCreateOrConnectWithoutUsersInput = {
@@ -12559,7 +12704,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     keywords?: TeamsKeywordsUpdateManyWithoutTeamNestedInput
-    comments?: TeamsCommentsUpdateManyWithoutTeamNestedInput
+    posts?: TeamsPostsUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamsUncheckedUpdateWithoutUsersInput = {
@@ -12567,7 +12712,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     keywords?: TeamsKeywordsUncheckedUpdateManyWithoutTeamNestedInput
-    comments?: TeamsCommentsUncheckedUpdateManyWithoutTeamNestedInput
+    posts?: TeamsPostsUncheckedUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamsKeywordsCreateWithoutKeywordInput = {
@@ -12615,7 +12760,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     users?: UsersTeamsCreateNestedManyWithoutTeamInput
-    comments?: TeamsCommentsCreateNestedManyWithoutTeamInput
+    posts?: TeamsPostsCreateNestedManyWithoutTeamInput
   }
 
   export type TeamsUncheckedCreateWithoutKeywordsInput = {
@@ -12623,7 +12768,7 @@ export namespace Prisma {
     name: string
     createdAt?: Date | string
     users?: UsersTeamsUncheckedCreateNestedManyWithoutTeamInput
-    comments?: TeamsCommentsUncheckedCreateNestedManyWithoutTeamInput
+    posts?: TeamsPostsUncheckedCreateNestedManyWithoutTeamInput
   }
 
   export type TeamsCreateOrConnectWithoutKeywordsInput = {
@@ -12664,7 +12809,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UsersTeamsUpdateManyWithoutTeamNestedInput
-    comments?: TeamsCommentsUpdateManyWithoutTeamNestedInput
+    posts?: TeamsPostsUpdateManyWithoutTeamNestedInput
   }
 
   export type TeamsUncheckedUpdateWithoutKeywordsInput = {
@@ -12672,7 +12817,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UsersTeamsUncheckedUpdateManyWithoutTeamNestedInput
-    comments?: TeamsCommentsUncheckedUpdateManyWithoutTeamNestedInput
+    posts?: TeamsPostsUncheckedUpdateManyWithoutTeamNestedInput
   }
 
   export type KeywordsUpsertWithoutTeamsInput = {
@@ -12698,44 +12843,44 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TeamsCommentsCreateWithoutCommentInput = {
+  export type TeamsPostsCreateWithoutPostInput = {
     id?: string
-    statut?: $Enums.StatusComments
-    team: TeamsCreateNestedOneWithoutCommentsInput
-    note?: NotesCreateNestedOneWithoutTeamsCommentsInput
+    statut?: $Enums.StatusPosts
+    team: TeamsCreateNestedOneWithoutPostsInput
+    note?: NotesCreateNestedOneWithoutTeamsPostsInput
   }
 
-  export type TeamsCommentsUncheckedCreateWithoutCommentInput = {
+  export type TeamsPostsUncheckedCreateWithoutPostInput = {
     id?: string
     teamId: string
     noteId?: string | null
-    statut?: $Enums.StatusComments
+    statut?: $Enums.StatusPosts
   }
 
-  export type TeamsCommentsCreateOrConnectWithoutCommentInput = {
-    where: TeamsCommentsWhereUniqueInput
-    create: XOR<TeamsCommentsCreateWithoutCommentInput, TeamsCommentsUncheckedCreateWithoutCommentInput>
+  export type TeamsPostsCreateOrConnectWithoutPostInput = {
+    where: TeamsPostsWhereUniqueInput
+    create: XOR<TeamsPostsCreateWithoutPostInput, TeamsPostsUncheckedCreateWithoutPostInput>
   }
 
-  export type TeamsCommentsCreateManyCommentInputEnvelope = {
-    data: TeamsCommentsCreateManyCommentInput | TeamsCommentsCreateManyCommentInput[]
+  export type TeamsPostsCreateManyPostInputEnvelope = {
+    data: TeamsPostsCreateManyPostInput | TeamsPostsCreateManyPostInput[]
     skipDuplicates?: boolean
   }
 
-  export type TeamsCommentsUpsertWithWhereUniqueWithoutCommentInput = {
-    where: TeamsCommentsWhereUniqueInput
-    update: XOR<TeamsCommentsUpdateWithoutCommentInput, TeamsCommentsUncheckedUpdateWithoutCommentInput>
-    create: XOR<TeamsCommentsCreateWithoutCommentInput, TeamsCommentsUncheckedCreateWithoutCommentInput>
+  export type TeamsPostsUpsertWithWhereUniqueWithoutPostInput = {
+    where: TeamsPostsWhereUniqueInput
+    update: XOR<TeamsPostsUpdateWithoutPostInput, TeamsPostsUncheckedUpdateWithoutPostInput>
+    create: XOR<TeamsPostsCreateWithoutPostInput, TeamsPostsUncheckedCreateWithoutPostInput>
   }
 
-  export type TeamsCommentsUpdateWithWhereUniqueWithoutCommentInput = {
-    where: TeamsCommentsWhereUniqueInput
-    data: XOR<TeamsCommentsUpdateWithoutCommentInput, TeamsCommentsUncheckedUpdateWithoutCommentInput>
+  export type TeamsPostsUpdateWithWhereUniqueWithoutPostInput = {
+    where: TeamsPostsWhereUniqueInput
+    data: XOR<TeamsPostsUpdateWithoutPostInput, TeamsPostsUncheckedUpdateWithoutPostInput>
   }
 
-  export type TeamsCommentsUpdateManyWithWhereWithoutCommentInput = {
-    where: TeamsCommentsScalarWhereInput
-    data: XOR<TeamsCommentsUpdateManyMutationInput, TeamsCommentsUncheckedUpdateManyWithoutCommentInput>
+  export type TeamsPostsUpdateManyWithWhereWithoutPostInput = {
+    where: TeamsPostsScalarWhereInput
+    data: XOR<TeamsPostsUpdateManyMutationInput, TeamsPostsUncheckedUpdateManyWithoutPostInput>
   }
 
   export type UsersCreateWithoutNotesInput = {
@@ -12761,23 +12906,23 @@ export namespace Prisma {
     create: XOR<UsersCreateWithoutNotesInput, UsersUncheckedCreateWithoutNotesInput>
   }
 
-  export type TeamsCommentsCreateWithoutNoteInput = {
+  export type TeamsPostsCreateWithoutNoteInput = {
     id?: string
-    statut?: $Enums.StatusComments
-    team: TeamsCreateNestedOneWithoutCommentsInput
-    comment: CommentsCreateNestedOneWithoutTeamsInput
+    statut?: $Enums.StatusPosts
+    team: TeamsCreateNestedOneWithoutPostsInput
+    post: PostsCreateNestedOneWithoutTeamsInput
   }
 
-  export type TeamsCommentsUncheckedCreateWithoutNoteInput = {
+  export type TeamsPostsUncheckedCreateWithoutNoteInput = {
     id?: string
     teamId: string
-    commentId: string
-    statut?: $Enums.StatusComments
+    postId: string
+    statut?: $Enums.StatusPosts
   }
 
-  export type TeamsCommentsCreateOrConnectWithoutNoteInput = {
-    where: TeamsCommentsWhereUniqueInput
-    create: XOR<TeamsCommentsCreateWithoutNoteInput, TeamsCommentsUncheckedCreateWithoutNoteInput>
+  export type TeamsPostsCreateOrConnectWithoutNoteInput = {
+    where: TeamsPostsWhereUniqueInput
+    create: XOR<TeamsPostsCreateWithoutNoteInput, TeamsPostsUncheckedCreateWithoutNoteInput>
   }
 
   export type UsersUpsertWithoutNotesInput = {
@@ -12809,32 +12954,32 @@ export namespace Prisma {
     teams?: UsersTeamsUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type TeamsCommentsUpsertWithoutNoteInput = {
-    update: XOR<TeamsCommentsUpdateWithoutNoteInput, TeamsCommentsUncheckedUpdateWithoutNoteInput>
-    create: XOR<TeamsCommentsCreateWithoutNoteInput, TeamsCommentsUncheckedCreateWithoutNoteInput>
-    where?: TeamsCommentsWhereInput
+  export type TeamsPostsUpsertWithoutNoteInput = {
+    update: XOR<TeamsPostsUpdateWithoutNoteInput, TeamsPostsUncheckedUpdateWithoutNoteInput>
+    create: XOR<TeamsPostsCreateWithoutNoteInput, TeamsPostsUncheckedCreateWithoutNoteInput>
+    where?: TeamsPostsWhereInput
   }
 
-  export type TeamsCommentsUpdateToOneWithWhereWithoutNoteInput = {
-    where?: TeamsCommentsWhereInput
-    data: XOR<TeamsCommentsUpdateWithoutNoteInput, TeamsCommentsUncheckedUpdateWithoutNoteInput>
+  export type TeamsPostsUpdateToOneWithWhereWithoutNoteInput = {
+    where?: TeamsPostsWhereInput
+    data: XOR<TeamsPostsUpdateWithoutNoteInput, TeamsPostsUncheckedUpdateWithoutNoteInput>
   }
 
-  export type TeamsCommentsUpdateWithoutNoteInput = {
+  export type TeamsPostsUpdateWithoutNoteInput = {
     id?: StringFieldUpdateOperationsInput | string
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
-    team?: TeamsUpdateOneRequiredWithoutCommentsNestedInput
-    comment?: CommentsUpdateOneRequiredWithoutTeamsNestedInput
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
+    team?: TeamsUpdateOneRequiredWithoutPostsNestedInput
+    post?: PostsUpdateOneRequiredWithoutTeamsNestedInput
   }
 
-  export type TeamsCommentsUncheckedUpdateWithoutNoteInput = {
+  export type TeamsPostsUncheckedUpdateWithoutNoteInput = {
     id?: StringFieldUpdateOperationsInput | string
     teamId?: StringFieldUpdateOperationsInput | string
-    commentId?: StringFieldUpdateOperationsInput | string
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
+    postId?: StringFieldUpdateOperationsInput | string
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
   }
 
-  export type TeamsCreateWithoutCommentsInput = {
+  export type TeamsCreateWithoutPostsInput = {
     id?: string
     name: string
     createdAt?: Date | string
@@ -12842,7 +12987,7 @@ export namespace Prisma {
     keywords?: TeamsKeywordsCreateNestedManyWithoutTeamInput
   }
 
-  export type TeamsUncheckedCreateWithoutCommentsInput = {
+  export type TeamsUncheckedCreateWithoutPostsInput = {
     id?: string
     name: string
     createdAt?: Date | string
@@ -12850,57 +12995,67 @@ export namespace Prisma {
     keywords?: TeamsKeywordsUncheckedCreateNestedManyWithoutTeamInput
   }
 
-  export type TeamsCreateOrConnectWithoutCommentsInput = {
+  export type TeamsCreateOrConnectWithoutPostsInput = {
     where: TeamsWhereUniqueInput
-    create: XOR<TeamsCreateWithoutCommentsInput, TeamsUncheckedCreateWithoutCommentsInput>
+    create: XOR<TeamsCreateWithoutPostsInput, TeamsUncheckedCreateWithoutPostsInput>
   }
 
-  export type CommentsCreateWithoutTeamsInput = {
+  export type PostsCreateWithoutTeamsInput = {
     id?: string
     url: string
+    title: string
+    text?: string | null
+    subreddit: string
+    author: string
+    createdAt: Date | string
   }
 
-  export type CommentsUncheckedCreateWithoutTeamsInput = {
+  export type PostsUncheckedCreateWithoutTeamsInput = {
     id?: string
     url: string
+    title: string
+    text?: string | null
+    subreddit: string
+    author: string
+    createdAt: Date | string
   }
 
-  export type CommentsCreateOrConnectWithoutTeamsInput = {
-    where: CommentsWhereUniqueInput
-    create: XOR<CommentsCreateWithoutTeamsInput, CommentsUncheckedCreateWithoutTeamsInput>
+  export type PostsCreateOrConnectWithoutTeamsInput = {
+    where: PostsWhereUniqueInput
+    create: XOR<PostsCreateWithoutTeamsInput, PostsUncheckedCreateWithoutTeamsInput>
   }
 
-  export type NotesCreateWithoutTeamsCommentsInput = {
+  export type NotesCreateWithoutTeamsPostsInput = {
     id?: string
     text: string
     createdAt?: Date | string
     user: UsersCreateNestedOneWithoutNotesInput
   }
 
-  export type NotesUncheckedCreateWithoutTeamsCommentsInput = {
+  export type NotesUncheckedCreateWithoutTeamsPostsInput = {
     id?: string
     text: string
     userId: string
     createdAt?: Date | string
   }
 
-  export type NotesCreateOrConnectWithoutTeamsCommentsInput = {
+  export type NotesCreateOrConnectWithoutTeamsPostsInput = {
     where: NotesWhereUniqueInput
-    create: XOR<NotesCreateWithoutTeamsCommentsInput, NotesUncheckedCreateWithoutTeamsCommentsInput>
+    create: XOR<NotesCreateWithoutTeamsPostsInput, NotesUncheckedCreateWithoutTeamsPostsInput>
   }
 
-  export type TeamsUpsertWithoutCommentsInput = {
-    update: XOR<TeamsUpdateWithoutCommentsInput, TeamsUncheckedUpdateWithoutCommentsInput>
-    create: XOR<TeamsCreateWithoutCommentsInput, TeamsUncheckedCreateWithoutCommentsInput>
+  export type TeamsUpsertWithoutPostsInput = {
+    update: XOR<TeamsUpdateWithoutPostsInput, TeamsUncheckedUpdateWithoutPostsInput>
+    create: XOR<TeamsCreateWithoutPostsInput, TeamsUncheckedCreateWithoutPostsInput>
     where?: TeamsWhereInput
   }
 
-  export type TeamsUpdateToOneWithWhereWithoutCommentsInput = {
+  export type TeamsUpdateToOneWithWhereWithoutPostsInput = {
     where?: TeamsWhereInput
-    data: XOR<TeamsUpdateWithoutCommentsInput, TeamsUncheckedUpdateWithoutCommentsInput>
+    data: XOR<TeamsUpdateWithoutPostsInput, TeamsUncheckedUpdateWithoutPostsInput>
   }
 
-  export type TeamsUpdateWithoutCommentsInput = {
+  export type TeamsUpdateWithoutPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12908,7 +13063,7 @@ export namespace Prisma {
     keywords?: TeamsKeywordsUpdateManyWithoutTeamNestedInput
   }
 
-  export type TeamsUncheckedUpdateWithoutCommentsInput = {
+  export type TeamsUncheckedUpdateWithoutPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -12916,46 +13071,56 @@ export namespace Prisma {
     keywords?: TeamsKeywordsUncheckedUpdateManyWithoutTeamNestedInput
   }
 
-  export type CommentsUpsertWithoutTeamsInput = {
-    update: XOR<CommentsUpdateWithoutTeamsInput, CommentsUncheckedUpdateWithoutTeamsInput>
-    create: XOR<CommentsCreateWithoutTeamsInput, CommentsUncheckedCreateWithoutTeamsInput>
-    where?: CommentsWhereInput
+  export type PostsUpsertWithoutTeamsInput = {
+    update: XOR<PostsUpdateWithoutTeamsInput, PostsUncheckedUpdateWithoutTeamsInput>
+    create: XOR<PostsCreateWithoutTeamsInput, PostsUncheckedCreateWithoutTeamsInput>
+    where?: PostsWhereInput
   }
 
-  export type CommentsUpdateToOneWithWhereWithoutTeamsInput = {
-    where?: CommentsWhereInput
-    data: XOR<CommentsUpdateWithoutTeamsInput, CommentsUncheckedUpdateWithoutTeamsInput>
+  export type PostsUpdateToOneWithWhereWithoutTeamsInput = {
+    where?: PostsWhereInput
+    data: XOR<PostsUpdateWithoutTeamsInput, PostsUncheckedUpdateWithoutTeamsInput>
   }
 
-  export type CommentsUpdateWithoutTeamsInput = {
+  export type PostsUpdateWithoutTeamsInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    text?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CommentsUncheckedUpdateWithoutTeamsInput = {
+  export type PostsUncheckedUpdateWithoutTeamsInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    text?: NullableStringFieldUpdateOperationsInput | string | null
+    subreddit?: StringFieldUpdateOperationsInput | string
+    author?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type NotesUpsertWithoutTeamsCommentsInput = {
-    update: XOR<NotesUpdateWithoutTeamsCommentsInput, NotesUncheckedUpdateWithoutTeamsCommentsInput>
-    create: XOR<NotesCreateWithoutTeamsCommentsInput, NotesUncheckedCreateWithoutTeamsCommentsInput>
+  export type NotesUpsertWithoutTeamsPostsInput = {
+    update: XOR<NotesUpdateWithoutTeamsPostsInput, NotesUncheckedUpdateWithoutTeamsPostsInput>
+    create: XOR<NotesCreateWithoutTeamsPostsInput, NotesUncheckedCreateWithoutTeamsPostsInput>
     where?: NotesWhereInput
   }
 
-  export type NotesUpdateToOneWithWhereWithoutTeamsCommentsInput = {
+  export type NotesUpdateToOneWithWhereWithoutTeamsPostsInput = {
     where?: NotesWhereInput
-    data: XOR<NotesUpdateWithoutTeamsCommentsInput, NotesUncheckedUpdateWithoutTeamsCommentsInput>
+    data: XOR<NotesUpdateWithoutTeamsPostsInput, NotesUncheckedUpdateWithoutTeamsPostsInput>
   }
 
-  export type NotesUpdateWithoutTeamsCommentsInput = {
+  export type NotesUpdateWithoutTeamsPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UsersUpdateOneRequiredWithoutNotesNestedInput
   }
 
-  export type NotesUncheckedUpdateWithoutTeamsCommentsInput = {
+  export type NotesUncheckedUpdateWithoutTeamsPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
@@ -12996,14 +13161,14 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    teamsComments?: TeamsCommentsUpdateOneWithoutNoteNestedInput
+    teamsPosts?: TeamsPostsUpdateOneWithoutNoteNestedInput
   }
 
   export type NotesUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    teamsComments?: TeamsCommentsUncheckedUpdateOneWithoutNoteNestedInput
+    teamsPosts?: TeamsPostsUncheckedUpdateOneWithoutNoteNestedInput
   }
 
   export type NotesUncheckedUpdateManyWithoutUserInput = {
@@ -13025,11 +13190,11 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type TeamsCommentsCreateManyTeamInput = {
+  export type TeamsPostsCreateManyTeamInput = {
     id?: string
-    commentId: string
+    postId: string
     noteId?: string | null
-    statut?: $Enums.StatusComments
+    statut?: $Enums.StatusPosts
   }
 
   export type UsersTeamsUpdateWithoutTeamInput = {
@@ -13071,25 +13236,25 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TeamsCommentsUpdateWithoutTeamInput = {
+  export type TeamsPostsUpdateWithoutTeamInput = {
     id?: StringFieldUpdateOperationsInput | string
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
-    comment?: CommentsUpdateOneRequiredWithoutTeamsNestedInput
-    note?: NotesUpdateOneWithoutTeamsCommentsNestedInput
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
+    post?: PostsUpdateOneRequiredWithoutTeamsNestedInput
+    note?: NotesUpdateOneWithoutTeamsPostsNestedInput
   }
 
-  export type TeamsCommentsUncheckedUpdateWithoutTeamInput = {
+  export type TeamsPostsUncheckedUpdateWithoutTeamInput = {
     id?: StringFieldUpdateOperationsInput | string
-    commentId?: StringFieldUpdateOperationsInput | string
+    postId?: StringFieldUpdateOperationsInput | string
     noteId?: NullableStringFieldUpdateOperationsInput | string | null
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
   }
 
-  export type TeamsCommentsUncheckedUpdateManyWithoutTeamInput = {
+  export type TeamsPostsUncheckedUpdateManyWithoutTeamInput = {
     id?: StringFieldUpdateOperationsInput | string
-    commentId?: StringFieldUpdateOperationsInput | string
+    postId?: StringFieldUpdateOperationsInput | string
     noteId?: NullableStringFieldUpdateOperationsInput | string | null
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
   }
 
   export type TeamsKeywordsCreateManyKeywordInput = {
@@ -13120,32 +13285,32 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TeamsCommentsCreateManyCommentInput = {
+  export type TeamsPostsCreateManyPostInput = {
     id?: string
     teamId: string
     noteId?: string | null
-    statut?: $Enums.StatusComments
+    statut?: $Enums.StatusPosts
   }
 
-  export type TeamsCommentsUpdateWithoutCommentInput = {
+  export type TeamsPostsUpdateWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
-    team?: TeamsUpdateOneRequiredWithoutCommentsNestedInput
-    note?: NotesUpdateOneWithoutTeamsCommentsNestedInput
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
+    team?: TeamsUpdateOneRequiredWithoutPostsNestedInput
+    note?: NotesUpdateOneWithoutTeamsPostsNestedInput
   }
 
-  export type TeamsCommentsUncheckedUpdateWithoutCommentInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    teamId?: StringFieldUpdateOperationsInput | string
-    noteId?: NullableStringFieldUpdateOperationsInput | string | null
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
-  }
-
-  export type TeamsCommentsUncheckedUpdateManyWithoutCommentInput = {
+  export type TeamsPostsUncheckedUpdateWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
     teamId?: StringFieldUpdateOperationsInput | string
     noteId?: NullableStringFieldUpdateOperationsInput | string | null
-    statut?: EnumStatusCommentsFieldUpdateOperationsInput | $Enums.StatusComments
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
+  }
+
+  export type TeamsPostsUncheckedUpdateManyWithoutPostInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    teamId?: StringFieldUpdateOperationsInput | string
+    noteId?: NullableStringFieldUpdateOperationsInput | string | null
+    statut?: EnumStatusPostsFieldUpdateOperationsInput | $Enums.StatusPosts
   }
 
 

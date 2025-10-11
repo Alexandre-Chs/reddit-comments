@@ -22,12 +22,12 @@ const contentItems = [
     icon: Home,
   },
   {
-    title: "Comments",
-    url: "/comments",
+    title: "Posts",
+    url: "/posts",
     icon: MessageCircleMore,
   },
   {
-    title: "Assigned Comments",
+    title: "Assigned Posts",
     url: "/assigned",
     icon: LayoutList,
   },
