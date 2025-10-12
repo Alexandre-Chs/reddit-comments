@@ -7049,31 +7049,28 @@ export namespace Prisma {
 
   export type PostsMinAggregateOutputType = {
     id: string | null
+    redditId: string | null
     url: string | null
-    title: string | null
     text: string | null
     subreddit: string | null
-    author: string | null
     createdAt: Date | null
   }
 
   export type PostsMaxAggregateOutputType = {
     id: string | null
+    redditId: string | null
     url: string | null
-    title: string | null
     text: string | null
     subreddit: string | null
-    author: string | null
     createdAt: Date | null
   }
 
   export type PostsCountAggregateOutputType = {
     id: number
+    redditId: number
     url: number
-    title: number
     text: number
     subreddit: number
-    author: number
     createdAt: number
     _all: number
   }
@@ -7081,31 +7078,28 @@ export namespace Prisma {
 
   export type PostsMinAggregateInputType = {
     id?: true
+    redditId?: true
     url?: true
-    title?: true
     text?: true
     subreddit?: true
-    author?: true
     createdAt?: true
   }
 
   export type PostsMaxAggregateInputType = {
     id?: true
+    redditId?: true
     url?: true
-    title?: true
     text?: true
     subreddit?: true
-    author?: true
     createdAt?: true
   }
 
   export type PostsCountAggregateInputType = {
     id?: true
+    redditId?: true
     url?: true
-    title?: true
     text?: true
     subreddit?: true
-    author?: true
     createdAt?: true
     _all?: true
   }
@@ -7184,11 +7178,10 @@ export namespace Prisma {
 
   export type PostsGroupByOutputType = {
     id: string
+    redditId: string
     url: string
-    title: string
-    text: string | null
+    text: string
     subreddit: string
-    author: string
     createdAt: Date
     _count: PostsCountAggregateOutputType | null
     _min: PostsMinAggregateOutputType | null
@@ -7211,11 +7204,10 @@ export namespace Prisma {
 
   export type PostsSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    redditId?: boolean
     url?: boolean
-    title?: boolean
     text?: boolean
     subreddit?: boolean
-    author?: boolean
     createdAt?: boolean
     teams?: boolean | Posts$teamsArgs<ExtArgs>
     _count?: boolean | PostsCountOutputTypeDefaultArgs<ExtArgs>
@@ -7223,35 +7215,32 @@ export namespace Prisma {
 
   export type PostsSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    redditId?: boolean
     url?: boolean
-    title?: boolean
     text?: boolean
     subreddit?: boolean
-    author?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["posts"]>
 
   export type PostsSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    redditId?: boolean
     url?: boolean
-    title?: boolean
     text?: boolean
     subreddit?: boolean
-    author?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["posts"]>
 
   export type PostsSelectScalar = {
     id?: boolean
+    redditId?: boolean
     url?: boolean
-    title?: boolean
     text?: boolean
     subreddit?: boolean
-    author?: boolean
     createdAt?: boolean
   }
 
-  export type PostsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "title" | "text" | "subreddit" | "author" | "createdAt", ExtArgs["result"]["posts"]>
+  export type PostsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "redditId" | "url" | "text" | "subreddit" | "createdAt", ExtArgs["result"]["posts"]>
   export type PostsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     teams?: boolean | Posts$teamsArgs<ExtArgs>
     _count?: boolean | PostsCountOutputTypeDefaultArgs<ExtArgs>
@@ -7266,11 +7255,10 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      redditId: string
       url: string
-      title: string
-      text: string | null
+      text: string
       subreddit: string
-      author: string
       createdAt: Date
     }, ExtArgs["result"]["posts"]>
     composites: {}
@@ -7697,11 +7685,10 @@ export namespace Prisma {
    */
   interface PostsFieldRefs {
     readonly id: FieldRef<"Posts", 'String'>
+    readonly redditId: FieldRef<"Posts", 'String'>
     readonly url: FieldRef<"Posts", 'String'>
-    readonly title: FieldRef<"Posts", 'String'>
     readonly text: FieldRef<"Posts", 'String'>
     readonly subreddit: FieldRef<"Posts", 'String'>
-    readonly author: FieldRef<"Posts", 'String'>
     readonly createdAt: FieldRef<"Posts", 'DateTime'>
   }
     
@@ -10360,11 +10347,10 @@ export namespace Prisma {
 
   export const PostsScalarFieldEnum: {
     id: 'id',
+    redditId: 'redditId',
     url: 'url',
-    title: 'title',
     text: 'text',
     subreddit: 'subreddit',
-    author: 'author',
     createdAt: 'createdAt'
   };
 
@@ -10765,47 +10751,43 @@ export namespace Prisma {
     OR?: PostsWhereInput[]
     NOT?: PostsWhereInput | PostsWhereInput[]
     id?: StringFilter<"Posts"> | string
+    redditId?: StringFilter<"Posts"> | string
     url?: StringFilter<"Posts"> | string
-    title?: StringFilter<"Posts"> | string
-    text?: StringNullableFilter<"Posts"> | string | null
+    text?: StringFilter<"Posts"> | string
     subreddit?: StringFilter<"Posts"> | string
-    author?: StringFilter<"Posts"> | string
     createdAt?: DateTimeFilter<"Posts"> | Date | string
     teams?: TeamsPostsListRelationFilter
   }
 
   export type PostsOrderByWithRelationInput = {
     id?: SortOrder
+    redditId?: SortOrder
     url?: SortOrder
-    title?: SortOrder
-    text?: SortOrderInput | SortOrder
+    text?: SortOrder
     subreddit?: SortOrder
-    author?: SortOrder
     createdAt?: SortOrder
     teams?: TeamsPostsOrderByRelationAggregateInput
   }
 
   export type PostsWhereUniqueInput = Prisma.AtLeast<{
     id?: string
+    redditId?: string
     url?: string
     AND?: PostsWhereInput | PostsWhereInput[]
     OR?: PostsWhereInput[]
     NOT?: PostsWhereInput | PostsWhereInput[]
-    title?: StringFilter<"Posts"> | string
-    text?: StringNullableFilter<"Posts"> | string | null
+    text?: StringFilter<"Posts"> | string
     subreddit?: StringFilter<"Posts"> | string
-    author?: StringFilter<"Posts"> | string
     createdAt?: DateTimeFilter<"Posts"> | Date | string
     teams?: TeamsPostsListRelationFilter
-  }, "id" | "url">
+  }, "id" | "redditId" | "url">
 
   export type PostsOrderByWithAggregationInput = {
     id?: SortOrder
+    redditId?: SortOrder
     url?: SortOrder
-    title?: SortOrder
-    text?: SortOrderInput | SortOrder
+    text?: SortOrder
     subreddit?: SortOrder
-    author?: SortOrder
     createdAt?: SortOrder
     _count?: PostsCountOrderByAggregateInput
     _max?: PostsMaxOrderByAggregateInput
@@ -10817,11 +10799,10 @@ export namespace Prisma {
     OR?: PostsScalarWhereWithAggregatesInput[]
     NOT?: PostsScalarWhereWithAggregatesInput | PostsScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Posts"> | string
+    redditId?: StringWithAggregatesFilter<"Posts"> | string
     url?: StringWithAggregatesFilter<"Posts"> | string
-    title?: StringWithAggregatesFilter<"Posts"> | string
-    text?: StringNullableWithAggregatesFilter<"Posts"> | string | null
+    text?: StringWithAggregatesFilter<"Posts"> | string
     subreddit?: StringWithAggregatesFilter<"Posts"> | string
-    author?: StringWithAggregatesFilter<"Posts"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Posts"> | Date | string
   }
 
@@ -11207,75 +11188,68 @@ export namespace Prisma {
 
   export type PostsCreateInput = {
     id?: string
+    redditId: string
     url: string
-    title: string
-    text?: string | null
+    text: string
     subreddit: string
-    author: string
     createdAt: Date | string
     teams?: TeamsPostsCreateNestedManyWithoutPostInput
   }
 
   export type PostsUncheckedCreateInput = {
     id?: string
+    redditId: string
     url: string
-    title: string
-    text?: string | null
+    text: string
     subreddit: string
-    author: string
     createdAt: Date | string
     teams?: TeamsPostsUncheckedCreateNestedManyWithoutPostInput
   }
 
   export type PostsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    redditId?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    text?: NullableStringFieldUpdateOperationsInput | string | null
+    text?: StringFieldUpdateOperationsInput | string
     subreddit?: StringFieldUpdateOperationsInput | string
-    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     teams?: TeamsPostsUpdateManyWithoutPostNestedInput
   }
 
   export type PostsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    redditId?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    text?: NullableStringFieldUpdateOperationsInput | string | null
+    text?: StringFieldUpdateOperationsInput | string
     subreddit?: StringFieldUpdateOperationsInput | string
-    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     teams?: TeamsPostsUncheckedUpdateManyWithoutPostNestedInput
   }
 
   export type PostsCreateManyInput = {
     id?: string
+    redditId: string
     url: string
-    title: string
-    text?: string | null
+    text: string
     subreddit: string
-    author: string
     createdAt: Date | string
   }
 
   export type PostsUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    redditId?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    text?: NullableStringFieldUpdateOperationsInput | string | null
+    text?: StringFieldUpdateOperationsInput | string
     subreddit?: StringFieldUpdateOperationsInput | string
-    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PostsUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    redditId?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    text?: NullableStringFieldUpdateOperationsInput | string | null
+    text?: StringFieldUpdateOperationsInput | string
     subreddit?: StringFieldUpdateOperationsInput | string
-    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -11624,72 +11598,31 @@ export namespace Prisma {
     _max?: NestedEnumStatusKeywordsFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
   export type PostsCountOrderByAggregateInput = {
     id?: SortOrder
+    redditId?: SortOrder
     url?: SortOrder
-    title?: SortOrder
     text?: SortOrder
     subreddit?: SortOrder
-    author?: SortOrder
     createdAt?: SortOrder
   }
 
   export type PostsMaxOrderByAggregateInput = {
     id?: SortOrder
+    redditId?: SortOrder
     url?: SortOrder
-    title?: SortOrder
     text?: SortOrder
     subreddit?: SortOrder
-    author?: SortOrder
     createdAt?: SortOrder
   }
 
   export type PostsMinOrderByAggregateInput = {
     id?: SortOrder
+    redditId?: SortOrder
     url?: SortOrder
-    title?: SortOrder
     text?: SortOrder
     subreddit?: SortOrder
-    author?: SortOrder
     createdAt?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type TeamsPostsNullableScalarRelationFilter = {
@@ -11718,6 +11651,21 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type EnumStatusPostsFilter<$PrismaModel = never> = {
     equals?: $Enums.StatusPosts | EnumStatusPostsFieldRefInput<$PrismaModel>
     in?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
@@ -11733,6 +11681,11 @@ export namespace Prisma {
   export type NotesNullableScalarRelationFilter = {
     is?: NotesWhereInput | null
     isNot?: NotesWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type TeamsPostsTeamIdPostIdCompoundUniqueInput = {
@@ -11762,6 +11715,24 @@ export namespace Prisma {
     postId?: SortOrder
     noteId?: SortOrder
     statut?: SortOrder
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type EnumStatusPostsWithAggregatesFilter<$PrismaModel = never> = {
@@ -12108,10 +12079,6 @@ export namespace Prisma {
     connect?: TeamsPostsWhereUniqueInput | TeamsPostsWhereUniqueInput[]
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
   export type TeamsPostsUpdateManyWithoutPostNestedInput = {
     create?: XOR<TeamsPostsCreateWithoutPostInput, TeamsPostsUncheckedCreateWithoutPostInput> | TeamsPostsCreateWithoutPostInput[] | TeamsPostsUncheckedCreateWithoutPostInput[]
     connectOrCreate?: TeamsPostsCreateOrConnectWithoutPostInput | TeamsPostsCreateOrConnectWithoutPostInput[]
@@ -12234,6 +12201,10 @@ export namespace Prisma {
     update?: XOR<XOR<NotesUpdateToOneWithWhereWithoutTeamsPostsInput, NotesUpdateWithoutTeamsPostsInput>, NotesUncheckedUpdateWithoutTeamsPostsInput>
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12332,6 +12303,13 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedEnumStatusPostsFilter<$PrismaModel = never> = {
+    equals?: $Enums.StatusPosts | EnumStatusPostsFieldRefInput<$PrismaModel>
+    in?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
+    notIn?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
+    not?: NestedEnumStatusPostsFilter<$PrismaModel> | $Enums.StatusPosts
+  }
+
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -12358,13 +12336,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedEnumStatusPostsFilter<$PrismaModel = never> = {
-    equals?: $Enums.StatusPosts | EnumStatusPostsFieldRefInput<$PrismaModel>
-    in?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
-    notIn?: $Enums.StatusPosts[] | ListEnumStatusPostsFieldRefInput<$PrismaModel>
-    not?: NestedEnumStatusPostsFilter<$PrismaModel> | $Enums.StatusPosts
   }
 
   export type NestedEnumStatusPostsWithAggregatesFilter<$PrismaModel = never> = {
@@ -13002,21 +12973,19 @@ export namespace Prisma {
 
   export type PostsCreateWithoutTeamsInput = {
     id?: string
+    redditId: string
     url: string
-    title: string
-    text?: string | null
+    text: string
     subreddit: string
-    author: string
     createdAt: Date | string
   }
 
   export type PostsUncheckedCreateWithoutTeamsInput = {
     id?: string
+    redditId: string
     url: string
-    title: string
-    text?: string | null
+    text: string
     subreddit: string
-    author: string
     createdAt: Date | string
   }
 
@@ -13084,21 +13053,19 @@ export namespace Prisma {
 
   export type PostsUpdateWithoutTeamsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    redditId?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    text?: NullableStringFieldUpdateOperationsInput | string | null
+    text?: StringFieldUpdateOperationsInput | string
     subreddit?: StringFieldUpdateOperationsInput | string
-    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PostsUncheckedUpdateWithoutTeamsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    redditId?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    text?: NullableStringFieldUpdateOperationsInput | string | null
+    text?: StringFieldUpdateOperationsInput | string
     subreddit?: StringFieldUpdateOperationsInput | string
-    author?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

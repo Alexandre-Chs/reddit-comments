@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class RedditScrapperService {
   async keywordPosts(keyword: string) {
     const response = await fetch(
-      `https://www.reddit.com/search.json?q=${encodeURIComponent(keyword)}&type=link&sort=new`,
+      `https://www.reddit.com/search.json?q=${encodeURIComponent(keyword)}&sort=new`,
       {
         method: 'GET',
         headers: {

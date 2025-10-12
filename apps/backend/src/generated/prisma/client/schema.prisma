@@ -62,11 +62,10 @@ model TeamsKeywords {
 
 model Posts {
   id        String       @id @default(uuid())
+  redditId  String       @unique
   url       String       @unique
-  title     String
-  text      String?
+  text      String
   subreddit String
-  author    String
   createdAt DateTime
   teams     TeamsPosts[]
 }

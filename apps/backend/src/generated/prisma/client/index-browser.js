@@ -157,11 +157,10 @@ exports.Prisma.TeamsKeywordsScalarFieldEnum = {
 
 exports.Prisma.PostsScalarFieldEnum = {
   id: 'id',
+  redditId: 'redditId',
   url: 'url',
-  title: 'title',
   text: 'text',
   subreddit: 'subreddit',
-  author: 'author',
   createdAt: 'createdAt'
 };
 
