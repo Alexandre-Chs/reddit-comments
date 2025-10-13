@@ -125,4 +125,15 @@ export class TeamsService {
       data: { statut: keyword.statut === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE' },
     });
   }
+
+  async teamPosts(teamId: string) {
+    const teamsPosts = await this.prisma.teamsPosts.findMany({
+      where: { teamId },
+      include: {
+        post: true,
+      },
+    });
+
+    return teamsPosts.map((tp) => ({ ...tp.post, statut: tp.statut }));
+  }
 }

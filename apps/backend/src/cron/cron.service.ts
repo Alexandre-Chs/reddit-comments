@@ -16,7 +16,7 @@ export class CronService {
 
   private readonly logger = new Logger(CronService.name);
 
-  @Cron('0 * * * * *')
+  @Cron('0 0 * * *')
   async handleCron() {
     this.logger.debug('Called every 5 minutes');
 
@@ -41,8 +41,10 @@ export class CronService {
 
       const posts = await this.redditScrapper.keywordPosts(keyword);
       const parsedPosts = await this.redditParser.redditParser(posts);
+
       for (const post of parsedPosts) {
         const upsertedPost = await this.redditInsert.upsertPost(post);
+
         for (const teamId of teamIds) {
           await this.prisma.teamsPosts.upsert({
             where: { teamId_postId: { teamId, postId: upsertedPost.id } },

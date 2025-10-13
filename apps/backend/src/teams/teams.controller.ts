@@ -110,4 +110,14 @@ export class TeamsController {
 
     return { ok: true, message: 'Keyword status toggled' };
   }
+
+  @Get('posts')
+  async teamPosts(@Session() session) {
+    const teamId = session.activeTeamId;
+    if (!teamId) return { errors: [{ message: 'No active team' }], ok: false };
+
+    const posts = await this.teamsService.teamPosts(teamId);
+
+    return { posts, ok: true };
+  }
 }
